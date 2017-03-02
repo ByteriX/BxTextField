@@ -10,14 +10,11 @@
 		F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */; };
 		F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */; };
 		F9337C2A1E680027002134C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F9337C291E680027002134C2 /* LICENSE */; };
-		F9337C2C1E68002E002134C2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F9337C2B1E68002E002134C2 /* README.md */; };
-		F9337C2E1E680037002134C2 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = F9337C2D1E680037002134C2 /* CHANGELOG.md */; };
 		F9337C3B1E680216002134C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C301E680216002134C2 /* AppDelegate.swift */; };
 		F9337C3C1E680216002134C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C321E680216002134C2 /* ViewController.swift */; };
 		F9337C3D1E680216002134C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9337C341E680216002134C2 /* Assets.xcassets */; };
 		F9337C3E1E680216002134C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9337C351E680216002134C2 /* LaunchScreen.storyboard */; };
 		F9337C3F1E680216002134C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9337C371E680216002134C2 /* Main.storyboard */; };
-		F9337C401E680216002134C2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9337C391E680216002134C2 /* Info.plist */; };
 		F9337C421E680740002134C2 /* BxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C411E680740002134C2 /* BxTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -288,7 +285,6 @@
 				F9337C3E1E680216002134C2 /* LaunchScreen.storyboard in Resources */,
 				F9337C3D1E680216002134C2 /* Assets.xcassets in Resources */,
 				F9337C3F1E680216002134C2 /* Main.storyboard in Resources */,
-				F9337C401E680216002134C2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,10 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9337C3C1E680216002134C2 /* ViewController.swift in Sources */,
-				F9337C2C1E68002E002134C2 /* README.md in Sources */,
 				F9337C421E680740002134C2 /* BxTextField.swift in Sources */,
 				F9337C3B1E680216002134C2 /* AppDelegate.swift in Sources */,
-				F9337C2E1E680037002134C2 /* CHANGELOG.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
