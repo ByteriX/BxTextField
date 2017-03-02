@@ -66,7 +66,7 @@ Pod::Spec.new do |s|
     s.frameworks = ["Foundation", "UIKit"]
     #s.resources = "BxTextField/Sources/Assets.xcassets", "BxTextField/Sources/**/*.xib"
 
-    s.source_files  = "BxTextField/Sources/**/*.{swift}"
+    s.source_files  = "BxTextField/Sources/**/*.{swift}", "BxTextField/Sources/*.{swift}"
 
     #s.dependency 'BxObjC/Vcl'
 

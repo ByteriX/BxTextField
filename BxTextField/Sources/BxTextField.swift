@@ -14,7 +14,7 @@
 
 import UIKit
 
-
+/// Custom UITextField
 class BxTextField : UITextField {
     
     //
