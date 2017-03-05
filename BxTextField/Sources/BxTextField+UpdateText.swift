@@ -11,68 +11,57 @@ import UIKit
 /// text updating methods
 extension BxTextField {
     
-//    internal func getReplacePosition(selectedPositon: UITextPosition) -> (range: NSRange, string: String)
-//    {
-//        let offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
-//        var index = 0
-//        while index < offset && beforeChangesText.characters.count < index {
-//            if beforeChangesText.r
-//        }
-//    }
-    
     /// update text for showing
     public func updateTextWithPosition() {
         guard let selectedTextRange = selectedTextRange else {
             return
         }
         let selectedPositon = selectedTextRange.start
-        guard leftPatternText.isEmpty == false else {
-            
-            var offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
-            
-            let unformatedText = getSimpleUnformatedText(with: text ?? "", position: &offset)
-            let formatedText = getFormatedText(with: unformatedText, position: &offset)
-            
-            updateAttributedText(with: formatedText)
-            
-            if let position = position(from: self.beginningOfDocument, offset: offset) {
-                goTo(textPosition: position)
-            } else {
-                goTo(textPosition: selectedPositon)
-            }
-            
-            return
-        }
+        var offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
         
-        var previewText = leftPatternText
-        if text == leftPatternText {
-            text = "" // for showing placeholder
+        let clearText = getClearFromPatternText(with: text ?? "", position: &offset)
+        let unformatedText = getSimpleUnformatedText(with: clearText, position: &offset)
+        var formatedText = getFormatedText(with: unformatedText, position: &offset)
+        
+        formatedText = rightPatternText + formatedText + leftPatternText
+        
+        attributedText = getAttributedText(with: formatedText, enteredTextAttributes: enteredTextAttributes)
+        
+        if let position = position(from: self.beginningOfDocument, offset: offset + rightPatternText.characters.count) {
+            goTo(textPosition: position)
         } else {
-            if text!.hasSuffix(leftPatternText) {
-                previewText = text ?? ""
-            }
+            goTo(textPosition: selectedPositon)
         }
-        updateAttributedText(with: previewText)
-        goTo(textPosition: selectedPositon)
-        beforeChangesText = text!
     }
     
-    /// update attributed text with simple text
-    public func updateAttributedText(with text: String) {
+    /// attributed text for showing
+    open func getAttributedText(with text: String, enteredTextAttributes: [String: NSObject]? = nil) -> NSMutableAttributedString
+    {
+        let attributedString = NSMutableAttributedString(string: text)
+        var startEnteredPosition = 0
+        var stopEnteredPosition = text.characters.count
+        
+        if rightPatternText.isEmpty == false,
+            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
+        {
+            let nsRange = text.makeNSRange(from: rightPatternTextRange)
+            attributedString.addAttributes(patternTextAttributes, range: nsRange)
+            startEnteredPosition = startEnteredPosition + nsRange.location + nsRange.length
+        }
+        
         if leftPatternText.isEmpty == false,
             let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
         {
             let nsRange = text.makeNSRange(from: leftPatternTextRange)
-            
-            let attributedString = NSMutableAttributedString(string: text)
-            
-            attributedString.addAttributes(leftPatternTextAttributes, range: nsRange)
-            attributedString.addAttributes(enteredTextAttributes, range: NSMakeRange(0, nsRange.location))
-            
-            attributedText = attributedString
-        } else {
-            attributedText = NSMutableAttributedString(string: text)
+            attributedString.addAttributes(patternTextAttributes, range: nsRange)
+            stopEnteredPosition = stopEnteredPosition - nsRange.length
         }
+        
+        if let enteredTextAttributes = enteredTextAttributes {
+            attributedString.addAttributes(enteredTextAttributes, range: NSMakeRange(startEnteredPosition, stopEnteredPosition - startEnteredPosition))
+        }
+        
+        return attributedString
     }
     
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// it will needed probably in a future
 class BxTextFieldDelegate: NSObject, UITextFieldDelegate
 {
     

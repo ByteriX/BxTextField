@@ -19,26 +19,35 @@ open class BxTextField : UITextField {
     
     // MARK: Static properties
     
+    /// default font for pattern text
     open static let standartPatternTextFont = UIFont.boldSystemFont(ofSize: 15)
+    /// default font for entered text
     open static let standartEnteredTextFont = UIFont.systemFont(ofSize: 15)
-    
-    // MARK: Internal properties
-    
-    internal var beforeChangesText: String = ""
     
     // MARK: Public properties
     
+    // MARK: Formatting
+    
+    /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
     @IBInspectable open var formattingPattern: String = ""
+    /// Replacement symbol, it use for formattingPattern as is as pattern for replacing. Default is "#"
     @IBInspectable open var formattingReplacementChar: Character = "#"
+    /// Allowable symbols for entering. Uses only if formattingPattern is not empty. Default is "", that is all symbols.
     @IBInspectable open var formattingEnteredCharacters: String = ""
     {
         didSet {
-            formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters)
+            if formattingEnteredCharacters.isEmpty {
+                formattingEnteredCharSet = CharacterSet().inverted
+            } else {
+                formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters)
+            }
         }
     }
-    
+    /// You can use formattingEnteredCharacters or this from code.
     open var formattingEnteredCharSet: CharacterSet = CharacterSet()
+
     
+    // MARK: Text attributes
     
     /// Editable part of the text, wich can changed by user. Defaults to "".
     @IBInspectable open var enteredText: String {
@@ -46,18 +55,14 @@ open class BxTextField : UITextField {
             guard let text = text else {
                 return ""
             }
-            if text.hasSuffix(leftPatternText) {
-                return text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -leftPatternText.characters.count)]
-            } else {
-                return text
-            }
+            var position = 0
+            return getClearFromPatternText(with: text, position: &position)
         }
         set {
             text = newValue + leftPatternText
             updateTextWithPosition()
         }
     }
-    
     /// Not editable pattern part of the text. Defaults to "".
     @IBInspectable open var leftPatternText: String = "" {
         willSet {
@@ -72,36 +77,54 @@ open class BxTextField : UITextField {
             updateTextWithPosition()
         }
     }
-    
+    /// Not editable pattern part of the text. Defaults to "".
+    @IBInspectable open var rightPatternText: String = "" {
+        willSet {
+            guard var text = text, !text.isEmpty else {
+                return
+            }
+            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.rightPatternText.characters.count)..<text.characters.index(text.endIndex, offsetBy: -self.leftPatternText.characters.count)]
+            self.text = enteredText + newValue
+        }
+        didSet {
+            placeholder = rightPatternText + placeholderText + leftPatternText
+            updateTextWithPosition()
+        }
+    }
     /// Font of the leftPatternText. Defaults to the bold font.
-    @IBInspectable open var leftPatternTextFont: UIFont! {
+    @IBInspectable open var patternTextFont: UIFont! {
         didSet {
             ({self.leftPatternText = leftPatternText })()
         }
     }
-    
     /// Color of the leftPatternText. Defaults to the textColor.
-    @IBInspectable public var leftPatternTextColor: UIColor! {
+    @IBInspectable public var patternTextColor: UIColor! {
         didSet {
             ({self.leftPatternText = leftPatternText })()
         }
     }
-    
     /// Need override standart font, because in iOS 10 changing attributedText rewrite font property
     @IBInspectable open var enteredTextFont: UIFont! {
         didSet {
             ({self.leftPatternText = leftPatternText })()
         }
     }
-    
-    /// Attributes of leftPatternText
-    open var leftPatternTextAttributes: [String: NSObject] {
-        return [
-            NSFontAttributeName: leftPatternTextFont,
-            NSForegroundColorAttributeName: leftPatternTextColor ?? textColor ?? UIColor.black
-        ]
+    /// Placeholder without patterns text. Defaults to "".
+    @IBInspectable open var placeholderText: String = "" {
+        didSet {
+            placeholder = rightPatternText + placeholderText + leftPatternText
+        }
     }
     
+    // MARK: Useful attributes for text showing
+    
+    /// Attributes of leftPatternText
+    open var patternTextAttributes: [String: NSObject] {
+        return [
+            NSFontAttributeName: patternTextFont,
+            NSForegroundColorAttributeName: patternTextColor ?? textColor ?? UIColor.black
+        ]
+    }
     /// Attributes of enteredText
     open var enteredTextAttributes: [String: NSObject] {
         return [
@@ -109,24 +132,11 @@ open class BxTextField : UITextField {
             NSForegroundColorAttributeName: textColor ?? UIColor.black
         ]
     }
-    
-    /// Placeholder without patterns text. Defaults to "".
-    @IBInspectable open var placeholderText: String = "" {
-        didSet {
-            placeholder = placeholderText + leftPatternText
-        }
-    }
-    
     /// Now it isn't used, because have been complex solution
     override open var placeholder: String? {
         didSet {
             if let placeholder = placeholder {
-                let attributedString = NSMutableAttributedString(string: placeholder)
-                let leftPatternTextRange = NSMakeRange(placeholderText.characters.count, leftPatternText.characters.count)
-                if placeholder.hasSuffix(leftPatternText) {
-                    attributedString.addAttributes(leftPatternTextAttributes, range: leftPatternTextRange)
-                    attributedPlaceholder = attributedString
-                }
+                attributedPlaceholder = getAttributedText(with: placeholder)
             }
         }
     }
@@ -146,14 +156,14 @@ open class BxTextField : UITextField {
     /// initialization this object
     open func initObject() {
         // making text attributes
-        if leftPatternTextFont == nil {
+        if patternTextFont == nil {
             if let font = font {
-                leftPatternTextFont = font.bold()
+                patternTextFont = font.bold()
             } else {
-                leftPatternTextFont = type(of: self).standartPatternTextFont
+                patternTextFont = type(of: self).standartPatternTextFont
             }
         }
-        leftPatternTextColor = textColor
+        patternTextColor = textColor
         if enteredTextFont == nil {
             if let font = font {
                 enteredTextFont = font

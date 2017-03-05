@@ -11,6 +11,24 @@ import Foundation
 extension BxTextField
 {
     
+    public func getClearFromPatternText(with text: String, position: inout Int) -> String {
+        var result = text
+        if rightPatternText.isEmpty == false,
+            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
+        {
+            result = result.substring(from: rightPatternTextRange.upperBound)
+            position = position - text.characters.count + result.characters.count
+        }
+        
+        if leftPatternText.isEmpty == false,
+            let leftPatternTextRange = result.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
+        {
+            result = result.substring(to: leftPatternTextRange.lowerBound)
+        }
+        
+        return result
+    }
+    
     public func getSimpleUnformatedText(with text: String, position: inout Int) -> String {
         guard formattingPattern.isEmpty == false, formattingEnteredCharSet.isEmpty == false
         else {

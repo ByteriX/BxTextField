@@ -97,6 +97,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value="www."/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
@@ -138,6 +139,36 @@
                                                 <constraint firstItem="HCa-Te-2Qc" firstAttribute="leading" secondItem="h4F-GE-jOt" secondAttribute="leading" constant="12" id="P5x-iu-28a"/>
                                                 <constraint firstAttribute="bottom" secondItem="HCa-Te-2Qc" secondAttribute="bottom" constant="12" id="Rur-xW-JhL"/>
                                                 <constraint firstAttribute="trailing" secondItem="HCa-Te-2Qc" secondAttribute="trailing" constant="12" id="iC4-a0-tjP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3RV-xn-5a7">
+                                        <rect key="frame" x="0.0" y="236" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3RV-xn-5a7" id="FJC-lA-6uC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-dj-TVN" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="(___) ___ - __- __"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="(###) ### - ## - ##"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value="+7 "/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="aS3-dj-TVN" secondAttribute="bottom" constant="12" id="Fah-xQ-AVh"/>
+                                                <constraint firstItem="aS3-dj-TVN" firstAttribute="top" secondItem="FJC-lA-6uC" secondAttribute="top" constant="12" id="IUY-m2-doI"/>
+                                                <constraint firstAttribute="trailing" secondItem="aS3-dj-TVN" secondAttribute="trailing" constant="12" id="his-s7-Fx7"/>
+                                                <constraint firstItem="aS3-dj-TVN" firstAttribute="leading" secondItem="FJC-lA-6uC" secondAttribute="leading" constant="12" id="kLS-OY-IL1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
