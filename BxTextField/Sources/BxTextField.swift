@@ -22,37 +22,29 @@ open class BxTextField : UITextField {
     open static let standartPatternTextFont = UIFont.boldSystemFont(ofSize: 15)
     open static let standartEnteredTextFont = UIFont.systemFont(ofSize: 15)
     
+    // MARK: Internal properties
+    
+    internal var beforeChangesText: String = ""
+    
     // MARK: Public properties
     
+    @IBInspectable open var formattingPattern: String = ""
+    @IBInspectable open var formattingReplacementChar: Character = "#"
+    
+    
     /// Editable part of the text, wich can changed by user. Defaults to "".
-    @IBInspectable open var enteredText: String {
-        get {
-            guard let text = text else {
-                return ""
-            }
-            if text.hasSuffix(leftPatternText) {
-                return text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -leftPatternText.characters.count)]
-            } else {
-                return text
-            }
-        }
-        set {
-            text = newValue + leftPatternText
+    @IBInspectable open var enteredText: String = "" {
+        didSet {
+//            text = enteredText + leftPatternText
             updateText()
         }
     }
     
     /// Not editable pattern part of the text. Defaults to "".
     @IBInspectable open var leftPatternText: String = "" {
-        willSet {
-            guard var text = text, !text.isEmpty else {
-                return
-            }
-            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.leftPatternText.characters.count)]
-            self.text = enteredText + newValue
-        }
         didSet {
-            placeholder = placeholderText + leftPatternText
+//            self.text = enteredText + leftPatternText
+//            placeholder = placeholderText + leftPatternText
             updateText()
         }
     }
@@ -74,7 +66,7 @@ open class BxTextField : UITextField {
     /// Need override standart font, because in iOS 10 changing attributedText rewrite font property
     @IBInspectable open var enteredTextFont: UIFont! {
         didSet {
-            ({self.leftPatternText = leftPatternText })()
+            ({self.enteredText = enteredText })()
         }
     }
     
@@ -98,6 +90,7 @@ open class BxTextField : UITextField {
     @IBInspectable open var placeholderText: String = "" {
         didSet {
             placeholder = placeholderText + leftPatternText
+            updateText()
         }
     }
     
@@ -151,46 +144,6 @@ open class BxTextField : UITextField {
         addTarget(self, action: #selector(textDidEnd(sender:)), for: .editingDidEnd)
         // init text
         text = ""
-    }
-    
-    // MARK: text updating methods
-    
-    /// update text for showing
-    public func updateText() {
-        guard leftPatternText.isEmpty == false else {
-            return
-        }
-        guard let selectedTextRange = selectedTextRange else {
-            return
-        }
-        let selectedPositon = selectedTextRange.start
-        
-        var previewText = leftPatternText
-        if text == leftPatternText {
-            text = "" // for showing placeholder
-        } else {
-            if text!.hasSuffix(leftPatternText) {
-                previewText = text ?? ""
-            }
-        }
-        updateAttributedText(with: previewText)
-        goTo(textPosition: selectedPositon)
-    }
-    
-    /// update attributed text with simple text
-    public func updateAttributedText(with text: String) {
-        if let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
-            let nsRange = text.makeNSRange(from: leftPatternTextRange)
-            
-            let attributedString = NSMutableAttributedString(string: text)
-            
-            attributedString.addAttributes(leftPatternTextAttributes, range: nsRange)
-            attributedString.addAttributes(enteredTextAttributes, range: NSMakeRange(0, nsRange.location))
-            
-            attributedText = attributedString
-        } else {
-            attributedText = NSMutableAttributedString(string: text)
-        }
     }
     
     // MARK: textField control handler

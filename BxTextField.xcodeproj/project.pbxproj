@@ -16,6 +16,9 @@
 		F9337C3E1E680216002134C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9337C351E680216002134C2 /* LaunchScreen.storyboard */; };
 		F9337C3F1E680216002134C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9337C371E680216002134C2 /* Main.storyboard */; };
 		F9337C421E680740002134C2 /* BxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C411E680740002134C2 /* BxTextField.swift */; };
+		F951864B1E6C2C620084AD98 /* BxTextField+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */; };
+		F951864D1E6C2FD00084AD98 /* BxTextField+UpdateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */; };
+		F951864F1E6C554A0084AD98 /* BxTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */; };
 		F9F992631E693FA7002EAEA9 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F992621E693FA7002EAEA9 /* UIFont.swift */; };
 		F9F992651E694052002EAEA9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F992641E694052002EAEA9 /* String.swift */; };
 		F9F992721E69638F002EAEA9 /* BxTextField+TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F992711E69638F002EAEA9 /* BxTextField+TextPosition.swift */; };
@@ -58,6 +61,9 @@
 		F9337C381E680216002134C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9337C391E680216002134C2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9337C411E680740002134C2 /* BxTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BxTextField.swift; sourceTree = "<group>"; };
+		F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BxTextField+Formatting.swift"; sourceTree = "<group>"; };
+		F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BxTextField+UpdateText.swift"; sourceTree = "<group>"; };
+		F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BxTextFieldDelegate.swift; sourceTree = "<group>"; };
 		F9F992621E693FA7002EAEA9 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		F9F992641E694052002EAEA9 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F9F992711E69638F002EAEA9 /* BxTextField+TextPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BxTextField+TextPosition.swift"; sourceTree = "<group>"; };
@@ -174,8 +180,11 @@
 			children = (
 				F9337C411E680740002134C2 /* BxTextField.swift */,
 				F9F992711E69638F002EAEA9 /* BxTextField+TextPosition.swift */,
+				F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */,
+				F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */,
 				F9F992621E693FA7002EAEA9 /* UIFont.swift */,
 				F9F992641E694052002EAEA9 /* String.swift */,
+				F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -321,7 +330,10 @@
 				F9F992631E693FA7002EAEA9 /* UIFont.swift in Sources */,
 				F9F992721E69638F002EAEA9 /* BxTextField+TextPosition.swift in Sources */,
 				F9337C3C1E680216002134C2 /* ViewController.swift in Sources */,
+				F951864F1E6C554A0084AD98 /* BxTextFieldDelegate.swift in Sources */,
+				F951864B1E6C2C620084AD98 /* BxTextField+Formatting.swift in Sources */,
 				F9F992651E694052002EAEA9 /* String.swift in Sources */,
+				F951864D1E6C2FD00084AD98 /* BxTextField+UpdateText.swift in Sources */,
 				F9337C421E680740002134C2 /* BxTextField.swift in Sources */,
 				F9337C3B1E680216002134C2 /* AppDelegate.swift in Sources */,
 			);

@@ -58,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krJ-yM-RzZ" id="U5y-01-UQb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQN-yQ-U1K" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
@@ -85,7 +85,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="guM-RP-Xpj" id="Rb4-3F-LWe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38J-jx-P89" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
@@ -105,6 +105,37 @@
                                                 <constraint firstItem="38J-jx-P89" firstAttribute="leading" secondItem="Rb4-3F-LWe" secondAttribute="leading" constant="12" id="7i0-sU-qUA"/>
                                                 <constraint firstItem="38J-jx-P89" firstAttribute="top" secondItem="Rb4-3F-LWe" secondAttribute="top" constant="12" id="Z1I-Sg-5jV"/>
                                                 <constraint firstAttribute="bottom" secondItem="38J-jx-P89" secondAttribute="bottom" constant="12" id="Zwt-f2-kDJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Formated text" id="PbM-eU-q4K">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="OAS-j5-6CV">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OAS-j5-6CV" id="h4F-GE-jOt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-Te-2Qc" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="+# (###) ### - ## - ##"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HCa-Te-2Qc" firstAttribute="top" secondItem="h4F-GE-jOt" secondAttribute="top" constant="12" id="JFq-2Q-ECg"/>
+                                                <constraint firstItem="HCa-Te-2Qc" firstAttribute="leading" secondItem="h4F-GE-jOt" secondAttribute="leading" constant="12" id="P5x-iu-28a"/>
+                                                <constraint firstAttribute="bottom" secondItem="HCa-Te-2Qc" secondAttribute="bottom" constant="12" id="Rur-xW-JhL"/>
+                                                <constraint firstAttribute="trailing" secondItem="HCa-Te-2Qc" secondAttribute="trailing" constant="12" id="iC4-a0-tjP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

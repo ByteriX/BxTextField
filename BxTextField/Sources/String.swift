@@ -17,7 +17,7 @@ import Foundation
 extension String {
     
     /// get NSRange from Range<String.Index> http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
-    func makeNSRange(from range : Range<String.Index>) -> NSRange {
+    public func makeNSRange(from range : Range<String.Index>) -> NSRange {
         let utf16view = self.utf16
         let from = String.UTF16View.Index(range.lowerBound, within: utf16view)
         let to = String.UTF16View.Index(range.upperBound, within: utf16view)
