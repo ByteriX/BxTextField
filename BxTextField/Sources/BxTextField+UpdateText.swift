@@ -21,14 +21,26 @@ extension BxTextField {
 //    }
     
     /// update text for showing
-    public func updateText() {
+    public func updateTextWithPosition() {
         guard let selectedTextRange = selectedTextRange else {
             return
         }
         let selectedPositon = selectedTextRange.start
         guard leftPatternText.isEmpty == false else {
-            updateAttributedText(with: text ?? "")
-            goTo(textPosition: selectedPositon)
+            
+            var offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
+            
+            let unformatedText = getSimpleUnformatedText(with: text ?? "", position: &offset)
+            let formatedText = getFormatedText(with: unformatedText, position: &offset)
+            
+            updateAttributedText(with: formatedText)
+            
+            if let position = position(from: self.beginningOfDocument, offset: offset) {
+                goTo(textPosition: position)
+            } else {
+                goTo(textPosition: selectedPositon)
+            }
+            
             return
         }
         
@@ -47,20 +59,19 @@ extension BxTextField {
     
     /// update attributed text with simple text
     public func updateAttributedText(with text: String) {
-        let formatedText = getFormatedText(with: text)
         if leftPatternText.isEmpty == false,
-            let leftPatternTextRange = formatedText.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
+            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
         {
             let nsRange = text.makeNSRange(from: leftPatternTextRange)
             
-            let attributedString = NSMutableAttributedString(string: formatedText)
+            let attributedString = NSMutableAttributedString(string: text)
             
             attributedString.addAttributes(leftPatternTextAttributes, range: nsRange)
             attributedString.addAttributes(enteredTextAttributes, range: NSMakeRange(0, nsRange.location))
             
             attributedText = attributedString
         } else {
-            attributedText = NSMutableAttributedString(string: formatedText)
+            attributedText = NSMutableAttributedString(string: text)
         }
     }
     

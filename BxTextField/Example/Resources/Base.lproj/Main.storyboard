@@ -128,6 +128,8 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="+# (###) ### - ## - ##"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>

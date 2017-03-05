@@ -11,12 +11,32 @@ import Foundation
 extension BxTextField
 {
     
-    public func getFormatedText(with text: String) -> String {
+    public func getSimpleUnformatedText(with text: String, position: inout Int) -> String {
+        guard formattingPattern.isEmpty == false, formattingEnteredCharSet.isEmpty == false
+        else {
+            return text
+        }
+        var result = ""
+        var index = 0
+        for char in text.characters {
+            if formattingEnteredCharSet.contains(char) {
+                result.append(char)
+                index = index + 1
+            } else {
+                if position > index {
+                    position = position - 1
+                }
+            }
+        }
+        return result
+    }
+    
+    public func getFormatedText(with text: String, position: inout Int) -> String {
         guard formattingPattern.isEmpty == false else {
             return text
         }
         
-        var result = getUnformatedText(with: text)
+        var result = text
         
         if result.characters.count > 0 && formattingPattern.characters.count > 0 {
             if leftPatternText.isEmpty == false,
@@ -28,12 +48,22 @@ extension BxTextField
             
             var formatedResult = ""
             var index = 0
+            let startPosition = position
             for character in result.characters {
                 if patternes.count > index {
-                    formatedResult = formatedResult + patternes[index]
+                    let patternString = patternes[index]
+                    formatedResult = formatedResult + patternString
+                    if startPosition > index {
+                        position = position + patternString.characters.count
+                    }
                 }
+                
                 formatedResult = formatedResult + String(character)
                 index = index + 1
+            }
+            
+            if formattingPattern.characters.count < formatedResult.characters.count {
+                formatedResult = formatedResult.substring(to: formattingPattern.endIndex)
             }
             
             return formatedResult + leftPatternText

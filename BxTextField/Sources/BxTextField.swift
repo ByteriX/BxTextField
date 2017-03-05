@@ -30,22 +30,46 @@ open class BxTextField : UITextField {
     
     @IBInspectable open var formattingPattern: String = ""
     @IBInspectable open var formattingReplacementChar: Character = "#"
+    @IBInspectable open var formattingEnteredCharacters: String = ""
+    {
+        didSet {
+            formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters)
+        }
+    }
+    
+    open var formattingEnteredCharSet: CharacterSet = CharacterSet()
     
     
     /// Editable part of the text, wich can changed by user. Defaults to "".
-    @IBInspectable open var enteredText: String = "" {
-        didSet {
-//            text = enteredText + leftPatternText
-            updateText()
+    @IBInspectable open var enteredText: String {
+        get {
+            guard let text = text else {
+                return ""
+            }
+            if text.hasSuffix(leftPatternText) {
+                return text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -leftPatternText.characters.count)]
+            } else {
+                return text
+            }
+        }
+        set {
+            text = newValue + leftPatternText
+            updateTextWithPosition()
         }
     }
     
     /// Not editable pattern part of the text. Defaults to "".
     @IBInspectable open var leftPatternText: String = "" {
+        willSet {
+            guard var text = text, !text.isEmpty else {
+                return
+            }
+            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.leftPatternText.characters.count)]
+            self.text = enteredText + newValue
+        }
         didSet {
-//            self.text = enteredText + leftPatternText
-//            placeholder = placeholderText + leftPatternText
-            updateText()
+            placeholder = placeholderText + leftPatternText
+            updateTextWithPosition()
         }
     }
     
@@ -66,7 +90,7 @@ open class BxTextField : UITextField {
     /// Need override standart font, because in iOS 10 changing attributedText rewrite font property
     @IBInspectable open var enteredTextFont: UIFont! {
         didSet {
-            ({self.enteredText = enteredText })()
+            ({self.leftPatternText = leftPatternText })()
         }
     }
     
@@ -90,7 +114,6 @@ open class BxTextField : UITextField {
     @IBInspectable open var placeholderText: String = "" {
         didSet {
             placeholder = placeholderText + leftPatternText
-            updateText()
         }
     }
     
@@ -149,12 +172,12 @@ open class BxTextField : UITextField {
     // MARK: textField control handler
     
     internal func textDidBegin(sender: UITextField) {
-        updateText()
+        updateTextWithPosition()
     }
     
     internal func textChanged(sender: UITextField)
     {
-        updateText()
+        updateTextWithPosition()
     }
     
     internal func textDidEnd(sender: UITextField) {

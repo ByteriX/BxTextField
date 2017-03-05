@@ -63,7 +63,7 @@ class BxTextFieldDelegate: NSObject, UITextFieldDelegate
             }
         }
         // save changelog
-        if 
+        //
         //
         return true
     }
