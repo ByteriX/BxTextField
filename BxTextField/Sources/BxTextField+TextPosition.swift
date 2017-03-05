@@ -18,7 +18,7 @@ extension BxTextField
 {
     internal var startPositionText: UITextPosition? {
         get {
-            return position(from: endOfDocument, offset: -leftPatternText.characters.count)
+            return position(from: endOfDocument, offset: -rightPatternText.characters.count)
         }
     }
     

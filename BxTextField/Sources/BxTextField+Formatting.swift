@@ -13,17 +13,17 @@ extension BxTextField
     
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
         var result = text
-        if rightPatternText.isEmpty == false,
-            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
+        if leftPatternText.isEmpty == false,
+            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
         {
-            result = result.substring(from: rightPatternTextRange.upperBound)
+            result = result.substring(from: leftPatternTextRange.upperBound)
             position = position - text.characters.count + result.characters.count
         }
         
-        if leftPatternText.isEmpty == false,
-            let leftPatternTextRange = result.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
+        if rightPatternText.isEmpty == false,
+            let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
         {
-            result = result.substring(to: leftPatternTextRange.lowerBound)
+            result = result.substring(to: rightPatternTextRange.lowerBound)
         }
         
         return result
@@ -57,9 +57,9 @@ extension BxTextField
         var result = text
         
         if result.characters.count > 0 && formattingPattern.characters.count > 0 {
-            if leftPatternText.isEmpty == false,
-                let leftPatternTextRange = result.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
-                result = result.substring(to: leftPatternTextRange.lowerBound)
+            if rightPatternText.isEmpty == false,
+                let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
+                result = result.substring(to: rightPatternTextRange.lowerBound)
             }
             
             let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
@@ -84,7 +84,7 @@ extension BxTextField
                 formatedResult = formatedResult.substring(to: formattingPattern.endIndex)
             }
             
-            return formatedResult + leftPatternText
+            return formatedResult + rightPatternText
         }
         
         return text
@@ -98,9 +98,9 @@ extension BxTextField
         var result = text
         
         if result.characters.count > 0 && formattingPattern.characters.count > 0 {
-            if leftPatternText.isEmpty == false,
-                let leftPatternTextRange = result.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
-                result = result.substring(to: leftPatternTextRange.lowerBound)
+            if rightPatternText.isEmpty == false,
+                let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
+                result = result.substring(to: rightPatternTextRange.lowerBound)
             }
             
             let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
@@ -130,7 +130,7 @@ extension BxTextField
                 }
             }
             
-            return unformatedResult + leftPatternText
+            return unformatedResult + rightPatternText
         }
         return text
     }

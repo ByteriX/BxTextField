@@ -59,21 +59,7 @@ open class BxTextField : UITextField {
             return getClearFromPatternText(with: text, position: &position)
         }
         set {
-            text = newValue + leftPatternText
-            updateTextWithPosition()
-        }
-    }
-    /// Not editable pattern part of the text. Defaults to "".
-    @IBInspectable open var leftPatternText: String = "" {
-        willSet {
-            guard var text = text, !text.isEmpty else {
-                return
-            }
-            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.leftPatternText.characters.count)]
-            self.text = enteredText + newValue
-        }
-        didSet {
-            placeholder = placeholderText + leftPatternText
+            text = newValue + rightPatternText
             updateTextWithPosition()
         }
     }
@@ -83,42 +69,56 @@ open class BxTextField : UITextField {
             guard var text = text, !text.isEmpty else {
                 return
             }
-            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.rightPatternText.characters.count)..<text.characters.index(text.endIndex, offsetBy: -self.leftPatternText.characters.count)]
+            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
             self.text = enteredText + newValue
         }
         didSet {
-            placeholder = rightPatternText + placeholderText + leftPatternText
+            placeholder = placeholderText + rightPatternText
             updateTextWithPosition()
         }
     }
-    /// Font of the leftPatternText. Defaults to the bold font.
-    @IBInspectable open var patternTextFont: UIFont! {
+    /// Not editable pattern part of the text. Defaults to "".
+    @IBInspectable open var leftPatternText: String = "" {
+        willSet {
+            guard var text = text, !text.isEmpty else {
+                return
+            }
+            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.leftPatternText.characters.count)..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
+            self.text = enteredText + newValue
+        }
         didSet {
-            ({self.leftPatternText = leftPatternText })()
+            placeholder = leftPatternText + placeholderText + rightPatternText
+            updateTextWithPosition()
         }
     }
-    /// Color of the leftPatternText. Defaults to the textColor.
+    /// Font of the rightPatternText. Defaults to the bold font.
+    @IBInspectable open var patternTextFont: UIFont! {
+        didSet {
+            ({self.rightPatternText = rightPatternText })()
+        }
+    }
+    /// Color of the rightPatternText. Defaults to the textColor.
     @IBInspectable public var patternTextColor: UIColor! {
         didSet {
-            ({self.leftPatternText = leftPatternText })()
+            ({self.rightPatternText = rightPatternText })()
         }
     }
     /// Need override standart font, because in iOS 10 changing attributedText rewrite font property
     @IBInspectable open var enteredTextFont: UIFont! {
         didSet {
-            ({self.leftPatternText = leftPatternText })()
+            ({self.rightPatternText = rightPatternText })()
         }
     }
     /// Placeholder without patterns text. Defaults to "".
     @IBInspectable open var placeholderText: String = "" {
         didSet {
-            placeholder = rightPatternText + placeholderText + leftPatternText
+            placeholder = leftPatternText + placeholderText + rightPatternText
         }
     }
     
     // MARK: Useful attributes for text showing
     
-    /// Attributes of leftPatternText
+    /// Attributes of rightPatternText
     open var patternTextAttributes: [String: NSObject] {
         return [
             NSFontAttributeName: patternTextFont,

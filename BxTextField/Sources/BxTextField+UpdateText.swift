@@ -23,11 +23,11 @@ extension BxTextField {
         let unformatedText = getSimpleUnformatedText(with: clearText, position: &offset)
         var formatedText = getFormatedText(with: unformatedText, position: &offset)
         
-        formatedText = rightPatternText + formatedText + leftPatternText
+        formatedText = leftPatternText + formatedText + rightPatternText
         
         attributedText = getAttributedText(with: formatedText, enteredTextAttributes: enteredTextAttributes)
         
-        if let position = position(from: self.beginningOfDocument, offset: offset + rightPatternText.characters.count) {
+        if let position = position(from: self.beginningOfDocument, offset: offset + leftPatternText.characters.count) {
             goTo(textPosition: position)
         } else {
             goTo(textPosition: selectedPositon)
@@ -41,18 +41,18 @@ extension BxTextField {
         var startEnteredPosition = 0
         var stopEnteredPosition = text.characters.count
         
-        if rightPatternText.isEmpty == false,
-            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
+        if leftPatternText.isEmpty == false,
+            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
         {
-            let nsRange = text.makeNSRange(from: rightPatternTextRange)
+            let nsRange = text.makeNSRange(from: leftPatternTextRange)
             attributedString.addAttributes(patternTextAttributes, range: nsRange)
             startEnteredPosition = startEnteredPosition + nsRange.location + nsRange.length
         }
         
-        if leftPatternText.isEmpty == false,
-            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
+        if rightPatternText.isEmpty == false,
+            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
         {
-            let nsRange = text.makeNSRange(from: leftPatternTextRange)
+            let nsRange = text.makeNSRange(from: rightPatternTextRange)
             attributedString.addAttributes(patternTextAttributes, range: nsRange)
             stopEnteredPosition = stopEnteredPosition - nsRange.length
         }

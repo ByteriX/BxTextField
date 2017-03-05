@@ -62,14 +62,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQN-yQ-U1K" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
@@ -89,15 +89,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38J-jx-P89" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value=".byterix.com"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value="www."/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="www."/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
@@ -150,7 +150,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-dj-TVN" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -160,7 +160,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="(###) ### - ## - ##"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value="+7 "/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="+7 "/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
