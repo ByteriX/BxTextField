@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Have left pattern text" id="EHy-rw-V1h">
+                            <tableViewSection headerTitle="Pattern text" id="EHy-rw-V1h">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="krJ-yM-RzZ">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>

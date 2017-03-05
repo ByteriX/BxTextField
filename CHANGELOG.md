@@ -6,6 +6,13 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.0.0 (05.03.2017)
+##### Implementing
+* added rightPatternText
+* changed leftPatternText with rightPatternText
+* added formattingPattern
+* fixed edges to 8 px
+
 ## 0.9.2 (03.03.2017)
 ##### Implementing
 * add leftPatternText with other functions and property

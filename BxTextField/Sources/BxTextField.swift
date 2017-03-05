@@ -200,18 +200,18 @@ open class BxTextField : UITextField {
     
     /// need for fix shift when happen beginText
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 0, dy: 0)
+        return bounds.insetBy(dx: 8, dy: 8)
     }
     
     /// need for fix shift when happen beginText
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 0, dy: 0)
+        return bounds.insetBy(dx: 8, dy: 8)
     }
     
     /// need for change selection position, if it has not right position
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         checkSelection()
-        return bounds.insetBy(dx: 0, dy: 0)
+        return bounds.insetBy(dx: 8, dy: 8)
     }
     
 }
