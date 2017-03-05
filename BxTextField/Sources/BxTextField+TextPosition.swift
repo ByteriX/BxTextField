@@ -16,17 +16,18 @@ import UIKit
 /// Internal functions for forking with positions in a text of BxTextField
 extension BxTextField
 {
-    internal var startPositionText: UITextPosition? {
+    internal var rightPositionEnteredText: UITextPosition? {
         get {
             return position(from: endOfDocument, offset: -rightPatternText.characters.count)
         }
     }
     
-    internal func goToStartPosition() {
-        if let position = startPositionText {
-            goTo(textPosition: position)
+    internal var leftPositionEnteredText: UITextPosition? {
+        get {
+            return position(from: beginningOfDocument, offset: leftPatternText.characters.count)
         }
     }
+
     
     internal func goTo(textPosition: UITextPosition) {
         selectedTextRange = textRange(from: textPosition, to: textPosition)
@@ -36,16 +37,27 @@ extension BxTextField
     internal func checkSelection()
     {
         if let selectedTextRange =  self.selectedTextRange,
-            let startPositionText = self.startPositionText
+            let rightPositionEnteredText = self.rightPositionEnteredText,
+            let leftPositionEnteredText = self.leftPositionEnteredText
         {
-            if self.compare(selectedTextRange.start, to: startPositionText) == .orderedDescending {
+            if self.compare(selectedTextRange.end, to: leftPositionEnteredText) == .orderedAscending {
                 if selectedTextRange.isEmpty {
-                    goToStartPosition()
+                    goTo(textPosition: leftPositionEnteredText)
                 } else {
-                    self.selectedTextRange = textRange(from: beginningOfDocument, to: startPositionText)
+                    self.selectedTextRange = textRange(from: leftPositionEnteredText, to: rightPositionEnteredText)
                 }
-            } else if self.compare(selectedTextRange.end, to: startPositionText) == .orderedDescending {
-                self.selectedTextRange = textRange(from: selectedTextRange.start, to: startPositionText)
+            } else if self.compare(selectedTextRange.start, to: leftPositionEnteredText) == .orderedAscending {
+                self.selectedTextRange = textRange(from: leftPositionEnteredText, to: selectedTextRange.end)
+            }
+            
+            if self.compare(selectedTextRange.start, to: rightPositionEnteredText) == .orderedDescending {
+                if selectedTextRange.isEmpty {
+                    goTo(textPosition: rightPositionEnteredText)
+                } else {
+                    self.selectedTextRange = textRange(from: leftPositionEnteredText, to: rightPositionEnteredText)
+                }
+            } else if self.compare(selectedTextRange.end, to: rightPositionEnteredText) == .orderedDescending {
+                self.selectedTextRange = textRange(from: selectedTextRange.start, to: rightPositionEnteredText)
             }
         }
     }

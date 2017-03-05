@@ -67,7 +67,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="subdomain"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
                                                     </userDefinedRuntimeAttributes>
@@ -94,7 +94,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="subdomain"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="www."/>
@@ -126,7 +126,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="example"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="phone"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="+# (###) ### - ## - ##"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>

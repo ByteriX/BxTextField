@@ -13,17 +13,33 @@ extension BxTextField
     
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
         var result = text
-        if leftPatternText.isEmpty == false,
-            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
+        
+        // first because it is saffer then left
+        if rightPatternText.isEmpty == false,
+            text.hasSuffix(rightPatternText)
         {
-            result = result.substring(from: leftPatternTextRange.upperBound)
-            position = position - text.characters.count + result.characters.count
+            result = result.substring(to: result.index(result.endIndex, offsetBy: -rightPatternText.characters.count))
         }
         
-        if rightPatternText.isEmpty == false,
-            let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
+        if leftPatternText.isEmpty == false
         {
-            result = result.substring(to: rightPatternTextRange.lowerBound)
+            if result.hasPrefix(leftPatternText){
+                result = result.substring(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count))
+                position = position - leftPatternText.characters.count
+            } else if leftPatternText.characters.count > 1 {
+                // bug fixed, but very worst
+                let backspaseLeftPatternText = leftPatternText.substring(to: leftPatternText.index(before: leftPatternText.endIndex))
+                if result.hasPrefix(backspaseLeftPatternText){
+                    result = result.substring(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count))
+                    position = position - backspaseLeftPatternText.characters.count
+                }
+            }
+        }
+        
+        
+        
+        if position < 0 {
+            position = 0
         }
         
         return result
