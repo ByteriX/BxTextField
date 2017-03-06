@@ -9,24 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BxTextField" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="146" y="553"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4C5-81-01C">
             <objects>
@@ -46,7 +28,7 @@
         <!--BxTextField-->
         <scene sceneID="LnV-BP-miy">
             <objects>
-                <tableViewController id="EWq-Dp-s75" sceneMemberID="viewController">
+                <tableViewController id="EWq-Dp-s75" customClass="ViewController" customModule="BxTextField" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SAh-lZ-swx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,12 +47,15 @@
                                                     <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="subdomain"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="EWq-Dp-s75" id="Lsd-DS-jfG"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -92,13 +77,16 @@
                                                     <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="subdomain"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="rightPatternText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="www."/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="EWq-Dp-s75" id="iqc-k4-H1V"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -124,7 +112,7 @@
                                                     <rect key="frame" x="12" y="12" width="351" height="36"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="phone"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
@@ -132,6 +120,9 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="EWq-Dp-s75" id="lO8-zC-czj"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -153,7 +144,7 @@
                                                     <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="(___) ___ - __- __"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
@@ -162,6 +153,9 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="+7 "/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="EWq-Dp-s75" id="uNI-jO-Srk"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>

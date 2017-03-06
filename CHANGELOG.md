@@ -11,6 +11,7 @@ ByteriX, 2017. All right reserved.
 * refactoring: clear formatting function
 * descripted all sources
 * rename formattingPattern to formattingTemplate
+* updated example
 
 ## 1.0.0 (05.03.2017)
 ##### Implementing
