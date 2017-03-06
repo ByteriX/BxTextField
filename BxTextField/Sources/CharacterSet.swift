@@ -1,22 +1,27 @@
-//
-//  CharacterSet.swift
-//  BxTextField
-//
-//  Created by Sergey Balalaev on 05/03/17.
-//  Copyright © 2017 Byterix. All rights reserved.
-//
+/**
+ *	@file CharacterSet.swift
+ *	@namespace BxTextField
+ *
+ *	@details CharacterSet extension for BxTextField
+ *	@date 05.03.2017
+ *	@author Sergey Balalaev
+ *
+ *	@version last in https://github.com/ByteriX/BxTextField.git
+ *	@copyright The MIT License (MIT) https://opensource.org/licenses/MIT
+ *	 Copyright (c) 2017 ByteriX. See http://byterix.com
+ */
 
 import Foundation
 
+/// CharacterSet extension for BxTextField
 public extension CharacterSet {
     
-    public func contains(_ c: Character) -> Bool {
-        
-        let s = String(c)
-        let ix = s.startIndex
-        let ix2 = s.endIndex
-        let result = s.rangeOfCharacter(from: self, options: [], range: ix..<ix2)
+    /// If it contains character sybol then return true
+    public func contains(_ character: Character) -> Bool {
+        let string = String(character)
+        let ix1 = string.startIndex
+        let ix2 = string.endIndex
+        let result = string.rangeOfCharacter(from: self, options: [], range: ix1..<ix2)
         return result != nil
-        
     }
 }

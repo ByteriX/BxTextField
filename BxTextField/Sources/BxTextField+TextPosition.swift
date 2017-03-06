@@ -16,19 +16,22 @@ import UIKit
 /// Internal functions for forking with positions in a text of BxTextField
 extension BxTextField
 {
+    
+    /// right edges position of the text without patterns
     internal var rightPositionEnteredText: UITextPosition? {
         get {
             return position(from: endOfDocument, offset: -rightPatternText.characters.count)
         }
     }
     
+    /// left edges position of the text without patterns
     internal var leftPositionEnteredText: UITextPosition? {
         get {
             return position(from: beginningOfDocument, offset: leftPatternText.characters.count)
         }
     }
 
-    
+    /// Move the cursore to the position
     internal func goTo(textPosition: UITextPosition) {
         selectedTextRange = textRange(from: textPosition, to: textPosition)
     }

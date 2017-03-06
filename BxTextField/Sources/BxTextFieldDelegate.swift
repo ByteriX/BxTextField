@@ -1,15 +1,20 @@
-//
-//  BxTextFieldDelegate.swift
-//  BxTextField
-//
-//  Created by Sergey Balalaev on 05/03/17.
-//  Copyright © 2017 Byterix. All rights reserved.
-//
+/**
+ *	@file BxTextFieldDelegate.swift
+ *	@namespace BxTextField
+ *
+ *	@details Private class not used
+ *	@date 05.03.2017
+ *	@author Sergey Balalaev
+ *
+ *	@version last in https://github.com/ByteriX/BxTextField.git
+ *	@copyright The MIT License (MIT) https://opensource.org/licenses/MIT
+ *	 Copyright (c) 2017 ByteriX. See http://byterix.com
+ */
 
 import UIKit
 
-/// it will needed probably in a future
-class BxTextFieldDelegate: NSObject, UITextFieldDelegate
+/// Private class not used: it will needed probably in a future
+private class BxTextFieldDelegate: NSObject, UITextFieldDelegate
 {
     
     var delegate: UITextFieldDelegate? = nil

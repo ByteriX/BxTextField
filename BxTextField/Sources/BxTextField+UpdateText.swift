@@ -1,14 +1,19 @@
-//
-//  BxTextField+UpdateText.swift
-//  BxTextField
-//
-//  Created by Sergey Balalaev on 05/03/17.
-//  Copyright © 2017 Byterix. All rights reserved.
-//
+/**
+ *	@file BxTextField+UpdateText.swift
+ *	@namespace BxTextField
+ *
+ *	@details Functions for drowing final text of BxTextField
+ *	@date 05.03.2017
+ *	@author Sergey Balalaev
+ *
+ *	@version last in https://github.com/ByteriX/BxTextField.git
+ *	@copyright The MIT License (MIT) https://opensource.org/licenses/MIT
+ *	 Copyright (c) 2017 ByteriX. See http://byterix.com
+ */
 
 import UIKit
 
-/// text updating methods
+/// Functions for drowing final text of BxTextField
 extension BxTextField {
     
     /// update text for showing
@@ -34,7 +39,7 @@ extension BxTextField {
         }
     }
     
-    /// attributed text for showing
+    /// Return attributed text for showing prepared text
     open func getAttributedText(with text: String, enteredTextAttributes: [String: NSObject]? = nil) -> NSMutableAttributedString
     {
         let attributedString = NSMutableAttributedString(string: text)
