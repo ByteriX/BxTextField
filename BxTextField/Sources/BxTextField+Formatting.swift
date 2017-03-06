@@ -1,16 +1,23 @@
-//
-//  BxTextField+Formatting.swift
-//  BxTextField
-//
-//  Created by Sergey Balalaev on 05/03/17.
-//  Copyright © 2017 Byterix. All rights reserved.
-//
+/**
+ *	@file BxTextField+Formatting.swift
+ *	@namespace BxTextField
+ *
+ *	@details Public functions for manipulation with a text of BxTextField
+ *	@date 05.03.2017
+ *	@author Sergey Balalaev
+ *
+ *	@version last in https://github.com/ByteriX/BxTextField.git
+ *	@copyright The MIT License (MIT) https://opensource.org/licenses/MIT
+ *	 Copyright (c) 2017 ByteriX. See http://byterix.com
+ */
 
 import Foundation
 
+/// Public functions for manipulation with a text of BxTextField
 extension BxTextField
 {
     
+    /// Return clear text without patterns (doesn't include unformatting). The Position needed for shifting cursor
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
         var result = text
         
@@ -35,9 +42,7 @@ extension BxTextField
                 }
             }
         }
-        
-        
-        
+
         if position < 0 {
             position = 0
         }
@@ -45,6 +50,7 @@ extension BxTextField
         return result
     }
     
+    /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
     public func getSimpleUnformatedText(with text: String, position: inout Int) -> String {
         guard formattingPattern.isEmpty == false, formattingEnteredCharSet.isEmpty == false
         else {
@@ -65,6 +71,7 @@ extension BxTextField
         return result
     }
     
+    /// Transform text to match with formattingPattern. The Position needed for shifting cursor
     public func getFormatedText(with text: String, position: inout Int) -> String {
         guard formattingPattern.isEmpty == false else {
             return text
@@ -73,10 +80,6 @@ extension BxTextField
         var result = text
         
         if result.characters.count > 0 && formattingPattern.characters.count > 0 {
-            if rightPatternText.isEmpty == false,
-                let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
-                result = result.substring(to: rightPatternTextRange.lowerBound)
-            }
             
             let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
             
@@ -106,6 +109,7 @@ extension BxTextField
         return text
     }
     
+    /// Return clear text without formatting. This algorithm work only by formattingPattern. If text doesn't match pattern, then it doesn't guarantee expected result.
     public func getUnformatedText(with text: String) -> String {
         guard formattingPattern.isEmpty == false else {
             return text
@@ -114,10 +118,6 @@ extension BxTextField
         var result = text
         
         if result.characters.count > 0 && formattingPattern.characters.count > 0 {
-            if rightPatternText.isEmpty == false,
-                let rightPatternTextRange = result.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
-                result = result.substring(to: rightPatternTextRange.lowerBound)
-            }
             
             let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
             
