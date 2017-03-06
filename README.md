@@ -1,17 +1,23 @@
 # BxTextField
 
-The putting Text.
+This component awalable putting phone number, url or email address, credit card with comfortable format.
+
+## Gif demo
+
+![Demo Gif](Screenshots/BxTextFieldDemo.gif)
 
 ## Features
 
-- [x] The putting Text
-
+- [x] Inherited from `UITextField` and didn't use delegate
+- [x] Can use patterns sides with constant text
+- [x] Have formatting putting
+- [x] Correct working with selection text
+- [x] Fixed native issues (problems with edges)
 
 ## Requirements
 
 - iOS 8.0+
 - Swift 3.0+
-
 
 ## Installation
 
@@ -84,12 +90,30 @@ $ git submodule add https://github.com/ByteriX/BxTextField.git
 ```swift
 
 class SimpleController: UIViewController {
-
+	
+	@IBOutlet var urlField: BxTextField!
+	@IBOutlet var phoneField: BxTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // BxTextField
+        urlField.leftPatternText = "http://"
+        urlField.rightPatternText = ".com"
+        urlField.addTarget(self, action: #selector(urlDidChange(sender:)), for: .editingChanged)
+        
+        phoneField.leftPatternText = "+4 "
+        phoneField.formattingReplacementChar = "*"
+        phoneField.formattingTemplate = "(***) - ** - ** - **"
+        phoneField.formattingEnteredCharacters = "0123456789"
+        phoneField.addTarget(self, action: #selector(phoneDidChange(sender:)), for: .editingChanged)
+    }
+    
+    @IBAction func urlDidChange (sender: BxTextField) {
+        print(sender.enteredText) // it should show "your.inputed.domain.only"
+    }
+    
+    @IBAction func phoneDidChange (sender: BxTextField) {
+        print(sender.text) // it should show "+4 (123) - 45 - 67 - 89"
     }
     
 }
