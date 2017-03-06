@@ -29,10 +29,10 @@ open class BxTextField : UITextField {
     // MARK: Formatting
     
     /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
-    @IBInspectable open var formattingPattern: String = ""
-    /// Replacement symbol, it use for formattingPattern as is as pattern for replacing. Default is "#"
+    @IBInspectable open var formattingTemplate: String = ""
+    /// Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
     @IBInspectable open var formattingReplacementChar: Character = "#"
-    /// Allowable symbols for entering. Uses only if formattingPattern is not empty. Default is "", that is all symbols.
+    /// Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
     @IBInspectable open var formattingEnteredCharacters: String = ""
     {
         didSet {

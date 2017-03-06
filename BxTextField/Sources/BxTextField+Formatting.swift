@@ -52,7 +52,7 @@ extension BxTextField
     
     /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
     public func getSimpleUnformatedText(with text: String, position: inout Int) -> String {
-        guard formattingPattern.isEmpty == false, formattingEnteredCharSet.isEmpty == false
+        guard formattingTemplate.isEmpty == false, formattingEnteredCharSet.isEmpty == false
         else {
             return text
         }
@@ -71,17 +71,17 @@ extension BxTextField
         return result
     }
     
-    /// Transform text to match with formattingPattern. The Position needed for shifting cursor
+    /// Transform text to match with formattingTemplate. The Position needed for shifting cursor
     public func getFormatedText(with text: String, position: inout Int) -> String {
-        guard formattingPattern.isEmpty == false else {
+        guard formattingTemplate.isEmpty == false else {
             return text
         }
         
         var result = text
         
-        if result.characters.count > 0 && formattingPattern.characters.count > 0 {
+        if result.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
-            let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
+            let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
             var formatedResult = ""
             var index = 0
@@ -99,8 +99,8 @@ extension BxTextField
                 index = index + 1
             }
             
-            if formattingPattern.characters.count < formatedResult.characters.count {
-                formatedResult = formatedResult.substring(to: formattingPattern.endIndex)
+            if formattingTemplate.characters.count < formatedResult.characters.count {
+                formatedResult = formatedResult.substring(to: formattingTemplate.endIndex)
             }
             
             return formatedResult + rightPatternText
@@ -109,17 +109,17 @@ extension BxTextField
         return text
     }
     
-    /// Return clear text without formatting. This algorithm work only by formattingPattern. If text doesn't match pattern, then it doesn't guarantee expected result.
+    /// Return clear text without formatting. This algorithm work only by formattingTemplate. If text doesn't match pattern, then it doesn't guarantee expected result.
     public func getUnformatedText(with text: String) -> String {
-        guard formattingPattern.isEmpty == false else {
+        guard formattingTemplate.isEmpty == false else {
             return text
         }
         
         var result = text
         
-        if result.characters.count > 0 && formattingPattern.characters.count > 0 {
+        if result.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
-            let patternes = formattingPattern.components(separatedBy: String(formattingReplacementChar))
+            let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
             var unformatedResult = ""
             var index = result.startIndex

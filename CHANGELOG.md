@@ -1,10 +1,16 @@
 # Copyright
 
-Library BxInputController
+BxTextField visual component for putting a text
 
 ByteriX, 2017. All right reserved.
 
 # Versions
+
+## 1.0.1 (06.03.2017)
+##### Implementing
+* refactoring: clear formatting function
+* descripted all sources
+* rename formattingPattern to formattingTemplate
 
 ## 1.0.0 (05.03.2017)
 ##### Implementing

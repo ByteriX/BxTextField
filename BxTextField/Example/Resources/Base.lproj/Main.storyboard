@@ -43,7 +43,7 @@
             </objects>
             <point key="canvasLocation" x="-652" y="-213"/>
         </scene>
-        <!--Test Pattern-->
+        <!--BxTextField-->
         <scene sceneID="LnV-BP-miy">
             <objects>
                 <tableViewController id="EWq-Dp-s75" sceneMemberID="viewController">
@@ -121,14 +121,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-Te-2Qc" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="phone"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="+# (###) ### - ## - ##"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingTemplate" value="+# (###) ### - ## - ##"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
                                                     </userDefinedRuntimeAttributes>
@@ -150,14 +150,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-dj-TVN" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="(___) ___ - __- __"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="(###) ### - ## - ##"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingTemplate" value="(###) ### - ## - ##"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="leftPatternText" value="+7 "/>
@@ -180,7 +180,7 @@
                             <outlet property="delegate" destination="EWq-Dp-s75" id="Rep-xl-ew6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Test Pattern" id="OlT-Lh-xS7"/>
+                    <navigationItem key="navigationItem" title="BxTextField" id="OlT-Lh-xS7"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r6-LL-r7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
