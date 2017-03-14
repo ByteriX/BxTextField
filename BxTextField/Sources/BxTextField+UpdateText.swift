@@ -20,12 +20,12 @@ extension BxTextField {
     fileprivate func updateTextOnly(offset: inout Int)
     {
         let clearText = getClearFromPatternText(with: text ?? "", position: &offset)
-        let unformatedText = getSimpleUnformatedText(with: clearText, position: &offset)
-        var formatedText = getFormatedText(with: unformatedText, position: &offset)
+        let unformattedText = getSimpleUnformattedText(with: clearText, position: &offset)
+        var formattedText = getFormattedText(with: unformattedText, position: &offset)
         
-        formatedText = leftPatternText + formatedText + rightPatternText
+        formattedText = leftPatternText + formattedText + rightPatternText
         
-        attributedText = getAttributedText(with: formatedText, enteredTextAttributes: enteredTextAttributes)
+        attributedText = getAttributedText(with: formattedText, enteredTextAttributes: enteredTextAttributes)
         
     }
     

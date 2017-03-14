@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.1.2 (14.03.2017)
+##### Refactoring
+* change formated to formatted
+
 ## 1.1.1 (14.03.2017)
 ##### Bug fix
 * updating content from properties font, textColor, text

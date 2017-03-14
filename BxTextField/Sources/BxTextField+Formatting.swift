@@ -51,7 +51,7 @@ extension BxTextField
     }
     
     /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
-    public func getSimpleUnformatedText(with text: String, position: inout Int) -> String {
+    public func getSimpleUnformattedText(with text: String, position: inout Int) -> String {
         guard formattingTemplate.isEmpty == false, formattingEnteredCharSet.isEmpty == false
         else {
             return text
@@ -72,7 +72,7 @@ extension BxTextField
     }
     
     /// Transform text to match with formattingTemplate. The Position needed for shifting cursor
-    public func getFormatedText(with text: String, position: inout Int) -> String {
+    public func getFormattedText(with text: String, position: inout Int) -> String {
         guard formattingTemplate.isEmpty == false else {
             return text
         }
@@ -83,34 +83,34 @@ extension BxTextField
             
             let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
-            var formatedResult = ""
+            var formattedResult = ""
             var index = 0
             let startPosition = position
             for character in result.characters {
                 if patternes.count > index {
                     let patternString = patternes[index]
-                    formatedResult = formatedResult + patternString
+                    formattedResult = formattedResult + patternString
                     if startPosition > index {
                         position = position + patternString.characters.count
                     }
                 }
                 
-                formatedResult = formatedResult + String(character)
+                formattedResult = formattedResult + String(character)
                 index = index + 1
             }
             
-            if formattingTemplate.characters.count < formatedResult.characters.count {
-                formatedResult = formatedResult.substring(to: formattingTemplate.endIndex)
+            if formattingTemplate.characters.count < formattedResult.characters.count {
+                formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
             }
             
-            return formatedResult + rightPatternText
+            return formattedResult + rightPatternText
         }
         
         return text
     }
     
     /// Return clear text without formatting. This algorithm work only by formattingTemplate. If text doesn't match pattern, then it doesn't guarantee expected result.
-    public func getUnformatedText(with text: String) -> String {
+    public func getUnformattedText(with text: String) -> String {
         guard formattingTemplate.isEmpty == false else {
             return text
         }
@@ -121,7 +121,7 @@ extension BxTextField
             
             let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
-            var unformatedResult = ""
+            var unformattedResult = ""
             var index = result.startIndex
             for pattern in patternes {
                 if pattern.characters.count > 0 {
@@ -131,7 +131,7 @@ extension BxTextField
                         if index != range.lowerBound {
                             if let endIndex = result.index(range.lowerBound, offsetBy: 0, limitedBy: result.endIndex) {
                                 let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: endIndex))
-                                unformatedResult = unformatedResult + result.substring(with: range)
+                                unformattedResult = unformattedResult + result.substring(with: range)
                             } else {
                                 break
                             }
@@ -140,13 +140,13 @@ extension BxTextField
                     } else
                     {
                         let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: result.endIndex))
-                        unformatedResult = unformatedResult + result.substring(with: range)
+                        unformattedResult = unformattedResult + result.substring(with: range)
                         break
                     }
                 }
             }
             
-            return unformatedResult + rightPatternText
+            return unformattedResult + rightPatternText
         }
         return text
     }
