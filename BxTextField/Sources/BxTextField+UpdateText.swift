@@ -17,13 +17,8 @@ import UIKit
 extension BxTextField {
     
     /// update text for showing
-    public func updateTextWithPosition() {
-        guard let selectedTextRange = selectedTextRange else {
-            return
-        }
-        let selectedPositon = selectedTextRange.start
-        var offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
-        
+    fileprivate func updateTextOnly(offset: inout Int)
+    {
         let clearText = getClearFromPatternText(with: text ?? "", position: &offset)
         let unformatedText = getSimpleUnformatedText(with: clearText, position: &offset)
         var formatedText = getFormatedText(with: unformatedText, position: &offset)
@@ -31,6 +26,20 @@ extension BxTextField {
         formatedText = leftPatternText + formatedText + rightPatternText
         
         attributedText = getAttributedText(with: formatedText, enteredTextAttributes: enteredTextAttributes)
+        
+    }
+    
+    /// update text for showing
+    public func updateTextWithPosition() {
+        guard let selectedTextRange = selectedTextRange else {
+            var offset = 0
+            updateTextOnly(offset: &offset)
+            return
+        }
+        let selectedPositon = selectedTextRange.start
+        var offset = self.offset(from: self.beginningOfDocument, to: selectedPositon)
+        
+        updateTextOnly(offset: &offset)
         
         if let position = position(from: self.beginningOfDocument, offset: offset + leftPatternText.characters.count) {
             goTo(textPosition: position)

@@ -59,8 +59,7 @@ open class BxTextField : UITextField {
             return getClearFromPatternText(with: text, position: &position)
         }
         set {
-            text = newValue + rightPatternText
-            updateTextWithPosition()
+            text = leftPatternText + newValue + rightPatternText
         }
     }
     /// Not editable pattern part of the text. Defaults to "".
@@ -70,7 +69,7 @@ open class BxTextField : UITextField {
                 return
             }
             let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
-            self.text = enteredText + newValue
+            super.text = enteredText + newValue
         }
         didSet {
             placeholder = placeholderText + rightPatternText
@@ -84,7 +83,7 @@ open class BxTextField : UITextField {
                 return
             }
             let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.leftPatternText.characters.count)..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
-            self.text = enteredText + newValue
+            super.text = enteredText + newValue
         }
         didSet {
             placeholder = leftPatternText + placeholderText + rightPatternText
@@ -92,19 +91,25 @@ open class BxTextField : UITextField {
         }
     }
     /// Font of the rightPatternText. Defaults to the bold font.
-    @IBInspectable open var patternTextFont: UIFont! {
+    @IBInspectable open var patternTextFont: UIFont? {
         didSet {
             ({self.rightPatternText = rightPatternText })()
         }
     }
     /// Color of the rightPatternText. Defaults to the textColor.
-    @IBInspectable public var patternTextColor: UIColor! {
+    @IBInspectable public var patternTextColor: UIColor? {
         didSet {
             ({self.rightPatternText = rightPatternText })()
         }
     }
     /// Need override standart font, because in iOS 10 changing attributedText rewrite font property
-    @IBInspectable open var enteredTextFont: UIFont! {
+    @IBInspectable open var enteredTextFont: UIFont? {
+        didSet {
+            ({self.rightPatternText = rightPatternText })()
+        }
+    }
+    /// Color of the rightPatternText. Defaults to the textColor.
+    @IBInspectable public var enteredTextColor: UIColor? {
         didSet {
             ({self.rightPatternText = rightPatternText })()
         }
@@ -121,15 +126,15 @@ open class BxTextField : UITextField {
     /// Attributes of rightPatternText
     open var patternTextAttributes: [String: NSObject] {
         return [
-            NSFontAttributeName: patternTextFont,
-            NSForegroundColorAttributeName: patternTextColor ?? textColor ?? UIColor.black
+            NSFontAttributeName: patternTextFont ?? type(of: self).standartPatternTextFont,
+            NSForegroundColorAttributeName: patternTextColor ?? UIColor.black
         ]
     }
     /// Attributes of enteredText
     open var enteredTextAttributes: [String: NSObject] {
         return [
-            NSFontAttributeName: enteredTextFont,
-            NSForegroundColorAttributeName: textColor ?? UIColor.black
+            NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+            NSForegroundColorAttributeName: enteredTextColor ?? UIColor.black
         ]
     }
     /// Now it isn't used, because have been complex solution
@@ -138,6 +143,30 @@ open class BxTextField : UITextField {
             if let placeholder = placeholder {
                 attributedPlaceholder = getAttributedText(with: placeholder)
             }
+        }
+    }
+    
+    override open var font: UIFont? {
+        didSet {
+            if let font = font {
+                enteredTextFont = font
+                patternTextFont = font.bold()
+            }
+        }
+    }
+    
+    override open var textColor: UIColor? {
+        didSet {
+            if let textColor = textColor {
+                enteredTextColor = textColor
+                patternTextColor = textColor
+            }
+        }
+    }
+    
+    override open var text: String? {
+        didSet {
+            updateTextWithPosition()
         }
     }
     
@@ -163,7 +192,9 @@ open class BxTextField : UITextField {
                 patternTextFont = type(of: self).standartPatternTextFont
             }
         }
-        patternTextColor = textColor
+        if patternTextColor == nil {
+            patternTextColor = textColor
+        }
         if enteredTextFont == nil {
             if let font = font {
                 enteredTextFont = font
@@ -171,12 +202,15 @@ open class BxTextField : UITextField {
                 enteredTextFont = type(of: self).standartEnteredTextFont
             }
         }
+        if enteredTextColor == nil {
+            enteredTextColor = textColor
+        }
         // creating events
         addTarget(self, action: #selector(textChanged(sender:)), for: .editingChanged)
         addTarget(self, action: #selector(textDidBegin(sender:)), for: .editingDidBegin)
         addTarget(self, action: #selector(textDidEnd(sender:)), for: .editingDidEnd)
         // init text
-        text = ""
+        super.text = ""
     }
     
     // MARK: textField control handler
