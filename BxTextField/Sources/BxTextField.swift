@@ -120,6 +120,13 @@ open class BxTextField : UITextField {
             placeholder = leftPatternText + placeholderText + rightPatternText
         }
     }
+    ///
+    @IBInspectable open var marginSize = CGSize(width: 0, height: 0)
+    {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     // MARK: Useful attributes for text showing
     
@@ -167,6 +174,16 @@ open class BxTextField : UITextField {
     override open var text: String? {
         didSet {
             updateTextWithPosition()
+        }
+    }
+    
+    override open var borderStyle: UITextBorderStyle {
+        didSet {
+            if borderStyle == .none {
+                marginSize = CGSize(width: 0, height: 0)
+            } else {
+                marginSize = CGSize(width: 8, height: 8)
+            }
         }
     }
     
@@ -234,18 +251,18 @@ open class BxTextField : UITextField {
     
     /// need for fix shift when happen beginText
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 8, dy: 8)
+        return bounds.insetBy(dx: marginSize.width, dy: marginSize.height)
     }
     
     /// need for fix shift when happen beginText
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 8, dy: 8)
+        return bounds.insetBy(dx: marginSize.width, dy: marginSize.height)
     }
     
     /// need for change selection position, if it has not right position
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         checkSelection()
-        return bounds.insetBy(dx: 8, dy: 8)
+        return bounds.insetBy(dx: marginSize.width, dy: marginSize.height)
     }
     
 }
