@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.1.4 (15.03.2017)
+##### Bug fix
+* fixed bug with showing the placeholder
+
 ## 1.1.3 (14.03.2017)
 ##### Implementing
 * add edge property marginSize for showing border

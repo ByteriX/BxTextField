@@ -32,8 +32,10 @@ extension BxTextField {
     /// update text for showing
     public func updateTextWithPosition() {
         guard let selectedTextRange = selectedTextRange else {
-            var offset = 0
-            updateTextOnly(offset: &offset)
+            if let text = text, text.isEmpty == false {
+                var offset = 0
+                updateTextOnly(offset: &offset)
+            }
             return
         }
         let selectedPositon = selectedTextRange.start
