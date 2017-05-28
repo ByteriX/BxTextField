@@ -77,16 +77,16 @@ extension BxTextField
             return text
         }
         
-        var result = text
-        
-        if result.characters.count > 0 && formattingTemplate.characters.count > 0 {
+        if text.characters.count > 0 && formattingTemplate.characters.count > 0 {
+            
+            let characters = text.characters
             
             let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
             var formattedResult = ""
             var index = 0
             let startPosition = position
-            for character in result.characters {
+            for character in characters {
                 if patternes.count > index {
                     let patternString = patternes[index]
                     formattedResult = formattedResult + patternString
@@ -103,6 +103,8 @@ extension BxTextField
                 formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
             }
             
+            
+            // TODO: I think it is mistake: Please remove rightPatternText from this
             return formattedResult + rightPatternText
         }
         
