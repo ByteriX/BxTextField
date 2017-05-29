@@ -24,9 +24,6 @@ s.requires_arc     = true
 
 s.source_files  = "BxTextField/Sources/*.{swift}", "BxTextField/Sources/**/*.{swift}"
 
-s.pod_target_xcconfig =  {
-"SWIFT_VERSION" => "3.0.1"
-}
-
+s.pod_target_xcconfig = {"SWIFT_VERSION" => "3.0.1"}
 
 end
