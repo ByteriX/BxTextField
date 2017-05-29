@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 s.requires_arc     = true
     #s.resources = "BxTextField/Sources/Assets.xcassets", "BxTextField/Sources/**/*.xib"
 
-s.source_files  = "BxTextField/Sources/*.swift"
+s.source_files  = "BxTextField/Sources/*.{swift}", "BxTextField/Sources/**/*.{swift}"
 
 s.pod_target_xcconfig =  {
 "SWIFT_VERSION" => "3.0.1"
