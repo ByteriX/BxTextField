@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wmx-R2-TAR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wmx-R2-TAR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,8 +133,40 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3RV-xn-5a7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Qi0-cq-dpa">
                                         <rect key="frame" x="0.0" y="236" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qi0-cq-dpa" id="RjU-kC-XXO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-C9-tXp" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="rightToLeft phone"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingTemplate" value="+# (###) ### - ## - ##"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="EWq-Dp-s75" id="UuZ-RE-wti"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="h7k-C9-tXp" firstAttribute="leading" secondItem="RjU-kC-XXO" secondAttribute="leading" constant="12" id="f60-cR-Toa"/>
+                                                <constraint firstAttribute="trailing" secondItem="h7k-C9-tXp" secondAttribute="trailing" constant="12" id="mHD-O2-DuL"/>
+                                                <constraint firstItem="h7k-C9-tXp" firstAttribute="top" secondItem="RjU-kC-XXO" secondAttribute="top" constant="12" id="mR1-s5-HJ7"/>
+                                                <constraint firstAttribute="bottom" secondItem="h7k-C9-tXp" secondAttribute="bottom" constant="12" id="uZX-gU-HeF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3RV-xn-5a7">
+                                        <rect key="frame" x="0.0" y="296" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3RV-xn-5a7" id="FJC-lA-6uC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -171,7 +203,7 @@
                             <tableViewSection headerTitle="Without border" id="QC2-np-7xM">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="eyR-0u-uyO">
-                                        <rect key="frame" x="0.0" y="324" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="384" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eyR-0u-uyO" id="L8X-VP-g3F">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -211,6 +243,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="BxTextField" id="OlT-Lh-xS7"/>
+                    <connections>
+                        <outlet property="rightLeftField" destination="h7k-C9-tXp" id="XHd-N8-3yf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r6-LL-r7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

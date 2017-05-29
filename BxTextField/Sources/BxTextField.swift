@@ -17,6 +17,15 @@ import UIKit
 /// Custom UITextField with different features
 open class BxTextField : UITextField {
     
+    // MARK: Typies
+    
+    /// Direction for replacement text from template
+    public enum FormattingDirection {
+        case leftToRight
+        case rightToLeft
+    }
+    
+    
     // MARK: Static properties
     
     /// default font for pattern text
@@ -45,7 +54,9 @@ open class BxTextField : UITextField {
     }
     /// You can use formattingEnteredCharacters or this from code.
     open var formattingEnteredCharSet: CharacterSet = CharacterSet()
-
+    /// Direction for replacement text from template
+    open var formattingDirection: FormattingDirection = .leftToRight
+    
     
     // MARK: Text attributes
     

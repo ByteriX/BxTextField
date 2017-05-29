@@ -80,29 +80,19 @@ extension BxTextField
         if text.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
             let characters = text.characters
-            
             let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
             
             var formattedResult = ""
-            var index = 0
-            let startPosition = position
-            for character in characters {
-                if patternes.count > index {
-                    let patternString = patternes[index]
-                    formattedResult = formattedResult + patternString
-                    if startPosition > index {
-                        position = position + patternString.characters.count
-                    }
-                }
+            
+            if formattingDirection == .leftToRight {
                 
-                formattedResult = formattedResult + String(character)
-                index = index + 1
+                formattedResult = formattedResult + getFormattedTextLeftToRight(characters: characters, patternes: patternes, position: &position)
+                
+            } else if formattingDirection == .rightToLeft {
+                
+                formattedResult = formattedResult + getFormattedTextRightToLeft(characters: characters, patternes: patternes, position: &position)
+                
             }
-            
-            if formattingTemplate.characters.count < formattedResult.characters.count {
-                formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
-            }
-            
             
             // TODO: I think it is mistake: Please remove rightPatternText from this
             return formattedResult + rightPatternText
@@ -111,7 +101,79 @@ extension BxTextField
         return text
     }
     
+    /// Transform text to match with formattingTemplate for .leftToRight direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
+    @inline(__always)
+    internal func getFormattedTextLeftToRight(characters: String.CharacterView, patternes: [String], position: inout Int) -> String {
+        var formattedResult = ""
+        
+        var index = 0
+        let startPosition = position
+        
+        @inline(__always)
+        func checkPosition() {
+            if patternes.count > index {
+                let patternString = patternes[index]
+                formattedResult = formattedResult + patternString
+                if startPosition > index {
+                    position = position + patternString.characters.count
+                }
+            }
+        }
+        
+        for character in characters {
+            checkPosition()
+            formattedResult = formattedResult + String(character)
+            index = index + 1
+        }
+        
+        //checkPosition()
+        
+        if formattingTemplate.characters.count < formattedResult.characters.count {
+            formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
+        }
+        
+        return formattedResult
+    }
+    
+    /// Transform text to match with formattingTemplate for .rightToLeft direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
+    @inline(__always)
+    internal func getFormattedTextRightToLeft(characters: String.CharacterView, patternes: [String], position: inout Int) -> String
+    {
+        var formattedResult = ""
+        
+        var index = 0
+        let startPosition = position
+        
+        @inline(__always)
+        func checkPosition() {
+            if patternes.count > index {
+                let patternString = patternes[patternes.count - index - 1]
+                formattedResult = patternString + formattedResult
+                if startPosition > characters.count - index {
+                    position = position + patternString.characters.count
+                }
+            }
+        }
+        
+        for character in characters.reversed() {
+            checkPosition()
+            formattedResult = String(character) + formattedResult
+            index = index + 1
+        }
+        
+        checkPosition()
+        
+        if formattingTemplate.characters.count < formattedResult.characters.count {
+            let distance = formattedResult.characters.count - formattingTemplate.characters.count
+            formattedResult = formattedResult.substring(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance) )
+            position = position - distance
+        }
+        
+        return formattedResult
+    }
+    
     /// Return clear text without formatting. This algorithm work only by formattingTemplate. If text doesn't match pattern, then it doesn't guarantee expected result.
+    @available(iOS, deprecated: 6.0, message: "This method support only .leftToRight direction. Pleace use getSimpleUnformattedText")
     public func getUnformattedText(with text: String) -> String {
         guard formattingTemplate.isEmpty == false else {
             return text

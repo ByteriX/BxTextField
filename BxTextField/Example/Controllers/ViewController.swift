@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UITableViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var rightLeftField: BxTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        rightLeftField.formattingDirection = .rightToLeft
     }
 
     override func didReceiveMemoryWarning() {
