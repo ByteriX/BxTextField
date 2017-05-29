@@ -94,8 +94,7 @@ extension BxTextField
                 
             }
             
-            // TODO: I think it is mistake: Please remove rightPatternText from this
-            return formattedResult + rightPatternText
+            return formattedResult
         }
         
         return text

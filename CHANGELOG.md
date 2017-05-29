@@ -6,6 +6,12 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.2.0 (29.05.2017)
+##### Bug fix
+* added formattingDirection for change direction of the putting
+* refactored code
+* bug with double assign rightPatternText fixed
+
 ## 1.1.4 (15.03.2017)
 ##### Bug fix
 * fixed bug with showing the placeholder
