@@ -16,13 +16,18 @@ Pod::Spec.new do |s|
 # s.watchos.deployment_target = "2.0"
 # s.tvos.deployment_target = "9.0"
 
-    s.source       = { :git => "https://github.com/ByteriX/BxTextField.git", :tag => "#{s.version}" }
+    s.source       = { :git => "https://github.com/ByteriX/BxTextField.git", :tag => s.version} }
 #s.frameworks = ["Foundation", "UIKit"]
 
 s.requires_arc     = true
     #s.resources = "BxTextField/Sources/Assets.xcassets", "BxTextField/Sources/**/*.xib"
 
 s.source_files  = "BxTextField/Sources/*.swift"
+
+s.pod_target_xcconfig =  {
+'SWIFT_VERSION' => '3.0.1',
+'OTHER_SWIFT_FLAGS[config=Debug]' => '-DDEBUG'
+}
 
 
 end
