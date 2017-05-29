@@ -8,8 +8,8 @@
 #
 
 APP_CONFIG_PATH="./build.config"
-TEMPLATE_SPEC_PATH="BxTextField.Template.podspec"
-WORK_SPEC_PATH="BxTextField.podspec"
+TEMPLATE_SPEC_PATH="BxTextField.template"
+WORK_SPEC_PATH="BxTextField.templatespec"
 VAR_NAME="VERSION_NUMBER"
 
 
