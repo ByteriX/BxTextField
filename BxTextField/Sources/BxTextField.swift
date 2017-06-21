@@ -159,10 +159,19 @@ open class BxTextField : UITextField {
     override open var placeholder: String? {
         didSet {
             if let placeholder = placeholder {
-                attributedPlaceholder = getAttributedText(with: placeholder)
+                var attributes: [String: NSObject]? = nil
+                if let placeholderColor = placeholderColor {
+                    attributes = [
+                        NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+                        NSForegroundColorAttributeName: placeholderColor
+                    ]
+                }
+                attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
             }
         }
     }
+    ///! used from placeholder and placeholderText
+    @IBInspectable open var placeholderColor: UIColor?
     
     override open var font: UIFont? {
         didSet {

@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.2.4 (22.06.2017)
+##### Improvements
+* added placeholderColor for a changing color of placeholder
+
 ## 1.2.3 (29.05.2017)
 ##### Improvements
 * added formattingDirection for change direction of the putting
