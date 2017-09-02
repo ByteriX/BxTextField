@@ -174,8 +174,8 @@ open class BxTextField : UITextField {
     @IBInspectable open var placeholderColor: UIColor?
     
     override open var font: UIFont? {
-        didSet {
-            if let font = font {
+        willSet {
+            if let font = newValue {
                 enteredTextFont = font
                 patternTextFont = font.bold()
             }
@@ -183,8 +183,8 @@ open class BxTextField : UITextField {
     }
     
     override open var textColor: UIColor? {
-        didSet {
-            if let textColor = textColor {
+        willSet {
+            if let textColor = newValue {
                 enteredTextColor = textColor
                 patternTextColor = textColor
             }

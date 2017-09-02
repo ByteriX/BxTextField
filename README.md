@@ -122,4 +122,4 @@ class SimpleController: UIViewController {
 
 ## License
 
-BxInputController is released under the MIT license. See LICENSE for details.
+BxTextField is released under the MIT license. See LICENSE for details.

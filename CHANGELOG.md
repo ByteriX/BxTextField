@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.2.5 (02.09.2017)
+##### Bug fix
+* fixed updating font and text. It was something bug from Apple
+
 ## 1.2.4 (22.06.2017)
 ##### Improvements
 * added placeholderColor for a changing color of placeholder
