@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.3.0 (12.09.2017)
+##### Implement
+* Swift 3.2 supporting
+
 ## 1.2.5 (02.09.2017)
 ##### Bug fix
 * fixed updating font and text. It was something bug from Apple
