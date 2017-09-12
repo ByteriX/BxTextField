@@ -19,25 +19,26 @@ extension BxTextField
     
     /// Return clear text without patterns (doesn't include unformatting). The Position needed for shifting cursor
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
-        var result = text
+        var result : String = text
         
         // first because it is saffer then left
         if rightPatternText.isEmpty == false,
             text.hasSuffix(rightPatternText)
         {
-            result = result.substring(to: result.index(result.endIndex, offsetBy: -rightPatternText.characters.count))
+            let index = result.index(result.endIndex, offsetBy: -rightPatternText.characters.count)
+            result = String(result.prefix(upTo: index))
         }
         
         if leftPatternText.isEmpty == false
         {
             if result.hasPrefix(leftPatternText){
-                result = result.substring(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count))
+                result = String(result.suffix(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count)))
                 position = position - leftPatternText.characters.count
             } else if leftPatternText.characters.count > 1 {
                 // bug fixed, but very worst
-                let backspaseLeftPatternText = leftPatternText.substring(to: leftPatternText.index(before: leftPatternText.endIndex))
+                let backspaseLeftPatternText = String(leftPatternText.prefix(upTo: leftPatternText.index(before: leftPatternText.endIndex)))
                 if result.hasPrefix(backspaseLeftPatternText){
-                    result = result.substring(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count))
+                    result = String(result.suffix(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count)))
                     position = position - backspaseLeftPatternText.characters.count
                 }
             }
@@ -128,7 +129,7 @@ extension BxTextField
         //checkPosition()
         
         if formattingTemplate.characters.count < formattedResult.characters.count {
-            formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
+            formattedResult = String(formattedResult.prefix(upTo: formattingTemplate.endIndex))
         }
         
         return formattedResult
@@ -164,7 +165,7 @@ extension BxTextField
         
         if formattingTemplate.characters.count < formattedResult.characters.count {
             let distance = formattedResult.characters.count - formattingTemplate.characters.count
-            formattedResult = formattedResult.substring(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance) )
+            formattedResult = String(formattedResult.suffix(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance)))
             position = position - distance
         }
         
