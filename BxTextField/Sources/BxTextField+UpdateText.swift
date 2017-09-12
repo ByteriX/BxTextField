@@ -51,7 +51,7 @@ extension BxTextField {
     }
     
     /// Return attributed text for showing prepared text
-    open func getAttributedText(with text: String, enteredTextAttributes: [String: NSObject]? = nil) -> NSMutableAttributedString
+    open func getAttributedText(with text: String, enteredTextAttributes: [NSAttributedStringKey: NSObject]? = nil) -> NSMutableAttributedString
     {
         let attributedString = NSMutableAttributedString(string: text)
         var startEnteredPosition = 0
