@@ -22,15 +22,17 @@ extension String {
         let from = String.UTF16View.Index(range.lowerBound, within: utf16view)
         let to = String.UTF16View.Index(range.upperBound, within: utf16view)
         #if swift(>=3.2)
-        if from = from, to = to
-        {
-        #endif
+            if let from = from, let to = to
+            {
+                let loc = utf16view.startIndex.distance(to: from)
+                let len = from.distance(to: to)
+                return NSMakeRange(loc, len)
+            }
+            return NSRange()
+        #else
             let loc = utf16view.startIndex.distance(to: from)
             let len = from.distance(to: to)
             return NSMakeRange(loc, len)
-        #if swift(>=3.2)
-        }
-        return NSRange()
         #endif
     }
     
