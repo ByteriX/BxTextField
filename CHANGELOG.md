@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.3.1 (14.09.2017)
+##### Implement
+* backword Swift 3.1 supporting
+
 ## 1.3.0 (12.09.2017)
 ##### Implement
 * Swift 3.2 supporting
