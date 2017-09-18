@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.3.3 (18.09.2017)
+##### Bug fix
+* Fixed updating placeholder after changing enteredTextColor/enteredTextFont/patternTextFont/patternTextColor
+
 ## 1.3.2 (14.09.2017)
 ##### Implement
 * Swift 3.2 with Swift 3.1 supporting

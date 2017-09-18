@@ -83,8 +83,7 @@ open class BxTextField : UITextField {
             super.text = enteredText + newValue
         }
         didSet {
-            placeholder = placeholderText + rightPatternText
-            updateTextWithPosition()
+            updatePatternText()
         }
     }
     /// Not editable pattern part of the text. Defaults to "".
@@ -97,9 +96,13 @@ open class BxTextField : UITextField {
             super.text = enteredText + newValue
         }
         didSet {
-            placeholder = leftPatternText + placeholderText + rightPatternText
-            updateTextWithPosition()
+            updatePatternText()
         }
+    }
+    /// Updating after change of Patterns
+    private func updatePatternText() {
+        ({self.placeholderText = placeholderText })()
+        updateTextWithPosition()
     }
     /// Font of the rightPatternText. Defaults to the bold font.
     @IBInspectable open var patternTextFont: UIFont? {

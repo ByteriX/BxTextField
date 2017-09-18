@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var rightLeftField: BxTextField!
+    @IBOutlet weak var webField: BxTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         rightLeftField.formattingDirection = .rightToLeft
+        webField.enteredTextColor = UIColor.red
     }
 
     override func didReceiveMemoryWarning() {
