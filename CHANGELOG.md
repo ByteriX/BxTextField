@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.3.4 (19.09.2017)
+##### Bug fix
+* Fixed showing placeholder from iOS 11
+
 ## 1.3.3 (18.09.2017)
 ##### Bug fix
 * Fixed updating placeholder after changing enteredTextColor/enteredTextFont/patternTextFont/patternTextColor
