@@ -199,7 +199,7 @@ open class BxTextField : UITextField {
                 if let placeholderColor = placeholderColor {
                     attributes = [
                         NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-                        NSForegroundColorAttributeName: placeholderColor
+                        NSForegroundColorAttributeName.rawValue: placeholderColor
                     ]
                 }
                 attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
