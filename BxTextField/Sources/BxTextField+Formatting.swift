@@ -81,7 +81,7 @@ extension BxTextField
         if text.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
             let characters = text.characters
-            let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
+            let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
             
             var formattedResult = ""
             
@@ -183,7 +183,7 @@ extension BxTextField
         
         if result.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
-            let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
+            let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
             
             var unformattedResult = ""
             var index = result.startIndex

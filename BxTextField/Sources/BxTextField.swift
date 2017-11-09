@@ -39,12 +39,10 @@ open class BxTextField : UITextField {
     
     /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
     @IBInspectable open var formattingTemplate: String = ""
+    
     /// Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
-#if swift( >=4.0 )
-    open var formattingReplacementChar: Character = "#"
-#else
-    @IBInspectable open var formattingReplacementChar: Character = "#"
-#endif
+    @IBInspectable open var formattingReplacementChar: String = "#"
+    
     /// Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
     @IBInspectable open var formattingEnteredCharacters: String = ""
     {
