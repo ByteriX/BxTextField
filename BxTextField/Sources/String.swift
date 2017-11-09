@@ -18,6 +18,9 @@ extension String {
     
     /// get NSRange from Range<String.Index> http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
     public func makeNSRange(from range : Range<String.Index>) -> NSRange {
+#if swift(>=4.0)
+        return NSRange(range, in: self)
+#else
         let utf16view = self.utf16
         let from = String.UTF16View.Index(range.lowerBound, within: utf16view)
         let to = String.UTF16View.Index(range.upperBound, within: utf16view)
@@ -34,6 +37,7 @@ extension String {
             let len = from.distance(to: to)
             return NSMakeRange(loc, len)
         #endif
+#endif
     }
     
 }

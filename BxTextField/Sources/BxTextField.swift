@@ -40,7 +40,11 @@ open class BxTextField : UITextField {
     /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
     @IBInspectable open var formattingTemplate: String = ""
     /// Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
+#if swift( >=4.0 )
+    open var formattingReplacementChar: Character = "#"
+#else
     @IBInspectable open var formattingReplacementChar: Character = "#"
+#endif
     /// Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
     @IBInspectable open var formattingEnteredCharacters: String = ""
     {
@@ -145,31 +149,61 @@ open class BxTextField : UITextField {
     // MARK: Useful attributes for text showing
     
     /// Attributes of rightPatternText
+#if swift( >=4.0 )
+    open var patternTextAttributes: [NSAttributedStringKey: NSObject] {
+        return [
+            NSAttributedStringKey.font: patternTextFont ?? type(of: self).standartPatternTextFont,
+            NSAttributedStringKey.foregroundColor: patternTextColor ?? UIColor.black
+        ]
+    }
+#else
     open var patternTextAttributes: [String: NSObject] {
         return [
             NSFontAttributeName: patternTextFont ?? type(of: self).standartPatternTextFont,
             NSForegroundColorAttributeName: patternTextColor ?? UIColor.black
         ]
     }
+#endif
     /// Attributes of enteredText
+#if swift( >=4.0 )
+    open var enteredTextAttributes: [NSAttributedStringKey: NSObject] {
+        return [
+            NSAttributedStringKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+            NSAttributedStringKey.foregroundColor: enteredTextColor ?? UIColor.black
+        ]
+    }
+#else
     open var enteredTextAttributes: [String: NSObject] {
         return [
             NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
             NSForegroundColorAttributeName: enteredTextColor ?? UIColor.black
         ]
     }
+#endif
+    
     /// Now it isn't used, because have been complex solution
     override open var placeholder: String? {
         didSet {
             if let placeholder = placeholder {
+#if swift( >=4.0 )
+                var attributes: [NSAttributedStringKey: NSObject]? = nil
+                if let placeholderColor = placeholderColor {
+                    attributes = [
+                        NSAttributedStringKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+                        NSAttributedStringKey.foregroundColor: placeholderColor
+                    ]
+                }
+                attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
+#else
                 var attributes: [String: NSObject]? = nil
                 if let placeholderColor = placeholderColor {
                     attributes = [
                         NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-                        NSForegroundColorAttributeName: placeholderColor
+                        NSForegroundColorAttributeName.rawValue: placeholderColor
                     ]
                 }
                 attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
+#endif
             }
         }
     }
@@ -255,15 +289,16 @@ open class BxTextField : UITextField {
     
     // MARK: textField control handler
     
+    @objc
     internal func textDidBegin(sender: UITextField) {
         updateTextWithPosition()
     }
-    
+    @objc
     internal func textChanged(sender: UITextField)
     {
         updateTextWithPosition()
     }
-    
+    @objc
     internal func textDidEnd(sender: UITextField) {
         if enteredText.isEmpty {
             text = ""

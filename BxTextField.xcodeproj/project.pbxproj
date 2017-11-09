@@ -261,7 +261,7 @@
 				TargetAttributes = {
 					F9337BF31E67FC37002134C2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FDK83T8QNS;
+						DevelopmentTeam = NVEUY947QB;
 						ProvisioningStyle = Automatic;
 					};
 					F9337C071E67FC37002134C2 = {
@@ -491,13 +491,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = BxTextField/Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -505,13 +505,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = BxTextField/Example/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
