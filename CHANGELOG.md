@@ -6,6 +6,12 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.4.0 (09.11.2017)
+##### Implement
+* Supporting Swift 4 with Swift 3
+* Change formattingReplacementChar property to String
+* Fixed some warnings
+
 ## 1.3.4 (19.09.2017)
 ##### Bug fix
 * Fixed showing placeholder from iOS 11
