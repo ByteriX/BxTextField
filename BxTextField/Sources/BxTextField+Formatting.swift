@@ -25,21 +25,21 @@ extension BxTextField
         if rightPatternText.isEmpty == false,
             text.hasSuffix(rightPatternText)
         {
-            let index = result.index(result.endIndex, offsetBy: -rightPatternText.count)
+            let index = result.index(result.endIndex, offsetBy: -rightPatternText.characters.count)
             result = String(result.prefix(upTo: index))
         }
         
         if leftPatternText.isEmpty == false
         {
             if result.hasPrefix(leftPatternText){
-                result = String(result.suffix(from: result.index(result.startIndex, offsetBy: leftPatternText.count)))
-                position = position - leftPatternText.count
-            } else if leftPatternText.count > 1 {
+                result = String(result.suffix(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count)))
+                position = position - leftPatternText.characters.count
+            } else if leftPatternText.characters.count > 1 {
                 // bug fixed, but very worst
                 let backspaseLeftPatternText = String(leftPatternText.prefix(upTo: leftPatternText.index(before: leftPatternText.endIndex)))
                 if result.hasPrefix(backspaseLeftPatternText){
-                    result = String(result.suffix(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.count)))
-                    position = position - backspaseLeftPatternText.count
+                    result = String(result.suffix(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count)))
+                    position = position - backspaseLeftPatternText.characters.count
                 }
             }
         }
@@ -78,7 +78,7 @@ extension BxTextField
             return text
         }
         
-        if text.count > 0 && formattingTemplate.count > 0 {
+        if text.characters.count > 0 && formattingTemplate.characters.count > 0 {
             
             let characters = text.characters
             let patternes = formattingTemplate.components(separatedBy: String(formattingReplacementChar))
@@ -115,7 +115,7 @@ extension BxTextField
                 let patternString = patternes[index]
                 formattedResult = formattedResult + patternString
                 if startPosition > index {
-                    position = position + patternString.count
+                    position = position + patternString.characters.count
                 }
             }
         }
@@ -128,7 +128,7 @@ extension BxTextField
         
         //checkPosition()
         
-        if formattingTemplate.count < formattedResult.count {
+        if formattingTemplate.characters.count < formattedResult.characters.count {
             formattedResult = String(formattedResult.prefix(upTo: formattingTemplate.endIndex))
         }
         
@@ -150,7 +150,7 @@ extension BxTextField
                 let patternString = patternes[patternes.count - index - 1]
                 formattedResult = patternString + formattedResult
                 if startPosition > characters.count - index {
-                    position = position + patternString.count
+                    position = position + patternString.characters.count
                 }
             }
         }
@@ -163,8 +163,8 @@ extension BxTextField
         
         checkPosition()
         
-        if formattingTemplate.count < formattedResult.count {
-            let distance = formattedResult.count - formattingTemplate.count
+        if formattingTemplate.characters.count < formattedResult.characters.count {
+            let distance = formattedResult.characters.count - formattingTemplate.characters.count
             formattedResult = String(formattedResult.suffix(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance)))
             position = position - distance
         }

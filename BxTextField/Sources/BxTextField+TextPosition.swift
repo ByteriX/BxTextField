@@ -20,14 +20,14 @@ extension BxTextField
     /// right edges position of the text without patterns
     internal var rightPositionEnteredText: UITextPosition? {
         get {
-            return position(from: endOfDocument, offset: -rightPatternText.count)
+            return position(from: endOfDocument, offset: -rightPatternText.characters.count)
         }
     }
     
     /// left edges position of the text without patterns
     internal var leftPositionEnteredText: UITextPosition? {
         get {
-            return position(from: beginningOfDocument, offset: leftPatternText.count)
+            return position(from: beginningOfDocument, offset: leftPatternText.characters.count)
         }
     }
 
