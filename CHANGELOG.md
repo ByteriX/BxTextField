@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.4.1 (08.12.2017)
+##### Implement
+* changed only description
+
 ## 1.4.0 (09.11.2017)
 ##### Implement
 * Supporting Swift 4 with Swift 3

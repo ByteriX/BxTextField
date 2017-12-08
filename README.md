@@ -18,6 +18,7 @@ This component awalable putting phone number, url or email address, credit card 
 
 - iOS 8.0+
 - Swift 3.0+
+- Swift 3.2/4.0 supported
 
 ## Installation
 
