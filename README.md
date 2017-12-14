@@ -4,7 +4,7 @@ This component awalable putting phone number, url or email address, credit card 
 
 ## Gif demo
 
-![Demo Gif](https://github.com/ByteriX/BxTextField/blob/master/Screenshots/BxTextFieldDemo.gif)
+![Demo Gif](https://user-images.githubusercontent.com/1917027/33994165-e59f7160-e0f2-11e7-89ea-e6e26648f4b4.gif "Demo Gif")
 
 ## Features
 
