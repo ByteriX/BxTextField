@@ -1,6 +1,6 @@
 # BxTextField
 
-This component awalable putting phone number, url or email address, credit card with comfortable format.
+This component available put formatted text, for example: phone number, url or email address, credit card with comfortable format. Also you can use other features what we have in `UITextField` whitout issues from Apple.
 
 ## Gif demo
 
