@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.4.6 (21.12.2017)
+##### Improvements
+* test build script fix
+
 ## 1.4.5 (21.12.2017)
 ##### Improvements
 * test old gif url

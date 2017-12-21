@@ -53,5 +53,5 @@ checkExit
 pod trunk push "${WORK_SPEC_PATH}" --allow-warnings --verbose
 checkExit
 clear
-curl "http://207.254eploy/${PROJECT_NAME}/latest"
+curl "http://207.254.41.223:4567/redeploy/${PROJECT_NAME}/latest"
 
