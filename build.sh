@@ -1,15 +1,16 @@
 
 #
 #  build.sh
-#  version 1.0
+#  version 1.1
 #
 #  Created by Sergey Balalaev on 02.03.17.
 #  Copyright (c) 2017 ByteriX. All rights reserved.
 #
 
+PROJECT_NAME="BxTextField"
 APP_CONFIG_PATH="./build.config"
-TEMPLATE_SPEC_PATH="BxTextField.templatespec"
-WORK_SPEC_PATH="BxTextField.podspec"
+TEMPLATE_SPEC_PATH="${PROJECT_NAME}.templatespec"
+WORK_SPEC_PATH="${PROJECT_NAME}.podspec"
 VAR_NAME="VERSION_NUMBER"
 
 
@@ -52,3 +53,5 @@ checkExit
 pod trunk push "${WORK_SPEC_PATH}" --allow-warnings --verbose
 checkExit
 clear
+curl "http://207.254eploy/${PROJECT_NAME}/latest"
+
