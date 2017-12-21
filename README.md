@@ -4,7 +4,7 @@ This component available put formatted text, for example: phone number, url or e
 
 ## Gif demo
 
-![Demo Gif](Screenshots/BxTextFieldDemo.gif "Demo Gif")
+![Demo Gif](https://github.com/ByteriX/BxTextField/raw/master/Screenshots/BxTextFieldDemo.gif "Demo Gif")
 
 ## Features
 
