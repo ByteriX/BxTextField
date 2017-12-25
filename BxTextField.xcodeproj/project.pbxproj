@@ -266,13 +266,12 @@
 					};
 					F9337C071E67FC37002134C2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FDK83T8QNS;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F9337BF31E67FC37002134C2;
 					};
 					F9337C121E67FC37002134C2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FDK83T8QNS;
+						DevelopmentTeam = NVEUY947QB;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F9337BF31E67FC37002134C2;
 					};
@@ -520,7 +519,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BxTextFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldTests;
@@ -535,7 +534,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BxTextFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldTests;
@@ -549,11 +548,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = BxTextFieldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = BxTextField;
 			};
@@ -563,11 +565,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = BxTextFieldUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = BxTextField;
 			};
