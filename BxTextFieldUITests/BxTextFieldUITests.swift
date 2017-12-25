@@ -68,14 +68,17 @@ class BxTextFieldUITests: XCTestCase {
         let domainTextField = tablesQuery.children(matching: .cell).element(boundBy: 0).children(matching: .textField).element
         domainTextField.tap()
         domainTextField.typeText("mail")
-        domainTextField.doubleTap()
+        domainTextField.tap()
         
         XCTAssertEqual(domainTextField.value as! String, "mail.byterix.com")
-
+        
+        let selectAllButton = app.menus.menuItems["Select All"]
+        selectAllButton.tap()
+        
         let cutButton = app.menus.menuItems["Cut"]
         cutButton.tap()
         domainTextField.typeText("phone")
-        
+
         XCTAssertEqual(domainTextField.value as! String, "phone.byterix.com")
 
     }
