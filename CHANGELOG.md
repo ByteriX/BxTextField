@@ -6,6 +6,10 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.4.8 (25.12.2017)
+##### Improvements
+* added Tests
+
 ## 1.4.7 (21.12.2017)
 ##### Improvements
 * remade gif url absolutable for Readme
