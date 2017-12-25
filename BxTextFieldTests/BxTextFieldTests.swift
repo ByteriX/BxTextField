@@ -21,16 +21,41 @@ class BxTextFieldTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRightPattern() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.rightPatternText = ".byterix.com"
+        textField.enteredText = "mail"
+        XCTAssertEqual(textField.text!, "mail.byterix.com")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testLeftPattern() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.leftPatternText = "www."
+        textField.enteredText = "byterix.com"
+        XCTAssertEqual(textField.text!, "www.byterix.com")
+    }
+    
+    func testAllPattern() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.leftPatternText = "http://"
+        textField.rightPatternText = "byterix.com"
+        textField.enteredText = ""
+        XCTAssertEqual(textField.text!, "http://byterix.com")
+    }
+    
+    func testFormatting() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.enteredText = "78901234567"
+        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
+    }
+    
+    func testFormattingChangedDirection() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.formattingDirection = .rightToLeft
+        textField.enteredText = "78901234567"
+        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
     }
     
 }

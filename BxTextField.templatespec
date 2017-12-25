@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-s.platform     = :ios, "8.0"
+    s.platform     = :ios, "8.0"
 
 #s.ios.deployment_target = "5.0"
 #s.osx.deployment_target = "10.7"
@@ -69,12 +69,11 @@ s.platform     = :ios, "8.0"
     s.source_files  = "BxTextField/Sources/**/*.{swift}", "BxTextField/Sources/*.{swift}"
 
 s.test_spec 'Tests' do |test_spec|
-#test_spec.platform     = :ios, "9.0"
-test_spec.source_files = "BxTextFieldTests/*.swift"
-#, "BxTextFieldUITests/*.swift"
-test_spec.framework = 'XCTest'
-#test_spec.dependency 'OCMock' # This dependency will only be linked with your tests.
-
+    #test_spec.platform     = :ios, "9.0"
+    test_spec.source_files = "BxTextFieldTests/*.swift"
+    #, "BxTextFieldUITests/*.swift"
+    test_spec.framework = 'XCTest'
+    #test_spec.dependency 'OCMock' # This dependency will only be linked with your tests.
 end
 
 
