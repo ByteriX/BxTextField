@@ -14,7 +14,7 @@
 import UIKit
 
 /// UIFont extension for BxTextField
-extension UIFont
+public extension UIFont
 {
     
     /// return bold font from current

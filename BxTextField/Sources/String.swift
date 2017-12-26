@@ -14,7 +14,7 @@
 import Foundation
 
 /// String extension for BxTextField
-extension String {
+public extension String {
     
     /// get NSRange from Range<String.Index> http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
     public func makeNSRange(from range : Range<String.Index>) -> NSRange {

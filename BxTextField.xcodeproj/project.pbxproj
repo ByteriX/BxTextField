@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF571B031FF222DB000E934C /* CharacterSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B021FF222DB000E934C /* CharacterSetTests.swift */; };
+		CF571B051FF22DD5000E934C /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B041FF22DD5000E934C /* StringTests.swift */; };
+		CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B061FF2442A000E934C /* UIFontTests.swift */; };
 		F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */; };
 		F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */; };
 		F9337C2A1E680027002134C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F9337C291E680027002134C2 /* LICENSE */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF571B021FF222DB000E934C /* CharacterSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetTests.swift; sourceTree = "<group>"; };
+		CF571B041FF22DD5000E934C /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		CF571B061FF2442A000E934C /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
 		F9337BF41E67FC37002134C2 /* BxTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BxTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C081E67FC37002134C2 /* BxTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BxTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldTests.swift; sourceTree = "<group>"; };
@@ -136,6 +142,9 @@
 			children = (
 				F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */,
 				F9337C0E1E67FC37002134C2 /* Info.plist */,
+				CF571B021FF222DB000E934C /* CharacterSetTests.swift */,
+				CF571B041FF22DD5000E934C /* StringTests.swift */,
+				CF571B061FF2442A000E934C /* UIFontTests.swift */,
 			);
 			path = BxTextFieldTests;
 			sourceTree = "<group>";
@@ -348,6 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */,
+				CF571B031FF222DB000E934C /* CharacterSetTests.swift in Sources */,
+				CF571B051FF22DD5000E934C /* StringTests.swift in Sources */,
 				F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
