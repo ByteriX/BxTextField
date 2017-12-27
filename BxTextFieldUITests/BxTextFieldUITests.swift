@@ -31,15 +31,15 @@ class BxTextFieldUITests: XCTestCase {
     func testAllSimple() {
         
         let tablesQuery = XCUIApplication().tables
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.textFields["subdomain.byterix.com"]/*[[".cells.textFields[\"subdomain.byterix.com\"]",".textFields[\"subdomain.byterix.com\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.cells.textFields["subdomain.byterix.com"].tap()
         tablesQuery.children(matching: .cell).element(boundBy: 0).children(matching: .textField).element.typeText("your.domain")
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.textFields["www.subdomain.byterix.com"]/*[[".cells.textFields[\"www.subdomain.byterix.com\"]",".textFields[\"www.subdomain.byterix.com\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.cells.textFields["www.subdomain.byterix.com"].tap()
         
         let textField = tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element
         textField.tap()
         textField.typeText("next")
         
-        let phoneTextField = tablesQuery/*@START_MENU_TOKEN@*/.cells.textFields["phone"]/*[[".cells.textFields[\"phone\"]",".textFields[\"phone\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        let phoneTextField = tablesQuery.cells.textFields["phone"]
         phoneTextField.tap()
         phoneTextField.typeText("71234567889")
         
@@ -53,7 +53,7 @@ class BxTextFieldUITests: XCTestCase {
         textField3.tap()
         textField3.typeText("12345678899")
         
-        let cardNumberTextField = tablesQuery/*@START_MENU_TOKEN@*/.cells.textFields["card number"]/*[[".cells.textFields[\"card number\"]",".textFields[\"card number\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
+        let cardNumberTextField = tablesQuery.cells.textFields["card number"]
         cardNumberTextField.tap()
         cardNumberTextField.tap()
         cardNumberTextField.typeText("1111222233334444")
