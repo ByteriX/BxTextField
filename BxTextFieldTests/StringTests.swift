@@ -20,12 +20,35 @@ class StringTests: XCTestCase {
         let string = "Text with something context"
         let srcRange: NSRange = NSRange(location: 5, length: 9)
         
-        guard let dstRange = Range<String.Index>.init(srcRange, in: string) else {
+        guard let dstRange = Range<String.Index>(srcRange, in: string) else {
             XCTAssert(false)
             return
         }
         
         let range = string.makeNSRange(from: dstRange)
+        XCTAssertEqual(srcRange.location, range.location)
+        XCTAssertEqual(srcRange.length, range.length)
+    }
+    
+    func testFailInitRect() {
+        let string = "Text"
+        let srcRange: NSRange = NSRange(location: 5, length: 9)
+        
+        XCTAssertNil(Range<String.Index>(srcRange, in: string))
+    }
+    
+    func testFailureString() {
+        let string = "Text with something context"
+        let srcRange: NSRange = NSRange(location: 5, length: 9)
+        
+        guard let dstRange = Range<String.Index>(srcRange, in: string) else {
+            XCTAssert(false)
+            return
+        }
+        
+        // for failure string all will be the alright anyway
+        let failureString = "Fail"
+        let range = failureString.makeNSRange(from: dstRange)
         XCTAssertEqual(srcRange.location, range.location)
         XCTAssertEqual(srcRange.length, range.length)
     }

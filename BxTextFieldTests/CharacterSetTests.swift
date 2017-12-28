@@ -29,10 +29,13 @@ class CharacterSetTests: XCTestCase {
     }
     
     func testAddingContains() {
-        var charSet = CharacterSet(charactersIn: "q")
-        XCTAssertFalse(charSet.contains(Character("#")))
+        var charSet = CharacterSet(charactersIn: "qwerty")
+        let char = Character("#")
+        XCTAssertFalse(charSet.contains(char))
         charSet.insert("#")
-        XCTAssertTrue(charSet.contains(Character("#")))
+        XCTAssertTrue(charSet.contains(char))
+        charSet.remove("#")
+        XCTAssertFalse(charSet.contains(char))
     }
     
 }

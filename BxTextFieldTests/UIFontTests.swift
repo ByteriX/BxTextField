@@ -25,4 +25,13 @@ class UIFontTests: XCTestCase {
         XCTAssertNotEqual(srcFont.fontName, srcFont.bold().fontName)
     }
     
+    func testCompare() {
+        let srcFont = UIFont.systemFont(ofSize: 12)
+        let dstFont = UIFont.boldSystemFont(ofSize: 12)
+        XCTAssertEqual(dstFont.fontName, srcFont.bold().fontName)
+        XCTAssertEqual(dstFont.xHeight, srcFont.bold().xHeight)
+        XCTAssertEqual(dstFont.pointSize, srcFont.bold().pointSize)
+        
+    }
+    
 }
