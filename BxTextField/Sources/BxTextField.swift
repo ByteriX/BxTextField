@@ -136,7 +136,7 @@ open class BxTextField : UITextField {
             placeholder = leftPatternText + placeholderText + rightPatternText
         }
     }
-    ///
+    /// size with vertical/horizontal edges text showing. Default is zero.
     @IBInspectable open var marginSize = CGSize(width: 0, height: 0)
     {
         didSet {
