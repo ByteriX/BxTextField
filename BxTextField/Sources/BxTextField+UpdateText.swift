@@ -43,7 +43,7 @@ extension BxTextField {
         
         updateTextOnly(offset: &offset)
         
-        if let position = position(from: self.beginningOfDocument, offset: offset + leftPatternText.characters.count) {
+        if let position = position(from: self.beginningOfDocument, offset: offset + leftPatternText.count) {
             goTo(textPosition: position)
         } else {
             goTo(textPosition: selectedPositon)
@@ -56,7 +56,7 @@ extension BxTextField {
     {
         let attributedString = NSMutableAttributedString(string: text)
         var startEnteredPosition = 0
-        var stopEnteredPosition = text.characters.count
+        var stopEnteredPosition = text.count
         
         if leftPatternText.isEmpty == false,
             let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
@@ -85,7 +85,7 @@ extension BxTextField {
     {
         let attributedString = NSMutableAttributedString(string: text)
         var startEnteredPosition = 0
-        var stopEnteredPosition = text.characters.count
+        var stopEnteredPosition = text.count
         
         if leftPatternText.isEmpty == false,
             let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)

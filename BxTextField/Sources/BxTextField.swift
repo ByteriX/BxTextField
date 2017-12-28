@@ -81,7 +81,7 @@ open class BxTextField : UITextField {
             guard var text = text, !text.isEmpty else {
                 return
             }
-            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
+            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
             super.text = enteredText + newValue
         }
         didSet {
@@ -94,7 +94,7 @@ open class BxTextField : UITextField {
             guard var text = text, !text.isEmpty else {
                 return
             }
-            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.leftPatternText.characters.count)..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.characters.count)]
+            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.leftPatternText.count)..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
             super.text = enteredText + newValue
         }
         didSet {

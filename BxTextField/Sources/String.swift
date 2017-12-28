@@ -16,6 +16,16 @@ import Foundation
 /// String extension for BxTextField
 public extension String {
     
+#if swift(>=3.2)
+    //
+#else
+    // For supporting Swift 3.0
+    var count: Int {
+        return characters.count
+    }
+#endif
+
+    
     /// get NSRange from Range<String.Index> http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
     public func makeNSRange(from range : Range<String.Index>) -> NSRange {
 #if swift(>=4.0)
