@@ -8,7 +8,7 @@ This component available put formatted text, for example: phone number, url or e
 
 ## Features
 
-- [x] Inherited from `UITextField` and didn't use delegate
+- [x] Inherited from `UITextField` and don't use delegate
 - [x] Can use patterns sides with constant text
 - [x] Have formatting putting
 - [x] Correct working with selection text
@@ -38,7 +38,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'BxTextField', '~> 0.9'
+pod 'BxTextField', '~> 1.4'
 end
 ```
 
