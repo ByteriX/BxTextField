@@ -16,6 +16,8 @@ class StringTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
+#if swift ( >=3.2 )
+    
     func testCreatingRect() {
         let string = "Text with something context"
         let srcRange: NSRange = NSRange(location: 5, length: 9)
@@ -53,5 +55,6 @@ class StringTests: XCTestCase {
         XCTAssertEqual(srcRange.length, range.length)
     }
 
+#endif
     
 }

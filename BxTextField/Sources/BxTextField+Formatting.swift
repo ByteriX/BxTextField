@@ -18,6 +18,7 @@ extension BxTextField
 {
     
     /// Return clear text without patterns (doesn't include unformatting). The Position needed for shifting cursor
+#if swift( >=3.2 )
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
         var result : String = text
         
@@ -50,7 +51,40 @@ extension BxTextField
         
         return result
     }
-    
+#else
+    public func getClearFromPatternText(with text: String, position: inout Int) -> String {
+        var result = text
+        
+        // first because it is saffer then left
+        if rightPatternText.isEmpty == false,
+            text.hasSuffix(rightPatternText)
+        {
+            result = result.substring(to: result.index(result.endIndex, offsetBy: -rightPatternText.characters.count))
+        }
+        
+        if leftPatternText.isEmpty == false
+        {
+            if result.hasPrefix(leftPatternText){
+                result = result.substring(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count))
+                position = position - leftPatternText.characters.count
+            } else if leftPatternText.characters.count > 1 {
+                // bug fixed, but very worst
+                let backspaseLeftPatternText = leftPatternText.substring(to: leftPatternText.index(before: leftPatternText.endIndex))
+                if result.hasPrefix(backspaseLeftPatternText){
+                    result = result.substring(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count))
+                    position = position - backspaseLeftPatternText.characters.count
+                }
+            }
+        }
+        
+        if position < 0 {
+            position = 0
+        }
+        
+        return result
+    }
+#endif
+
     /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
     public func getSimpleUnformattedText(with text: String, position: inout Int) -> String {
         guard formattingTemplate.isEmpty == false, formattingEnteredCharSet.isEmpty == false
@@ -129,7 +163,11 @@ extension BxTextField
         //checkPosition()
         
         if formattingTemplate.count < formattedResult.count {
+#if swift( >=3.2 )
             formattedResult = String(formattedResult.prefix(upTo: formattingTemplate.endIndex))
+#else
+            formattedResult = formattedResult.substring(to: formattingTemplate.endIndex)
+#endif
         }
         
         return formattedResult
@@ -165,7 +203,11 @@ extension BxTextField
         
         if formattingTemplate.count < formattedResult.count {
             let distance = formattedResult.count - formattingTemplate.count
+#if swift( >=3.2 )
             formattedResult = String(formattedResult.suffix(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance)))
+#else
+            formattedResult = formattedResult.substring(from: formattedResult.index(formattedResult.startIndex, offsetBy: distance) )
+#endif
             position = position - distance
         }
         
