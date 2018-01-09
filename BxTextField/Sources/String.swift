@@ -70,4 +70,19 @@ public extension String {
 #endif
     }
     
+    public func makeRange(from range: NSRange) -> Range<String.Index>? {
+#if swift(>=3.2)
+    
+        return Range<String.Index>(range, in: self)
+#else
+        guard
+            let start = index(startIndex, offsetBy: String.IndexDistance(range.location), limitedBy: endIndex),
+            let end = index(start, offsetBy: String.IndexDistance(range.length), limitedBy: endIndex)
+        else {
+            return nil
+        }
+        return Range<String.Index>.init(uncheckedBounds: (lower: start, upper: end))
+#endif
+    }
+    
 }

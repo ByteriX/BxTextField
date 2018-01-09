@@ -16,13 +16,11 @@ class StringTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-#if swift ( >=3.2 )
-    
     func testCreatingRect() {
         let string = "Text with something context"
         let srcRange: NSRange = NSRange(location: 5, length: 9)
         
-        guard let dstRange = Range<String.Index>(srcRange, in: string) else {
+        guard let dstRange = string.makeRange(from: srcRange) else {
             XCTAssert(false)
             return
         }
@@ -36,14 +34,14 @@ class StringTests: XCTestCase {
         let string = "Text"
         let srcRange: NSRange = NSRange(location: 5, length: 9)
         
-        XCTAssertNil(Range<String.Index>(srcRange, in: string))
+        XCTAssertNil(string.makeRange(from: srcRange))
     }
     
     func testFailureString() {
         let string = "Text with something context"
         let srcRange: NSRange = NSRange(location: 5, length: 9)
         
-        guard let dstRange = Range<String.Index>(srcRange, in: string) else {
+        guard let dstRange = string.makeRange(from: srcRange) else {
             XCTAssert(false)
             return
         }
@@ -54,7 +52,5 @@ class StringTests: XCTestCase {
         XCTAssertEqual(srcRange.location, range.location)
         XCTAssertEqual(srcRange.length, range.length)
     }
-
-#endif
     
 }
