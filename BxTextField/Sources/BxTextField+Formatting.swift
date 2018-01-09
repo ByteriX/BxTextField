@@ -93,7 +93,9 @@ extension BxTextField
         }
         var result = ""
         var index = 0
-        for char in text.characters {
+
+        let characters = text.chars
+        for char in characters {
             if formattingEnteredCharSet.contains(char) {
                 result.append(char)
                 index = index + 1
@@ -113,10 +115,9 @@ extension BxTextField
         }
         
         if text.count > 0 && formattingTemplate.count > 0 {
-            
-            let characters = text.characters
+
+            let characters = text.chars
             let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
-            
             var formattedResult = ""
             
             if formattingDirection == .leftToRight {
@@ -137,7 +138,7 @@ extension BxTextField
     
     /// Transform text to match with formattingTemplate for .leftToRight direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
     @inline(__always)
-    internal func getFormattedTextLeftToRight(characters: String.CharacterView, patternes: [String], position: inout Int) -> String {
+    internal func getFormattedTextLeftToRight(characters: StringChars, patternes: [String], position: inout Int) -> String {
         var formattedResult = ""
         
         var index = 0
@@ -175,7 +176,7 @@ extension BxTextField
     
     /// Transform text to match with formattingTemplate for .rightToLeft direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
     @inline(__always)
-    internal func getFormattedTextRightToLeft(characters: String.CharacterView, patternes: [String], position: inout Int) -> String
+    internal func getFormattedTextRightToLeft(characters: StringChars, patternes: [String], position: inout Int) -> String
     {
         var formattedResult = ""
         

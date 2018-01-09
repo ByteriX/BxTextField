@@ -13,23 +13,38 @@
 
 import Foundation
 
+/// For supporting Swift 3/4
+#if swift(>=3.2)
+    public typealias StringChars = String
+#else
+    public typealias StringChars = String.CharacterView
+#endif
+
 /// String extension for BxTextField
 public extension String {
     
 #if swift(>=3.2)
-    //
+    /// For supporting Swift 3/4
+    public var chars: String {
+        return self
+    }
 #else
-    // For supporting Swift 3.0
-    var count: Int {
+    /// For supporting Swift 3.0
+    public var count: Int {
         return characters.count
     }
     
-    func index(_ i: String.Index, offsetBy n: String.IndexDistance) -> String.Index
+    /// For supporting Swift 3.0
+    public func index(_ i: String.Index, offsetBy n: String.IndexDistance) -> String.Index
     {
         return characters.index(i, offsetBy: n)
     }
+    
+    /// For supporting Swift 3/4
+    public var chars: String.CharacterView {
+        return characters
+    }
 #endif
-
     
     /// get NSRange from Range<String.Index> http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
     public func makeNSRange(from range : Range<String.Index>) -> NSRange {
