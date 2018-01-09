@@ -6,6 +6,14 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.5.0 (09.01.2018)
+##### Improvements
+* fixed supporting Swift 3 and compiling/testing on XCode 8.x
+* made String extension for supporting Swift 3/4
+* added foundation tests
+* clean all warnings
+* refactoring and small description changes
+
 ## 1.4.11 (26.12.2017)
 ##### Improvements
 * added secondary Tests
