@@ -78,10 +78,10 @@ open class BxTextField : UITextField {
     /// Not editable pattern part of the text. Defaults to "".
     @IBInspectable open var rightPatternText: String = "" {
         willSet {
-            guard var text = text, !text.isEmpty else {
+            guard let text = text, text.isEmpty == false else {
                 return
             }
-            let enteredText = text[text.startIndex..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
+            let enteredText = text[text.startIndex..<text.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
             super.text = enteredText + newValue
         }
         didSet {
@@ -91,10 +91,10 @@ open class BxTextField : UITextField {
     /// Not editable pattern part of the text. Defaults to "".
     @IBInspectable open var leftPatternText: String = "" {
         willSet {
-            guard var text = text, !text.isEmpty else {
+            guard let text = text, text.isEmpty == false else {
                 return
             }
-            let enteredText = text[text.characters.index(text.startIndex, offsetBy: self.leftPatternText.count)..<text.characters.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
+            let enteredText = text[text.index(text.startIndex, offsetBy: self.leftPatternText.count)..<text.index(text.endIndex, offsetBy: -self.rightPatternText.count)]
             super.text = enteredText + newValue
         }
         didSet {

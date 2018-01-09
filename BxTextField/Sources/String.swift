@@ -23,6 +23,11 @@ public extension String {
     var count: Int {
         return characters.count
     }
+    
+    func index(_ i: String.Index, offsetBy n: String.IndexDistance) -> String.Index
+    {
+        return characters.index(i, offsetBy: n)
+    }
 #endif
 
     
