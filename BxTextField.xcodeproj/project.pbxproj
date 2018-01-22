@@ -21,7 +21,6 @@
 		F9337C421E680740002134C2 /* BxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C411E680740002134C2 /* BxTextField.swift */; };
 		F951864B1E6C2C620084AD98 /* BxTextField+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */; };
 		F951864D1E6C2FD00084AD98 /* BxTextField+UpdateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */; };
-		F951864F1E6C554A0084AD98 /* BxTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */; };
 		F95186551E6C67690084AD98 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95186541E6C67690084AD98 /* CharacterSet.swift */; };
 		F95DCA551EDC968E007B82AF /* BxTextField.templatespec in Resources */ = {isa = PBXBuildFile; fileRef = F95DCA541EDC968E007B82AF /* BxTextField.templatespec */; };
 		F9F992631E693FA7002EAEA9 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F992621E693FA7002EAEA9 /* UIFont.swift */; };
@@ -70,7 +69,6 @@
 		F9337C411E680740002134C2 /* BxTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BxTextField.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BxTextField+Formatting.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BxTextField+UpdateText.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BxTextFieldDelegate.swift; sourceTree = "<group>"; };
 		F95186541E6C67690084AD98 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
 		F95DCA541EDC968E007B82AF /* BxTextField.templatespec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BxTextField.templatespec; sourceTree = "<group>"; };
 		F9F992621E693FA7002EAEA9 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -140,8 +138,8 @@
 		F9337C0B1E67FC37002134C2 /* BxTextFieldTests */ = {
 			isa = PBXGroup;
 			children = (
-				F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */,
 				F9337C0E1E67FC37002134C2 /* Info.plist */,
+				F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */,
 				CF571B021FF222DB000E934C /* CharacterSetTests.swift */,
 				CF571B041FF22DD5000E934C /* StringTests.swift */,
 				CF571B061FF2442A000E934C /* UIFontTests.swift */,
@@ -152,8 +150,8 @@
 		F9337C161E67FC37002134C2 /* BxTextFieldUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */,
 				F9337C191E67FC37002134C2 /* Info.plist */,
+				F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */,
 			);
 			path = BxTextFieldUITests;
 			sourceTree = "<group>";
@@ -196,7 +194,6 @@
 				F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */,
 				F9F992621E693FA7002EAEA9 /* UIFont.swift */,
 				F9F992641E694052002EAEA9 /* String.swift */,
-				F951864E1E6C554A0084AD98 /* BxTextFieldDelegate.swift */,
 				F95186541E6C67690084AD98 /* CharacterSet.swift */,
 			);
 			path = Sources;
@@ -343,7 +340,6 @@
 				F9F992631E693FA7002EAEA9 /* UIFont.swift in Sources */,
 				F9F992721E69638F002EAEA9 /* BxTextField+TextPosition.swift in Sources */,
 				F9337C3C1E680216002134C2 /* ViewController.swift in Sources */,
-				F951864F1E6C554A0084AD98 /* BxTextFieldDelegate.swift in Sources */,
 				F951864B1E6C2C620084AD98 /* BxTextField+Formatting.swift in Sources */,
 				F9F992651E694052002EAEA9 /* String.swift in Sources */,
 				F951864D1E6C2FD00084AD98 /* BxTextField+UpdateText.swift in Sources */,
