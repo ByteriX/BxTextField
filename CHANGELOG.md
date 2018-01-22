@@ -6,6 +6,11 @@ ByteriX, 2017. All right reserved.
 
 # Versions
 
+## 1.5.1 (22.01.2018)
+##### Improvements
+* added Tests for String and Formatting components
+* changed Readme, added example with filling direction
+
 ## 1.5.0 (09.01.2018)
 ##### Improvements
 * fixed supporting Swift 3 and compiling/testing on XCode 8.x
