@@ -53,4 +53,33 @@ class StringTests: XCTestCase {
         XCTAssertEqual(srcRange.length, range.length)
     }
     
+    func testCount() {
+        let string = "Test String СПЕЦСИМВОЛЫ"
+        XCTAssertEqual(string.count, 23)
+        
+        let emptyString = ""
+        XCTAssertEqual(emptyString.count, 0)
+        
+        let smallString = "Wow"
+        XCTAssertNotEqual(smallString.count, 0)
+    }
+    
+    func testIndex() {
+        let string = "Test String СПЕЦСИМВОЛЫ"
+        let index = string.index(string.startIndex, offsetBy: 5, limitedBy: string.endIndex)
+        XCTAssertNotNil(index)
+        
+        let stopIndex = string.index(index!, offsetBy: 1, limitedBy: string.endIndex)
+        XCTAssertNotNil(stopIndex)
+        
+        let range = Range<String.Index>.init(uncheckedBounds: (lower: index!, upper: stopIndex!))
+        
+#if swift(>=3.2)
+        XCTAssertEqual(string[range], "S")
+#else
+        XCTAssertEqual(string.substring(with: range), "S")
+#endif
+    }
+
+    
 }
