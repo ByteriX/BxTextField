@@ -10,7 +10,7 @@ This component available put formatted text, for example: phone number, url or e
 
 - [x] Inherited from `UITextField` and don't use delegate
 - [x] Can use patterns sides with constant text
-- [x] Have formatting putting
+- [x] Have formatting putting with different filling direction
 - [x] Correct working with selection text
 - [x] Fixed native issues (problems with edges)
 
@@ -117,6 +117,39 @@ class SimpleController: UIViewController {
         print(sender.text) // it should show "+4 (123) - 45 - 67 - 89"
     }
     
+}
+
+```
+
+### Different filling direction
+
+```swift
+
+class BxTextFieldFormattingTests: XCTestCase {
+
+    func testRightToLeftDirection() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "#.##"
+        textField.formattingDirection = .rightToLeft
+        textField.enteredText = "1"
+        XCTAssertEqual(textField.text!, "1")
+        textField.enteredText = "12"
+        XCTAssertEqual(textField.text!, ".12")
+        textField.enteredText = "123"
+        XCTAssertEqual(textField.text!, "1.23")
+    }
+    
+    func testLeftToRightDirection() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "#.##"
+        textField.formattingDirection = .leftToRight
+        textField.enteredText = "1"
+        XCTAssertEqual(textField.text!, "1")
+        textField.enteredText = "12"
+        XCTAssertEqual(textField.text!, "1.2")
+        textField.enteredText = "123"
+        XCTAssertEqual(textField.text!, "1.23")
+    }
 }
 
 ```

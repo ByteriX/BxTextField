@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0A71052016034E003C2514 /* BxTextFieldFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A71042016034E003C2514 /* BxTextFieldFormattingTests.swift */; };
 		CF571B031FF222DB000E934C /* CharacterSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B021FF222DB000E934C /* CharacterSetTests.swift */; };
 		CF571B051FF22DD5000E934C /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B041FF22DD5000E934C /* StringTests.swift */; };
 		CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B061FF2442A000E934C /* UIFontTests.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF0A71042016034E003C2514 /* BxTextFieldFormattingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BxTextFieldFormattingTests.swift; sourceTree = "<group>"; };
 		CF571B021FF222DB000E934C /* CharacterSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetTests.swift; sourceTree = "<group>"; };
 		CF571B041FF22DD5000E934C /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		CF571B061FF2442A000E934C /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				F9337C0E1E67FC37002134C2 /* Info.plist */,
 				F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */,
+				CF0A71042016034E003C2514 /* BxTextFieldFormattingTests.swift */,
 				CF571B021FF222DB000E934C /* CharacterSetTests.swift */,
 				CF571B041FF22DD5000E934C /* StringTests.swift */,
 				CF571B061FF2442A000E934C /* UIFontTests.swift */,
@@ -357,6 +360,7 @@
 				CF571B031FF222DB000E934C /* CharacterSetTests.swift in Sources */,
 				CF571B051FF22DD5000E934C /* StringTests.swift in Sources */,
 				F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */,
+				CF0A71052016034E003C2514 /* BxTextFieldFormattingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +459,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -503,7 +507,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

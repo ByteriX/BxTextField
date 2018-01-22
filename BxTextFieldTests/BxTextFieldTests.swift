@@ -49,13 +49,6 @@ class BxTextFieldTests: XCTestCase {
         textField.enteredText = "78901234567"
         XCTAssertEqual(textField.text!, "+7(890)123-45-67")
     }
-    
-    func testFormattingChangedDirection() {
-        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        textField.formattingTemplate = "+#(###)###-##-##"
-        textField.formattingDirection = .rightToLeft
-        textField.enteredText = "78901234567"
-        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
-    }
+
     
 }
