@@ -11,8 +11,9 @@ This component available put formatted text, for example: phone number, url or e
 - [x] Inherited from `UITextField` and don't use delegate
 - [x] Can use patterns sides with constant text
 - [x] Have formatting putting with different filling direction
-- [x] Correct working with selection text
+- [x] Correct working with selecting/editing text
 - [x] Fixed native issues (problems with edges)
+- [x] Covered of Tests
 
 ## Requirements
 
