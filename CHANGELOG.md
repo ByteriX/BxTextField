@@ -2,12 +2,13 @@
 
 BxTextField visual component for putting a text
 
-ByteriX, 2017. All right reserved.
+ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
 ## 1.5.1 (22.01.2018)
 ##### Improvements
+* removed unused delegate class
 * added Tests for String and Formatting components
 * changed Readme, added example with filling direction
 

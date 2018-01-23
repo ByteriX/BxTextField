@@ -30,6 +30,28 @@ class BxTextFieldFormattingTests: XCTestCase {
         XCTAssertEqual(textField.text!, "+7(890)123-45-67")
     }
     
+    func testFormatChange1() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.formattingReplacementChar = "*"
+        textField.enteredText = "78901234567"
+        XCTAssertNotEqual(textField.text!, "+7(890)123-45-67")
+        XCTAssertEqual(textField.text!, textField.formattingTemplate)
+        
+        textField.formattingTemplate = "+*(***)***-**-**"
+        textField.enteredText = "78901234567"
+        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
+    }
+    
+    func testFormatChange2() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        
+        textField.formattingTemplate = "+%(%%%)%%%-%%-%%"
+        textField.formattingReplacementChar = "%"
+        textField.enteredText = "78901234567"
+        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
+    }
+    
     func testRightToLeftDirection() {
         let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         textField.formattingTemplate = "#.##"
@@ -52,28 +74,6 @@ class BxTextFieldFormattingTests: XCTestCase {
         XCTAssertEqual(textField.text!, "1.2")
         textField.enteredText = "123"
         XCTAssertEqual(textField.text!, "1.23")
-    }
-    
-    func testFormatChange1() {
-        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        textField.formattingTemplate = "+#(###)###-##-##"
-        textField.formattingReplacementChar = "*"
-        textField.enteredText = "78901234567"
-        XCTAssertNotEqual(textField.text!, "+7(890)123-45-67")
-        XCTAssertEqual(textField.text!, textField.formattingTemplate)
-        
-        textField.formattingTemplate = "+*(***)***-**-**"
-        textField.enteredText = "78901234567"
-        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
-    }
-    
-    func testFormatChange2() {
-        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        
-        textField.formattingTemplate = "+%(%%%)%%%-%%-%%"
-        textField.formattingReplacementChar = "%"
-        textField.enteredText = "78901234567"
-        XCTAssertEqual(textField.text!, "+7(890)123-45-67")
     }
     
 }
