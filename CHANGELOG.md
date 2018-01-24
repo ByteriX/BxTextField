@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.5.2 (24.01.2018)
+##### Improvements
+* added UI Test cases with rightToLeft direction filing
+
 ## 1.5.1 (22.01.2018)
 ##### Improvements
 * removed unused delegate class
