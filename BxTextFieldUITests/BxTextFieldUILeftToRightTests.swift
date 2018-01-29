@@ -8,29 +8,113 @@
 
 import XCTest
 
-class BxTextFieldUILeftToRightTests: XCTestCase {
-        
-    override func setUp() {
+class BxTextFieldUILeftToRightTests: BxUITestCase {
+    
+    var textField : XCUIElement!
+    
+    override func setUp()
+    {
         super.setUp()
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
         
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        textField = tablesQuery.children(matching: .cell).element(boundBy: 2).children(matching: .textField).element
+        
+        textField.tap()
+        textField.typeText("0000000000")
+        
+        cutMenuAction(textField: textField)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testSpendNumber()
+    {
+        textField.typeText("0")
+        XCTAssertEqual(textField.value as! String, "+0")
+        
+        textField.typeText("9")
+        XCTAssertEqual(textField.value as! String, "+0 (9")
+        
+        textField.typeText("87")
+        XCTAssertEqual(textField.value as! String, "+0 (987")
+        
+        textField.typeText("6")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 6")
+        
+        textField.typeText("5")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 65")
+        textField.typeText("432")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32")
+        
+        textField.typeText("5")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 5")
+        
+        textField.typeText("1")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 51")
+        
+        // select only last symboles, because space symbole is seporator
+        textField.doubleTap()
+        textField.typeText("3334444")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 33")
+        
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCursorSelect()
+    {
+        textField.typeText("09876543210")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        textField.doubleTap()
+        
+        // It is better solution
+        let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0.5))
+        coordinate.withOffset(CGVector(dx:-20, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0)))
+        
+        textField.typeText("567890")
+        
+        XCTAssertEqual(textField.value as! String, "+5 (678) 90")
+        
+        textField.typeText("4321")
+        XCTAssertEqual(textField.value as! String, "+5 (678) 904 - 32 - 1")
+        textField.typeText("0")
+        XCTAssertEqual(textField.value as! String, "+5 (678) 904 - 32 - 10")
+        textField.typeText("9")
+        XCTAssertEqual(textField.value as! String, "+5 (678) 904 - 32 - 10")
+        
+    }
+    
+    func testCursorMove()
+    {
+        textField.typeText("09876543210")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
+        coordinate.withOffset(CGVector(dx:-40, dy:0)).tap()
+        
+        // double backspase because first only move to '2' and then remove it
+        textField.typeText("\u{8}")
+        textField.typeText("\u{8}")
+        
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 31 - 0")
+        
+        textField.typeText("4")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 34 - 10")
+        
+    }
+    
+    func testCursorSelectAndMove()
+    {
+        textField.typeText("09876543210")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
+        coordinate.withOffset(CGVector(dx:-43, dy:0)).tap()
+        textField.doubleTap()
+        coordinate.withOffset(CGVector(dx:-48, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-78, dy:0)))
+        textField.typeText("12345")
+        
+        XCTAssertEqual(textField.value as! String, "+0 (987) 123 - 45 - 10")
+        
     }
     
 }

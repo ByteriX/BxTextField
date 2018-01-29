@@ -24,7 +24,7 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         textField.tap()
         textField.typeText("0000000000")
         
-        clearField(textField)
+        cutMenuAction(textField: textField)
     }
     
     func testSpendNumber()
@@ -107,8 +107,6 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         
         let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
         coordinate.withOffset(CGVector(dx:-43, dy:0)).tap()
-        
-        // double backspase because first only move to '2' and then remove it
         textField.doubleTap()
         coordinate.withOffset(CGVector(dx:-48, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-78, dy:0)))
         textField.typeText("12345")

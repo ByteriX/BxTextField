@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.5.3 (29.01.2018)
+##### Improvements
+* added UI Test cases with leftToRight direction filing
+
 ## 1.5.2 (24.01.2018)
 ##### Improvements
 * added UI Test cases with rightToLeft direction filing

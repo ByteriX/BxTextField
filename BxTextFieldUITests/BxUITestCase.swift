@@ -26,7 +26,7 @@ class BxUITestCase: XCTestCase {
 
 extension XCTestCase {
     
-    func clearField(_ textField: XCUIElement)
+    func cutMenuAction(textField: XCUIElement)
     {
         let app = XCUIApplication()
         textField.tap()

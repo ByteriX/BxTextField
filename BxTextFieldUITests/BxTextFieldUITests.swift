@@ -59,7 +59,7 @@ class BxTextFieldUITests: XCTestCase {
         domainTextField.typeText("mail")
         XCTAssertEqual(domainTextField.value as! String, "mail.byterix.com")
         
-        clearField(domainTextField)
+        cutMenuAction(textField: domainTextField)
 
         domainTextField.typeText("phone")
 
