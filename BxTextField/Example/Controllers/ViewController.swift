@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var rightLeftField: BxTextField!
+    @IBOutlet weak var rightLeftRewriteSwitch: UISwitch!
+    @IBOutlet weak var leftRightField: BxTextField!
+    @IBOutlet weak var leftRightRewriteSwitch: UISwitch!
+    
     @IBOutlet weak var webField: BxTextField!
 
     override func viewDidLoad() {
@@ -19,18 +23,20 @@ class ViewController: UITableViewController, UITextFieldDelegate {
         rightLeftField.formattingDirection = .rightToLeft
         webField.enteredTextColor = UIColor.red
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
     }
-
-
+    
+    @IBAction func leftRightSwitchChanged(_ sender: Any) {
+        leftRightField.isFormattingRewriting = leftRightRewriteSwitch.isOn
+    }
+    
+    @IBAction func rightLeftSwitchChanged(_ sender: Any) {
+        rightLeftField.isFormattingRewriting = rightLeftRewriteSwitch.isOn
+    }
+    
 }
 

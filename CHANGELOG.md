@@ -6,6 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.6.0 (04.02.2018)
+##### Improvements
+* added isFormattingRewriting property with false default value for limitation formating putting
+* added Unit Tests and UI Tests for testing isFormattingRewriting
+* changed README
+
 ## 1.5.3 (29.01.2018)
 ##### Improvements
 * added UI Test cases with leftToRight direction filing

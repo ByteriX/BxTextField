@@ -105,7 +105,26 @@ extension BxTextField
                 }
             }
         }
+        if isFormattingRewriting == false {
+            clearExtraSymboles(for: &result, position: &position)
+        }
         return result
+    }
+    
+    internal func clearExtraSymboles(for text: inout String, position: inout Int) {
+        guard formattingTemplate.isEmpty == false, text.isEmpty == false else {
+            return
+        }
+        
+        let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
+        
+        let extraSymbolesCount = text.chars.count - patternes.count + 1
+        if extraSymbolesCount > 0,
+            let range = text.makeRange(from: NSMakeRange(position - extraSymbolesCount, extraSymbolesCount))
+        {
+            text.removeSubrange(range)
+            position = position - extraSymbolesCount
+        }
     }
     
     /// Transform text to match with formattingTemplate. The Position needed for shifting cursor

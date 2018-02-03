@@ -11,6 +11,7 @@ import XCTest
 class BxTextFieldUIRightToLeftTests: BxUITestCase {
     
     var textField : XCUIElement!
+    var rewritingSwitch : XCUIElement!
     
     override func setUp()
     {
@@ -20,6 +21,7 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         let tablesQuery = app.tables
         
         textField = tablesQuery.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element
+        rewritingSwitch = tablesQuery.children(matching: .cell).element(boundBy: 3).children(matching: .switch).element
         
         textField.tap()
         textField.typeText("0000000000")
@@ -50,7 +52,7 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         // select only last symboles, because space symbole is seporator
         textField.doubleTap()
         textField.typeText("3334444")
-        XCTAssertEqual(textField.value as! String, "+6 (543) 333 - 44 - 44")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 33 - 33")
         
     }
     
@@ -77,7 +79,7 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         textField.typeText("0")
         XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
         textField.typeText("9")
-        XCTAssertEqual(textField.value as! String, "+9 (876) 543 - 21 - 09")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
         
     }
     
@@ -109,10 +111,38 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         coordinate.withOffset(CGVector(dx:-43, dy:0)).tap()
         textField.doubleTap()
         coordinate.withOffset(CGVector(dx:-48, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-78, dy:0)))
-        textField.typeText("12345")
         
+        textField.typeText("123")
+        XCTAssertEqual(textField.value as! String, "09) 871 - 23 - 10")
+        
+        textField.typeText("45")
         XCTAssertEqual(textField.value as! String, "+0 (987) 123 - 45 - 10")
         
+    }
+    
+    func testRewriting()
+    {
+        textField.typeText("09876543210")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
+        coordinate.withOffset(CGVector(dx:-40, dy:0)).tap()
+        
+        textField.typeText("123")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        textField.typeText("\u{8}\u{8}")
+        rewritingSwitch.tap()
+        textField.typeText("12345")
+        XCTAssertEqual(textField.value as! String, "+7 (654) 123 - 45 - 10")
+        
+        rewritingSwitch.tap()
+        coordinate.withOffset(CGVector(dx:-40, dy:0)).tap()
+        textField.typeText("987")
+        XCTAssertEqual(textField.value as! String, "+7 (654) 123 - 45 - 10")
+        textField.typeText("\u{8}\u{8}")
+        textField.typeText("987")
+        XCTAssertEqual(textField.value as! String, "+7 (654) 123 - 98 - 10")
     }
     
 }

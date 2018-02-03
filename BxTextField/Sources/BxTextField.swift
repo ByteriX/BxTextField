@@ -56,8 +56,10 @@ open class BxTextField : UITextField {
     }
     /// You can use formattingEnteredCharacters or this from code.
     open var formattingEnteredCharSet: CharacterSet = CharacterSet()
-    /// Direction for replacement text from template
+    /// Direction for replacement text from template. Can equal leftToRight or rightToLeft value. Default is leftToRight
     open var formattingDirection: FormattingDirection = .leftToRight
+    /// When user would try put extra symboles for filled text and if it's true then text will be rewrited. It depends from formattingDirection too.
+    @IBInspectable open var isFormattingRewriting: Bool = false
     
     
     // MARK: Text attributes

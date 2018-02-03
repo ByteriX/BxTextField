@@ -84,6 +84,22 @@ $ git submodule add https://github.com/ByteriX/BxTextField.git
 
 - And that's it!
 
+## Properties
+
+### Formatting
+
+- formattingTemplate: String, Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
+
+- formattingReplacementChar: String, Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
+- formattingEnteredCharacters: String, Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
+- formattingDirection: FormattingDirection, Direction for replacement text from template. Can equal leftToRight or rightToLeft value. Default is leftToRight
+- isFormattingRewriting: Bool, When user would try put extra symboles for filled text and if it's true then text will be rewrited. It depends from formattingDirection too.
+
+### Patterns
+
+- rightPatternText: String, Not editable pattern part of the text. Defaults to "".
+- leftPatternText: String, Not editable pattern part of the text. Defaults to "".
+
 
 ## Usage
 
