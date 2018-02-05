@@ -47,6 +47,7 @@ extension BxTextField
                 if selectedTextRange.isEmpty {
                     goTo(textPosition: leftPositionEnteredText)
                 } else {
+                    // it's impossible situation, system's limited
                     self.selectedTextRange = textRange(from: leftPositionEnteredText, to: rightPositionEnteredText)
                 }
             } else if self.compare(selectedTextRange.start, to: leftPositionEnteredText) == .orderedAscending {
@@ -57,6 +58,7 @@ extension BxTextField
                 if selectedTextRange.isEmpty {
                     goTo(textPosition: rightPositionEnteredText)
                 } else {
+                    // it's impossible situation, system's limited
                     self.selectedTextRange = textRange(from: leftPositionEnteredText, to: rightPositionEnteredText)
                 }
             } else if self.compare(selectedTextRange.end, to: rightPositionEnteredText) == .orderedDescending {

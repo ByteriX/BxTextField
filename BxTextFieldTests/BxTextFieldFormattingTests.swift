@@ -76,4 +76,15 @@ class BxTextFieldFormattingTests: XCTestCase {
         XCTAssertEqual(textField.text!, "1.23")
     }
     
+    func testLeftPattern() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.leftPatternText = "$ "
+        textField.formattingTemplate = "###"
+        textField.formattingDirection = .rightToLeft
+        textField.enteredText = "123"
+        XCTAssertEqual(textField.text!, "$ 123")
+        textField.enteredText = ""
+        XCTAssertEqual(textField.text!, "$ ")
+    }
+    
 }

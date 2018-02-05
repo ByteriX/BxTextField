@@ -54,7 +54,8 @@ class BxTextFieldUITests: XCTestCase {
         let app = XCUIApplication()
         let tablesQuery = app.tables
         let domainTextField = tablesQuery.children(matching: .cell).element(boundBy: 0).children(matching: .textField).element
-        
+        let subdomainTextField = tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element
+
         domainTextField.tap()
         domainTextField.typeText("mail")
         XCTAssertEqual(domainTextField.value as! String, "mail.byterix.com")
@@ -62,8 +63,82 @@ class BxTextFieldUITests: XCTestCase {
         cutMenuAction(textField: domainTextField)
 
         domainTextField.typeText("phone")
-
         XCTAssertEqual(domainTextField.value as! String, "phone.byterix.com")
+        
+        subdomainTextField.tap()
+        subdomainTextField.typeText("like")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.like.byterix.com")
+        
+        let coordinate = subdomainTextField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
+        coordinate.withOffset(CGVector(dx:-240, dy:0)).tap()
+        
+        subdomainTextField.typeText("\u{8}")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.like.byterix.com")
+        subdomainTextField.typeText("1")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.1like.byterix.com")
+        subdomainTextField.typeText("\u{8}")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.like.byterix.com")
+        subdomainTextField.typeText("\u{8}")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.like.byterix.com")
+        
+        coordinate.withOffset(CGVector(dx:-10, dy:0)).tap()
+        subdomainTextField.typeText("\u{8}ing")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.liking.byterix.com")
+        
+        subdomainTextField.typeText("\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}\u{8}")
+        XCTAssertEqual(subdomainTextField.value as! String, "www..byterix.com")
+        subdomainTextField.typeText("123")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.123.byterix.com")
+    }
+    
+    func testSelected()
+    {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        let subdomainTextField = tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element
+
+        subdomainTextField.tap()
+        subdomainTextField.typeText("selected")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.selected.byterix.com")
+        
+        let coordinate = subdomainTextField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0.5))
+        coordinate.withOffset(CGVector(dx:-10, dy:0.5)).tap()
+        
+        coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
+         coordinate.withOffset(CGVector(dx:-300, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-20, dy:0)))
+        
+        subdomainTextField.typeText("1")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.selected1.byterix.com")
+        
+        subdomainTextField.doubleTap()
+        coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
+        
+        subdomainTextField.typeText("S")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.Selected1.byterix.com")
+        
+        subdomainTextField.doubleTap()
+        coordinate.withOffset(CGVector(dx:-200, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
+        
+        subdomainTextField.typeText("\u{8}")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.Selected.byterix.com")
+        
+        subdomainTextField.doubleTap()
+        coordinate.withOffset(CGVector(dx:-190, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
+        coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
+        
+        subdomainTextField.typeText("D")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.SelecteD.byterix.com")
+        
+        subdomainTextField.doubleTap()
+        coordinate.withOffset(CGVector(dx:-190, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
+        coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
+        
+        subdomainTextField.typeText("end")
+        XCTAssertEqual(subdomainTextField.value as! String, "www.end.byterix.com")
+        
+        cutMenuAction(textField: subdomainTextField)
+        XCTAssertEqual(subdomainTextField.value as! String, "www..byterix.com")
+        
     }
     
     
