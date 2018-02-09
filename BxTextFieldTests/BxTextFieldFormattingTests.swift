@@ -87,42 +87,36 @@ class BxTextFieldFormattingTests: XCTestCase {
         XCTAssertEqual(textField.text!, "$ ")
     }
     
-    func testNotRewriting() {
+    func testEnteredCharacters() {
         let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         textField.leftPatternText = "$ "
         textField.formattingTemplate = "###"
-        textField.isFormattingRewriting = false
+        textField.formattingEnteredCharacters = "1234567890"
         textField.formattingDirection = .rightToLeft
-        textField.enteredText = "12345"
-        XCTAssertEqual(textField.text!, "$ 345")
-        textField.enteredText = "09"
-        XCTAssertEqual(textField.text!, "$ 09")
+        
+        textField.enteredText = "123"
+        XCTAssertEqual(textField.text!, "$ 123")
+        
+        textField.enteredText = "456xxx"
+        XCTAssertEqual(textField.text!, "$ 456")
+        
+        textField.enteredText = "xxx789"
+        XCTAssertEqual(textField.text!, "$ 789")
         
         textField.enteredText = "xxxxxx"
-        XCTAssertEqual(textField.text!, "$ xxx")
+        XCTAssertEqual(textField.text!, "$ ")
         
-        textField.formattingDirection = .leftToRight
-        textField.enteredText = "12345"
-        XCTAssertEqual(textField.text!, "$ 123")
-    }
-    
-    func testRewriting() {
-        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        textField.leftPatternText = "$ "
-        textField.formattingTemplate = "###"
-        textField.isFormattingRewriting = true
         textField.formattingDirection = .rightToLeft
-        textField.enteredText = "12345"
+        textField.enteredText = "12xxxxx3xxxxx45"
         XCTAssertEqual(textField.text!, "$ 345")
-        textField.enteredText = "09"
-        XCTAssertEqual(textField.text!, "$ 09")
-        
-        textField.enteredText = "xxxxxx"
-        XCTAssertEqual(textField.text!, "$ xxx")
+        textField.enteredText = "9xxxxx8xxxxx7xxxxx6xxxxx5"
+        XCTAssertEqual(textField.text!, "$ 765")
         
         textField.formattingDirection = .leftToRight
-        textField.enteredText = "12345"
+        textField.enteredText = "12xxxxx3xxxxx45"
         XCTAssertEqual(textField.text!, "$ 123")
+        textField.enteredText = "9xxxxx8xxxxx7xxxxx6xxxxx5"
+        XCTAssertEqual(textField.text!, "$ 987")
     }
     
 }

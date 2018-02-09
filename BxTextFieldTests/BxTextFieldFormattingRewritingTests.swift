@@ -30,4 +30,43 @@ class BxTextFieldFormattingRewritingTests: XCTestCase {
         textField.enteredText = "12345678901"
     }
     
+    func testRewriting() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.leftPatternText = "$ "
+        textField.formattingTemplate = "###"
+        textField.isFormattingRewriting = true
+        textField.formattingDirection = .rightToLeft
+        textField.enteredText = "12345"
+        XCTAssertEqual(textField.text!, "$ 345")
+        textField.enteredText = "09"
+        XCTAssertEqual(textField.text!, "$ 09")
+        
+        textField.enteredText = "xxxxxx"
+        XCTAssertEqual(textField.text!, "$ xxx")
+        
+        textField.formattingDirection = .leftToRight
+        textField.enteredText = "12345"
+        XCTAssertEqual(textField.text!, "$ 123")
+    }
+
+    func testNotRewriting() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.leftPatternText = "$ "
+        textField.formattingTemplate = "###"
+        textField.isFormattingRewriting = false
+        textField.formattingDirection = .rightToLeft
+        textField.enteredText = "12345"
+        XCTAssertEqual(textField.text!, "$ 345")
+        textField.enteredText = "09"
+        XCTAssertEqual(textField.text!, "$ 09")
+        
+        textField.enteredText = "xxxxxx"
+        XCTAssertEqual(textField.text!, "$ xxx")
+        
+        textField.formattingDirection = .leftToRight
+        textField.enteredText = "12345"
+        XCTAssertEqual(textField.text!, "$ 123")
+    }
+    
+    
 }

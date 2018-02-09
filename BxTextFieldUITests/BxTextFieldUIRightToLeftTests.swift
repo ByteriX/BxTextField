@@ -145,4 +145,20 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         XCTAssertEqual(textField.value as! String, "+7 (654) 123 - 98 - 10")
     }
     
+    func testEnteredCharacters()
+    {
+        textField.typeText("xxxxx09876543210")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        cutMenuAction(textField: textField)
+        
+        textField.typeText("09876543210xxxxx")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+        
+        cutMenuAction(textField: textField)
+        
+        textField.typeText("xx0xxx987xxx6x5x4x32xxx10xx")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 32 - 10")
+    }
+    
 }
