@@ -137,19 +137,14 @@ extension BxTextField
 
             let characters = text.chars
             let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
-            var formattedResult = ""
             
             if formattingDirection == .leftToRight {
-                
-                formattedResult = formattedResult + getFormattedTextLeftToRight(characters: characters, patternes: patternes, position: &position)
-                
+                return getFormattedTextLeftToRight(characters: characters, patternes: patternes, position: &position)
             } else if formattingDirection == .rightToLeft {
-                
-                formattedResult = formattedResult + getFormattedTextRightToLeft(characters: characters, patternes: patternes, position: &position)
-                
+                return getFormattedTextRightToLeft(characters: characters, patternes: patternes, position: &position)                
             }
             
-            return formattedResult
+            return text
         }
         
         return text
