@@ -80,6 +80,24 @@ class StringTests: XCTestCase {
         XCTAssertEqual(string.substring(with: range), "S")
 #endif
     }
-
     
+    func testFailMakeRect() {
+        var testRange: NSRange = NSRange(location: 5, length: 9)
+        XCTAssertNil("".makeRange(from: testRange))
+        
+        testRange = NSRange(location: 3, length: 1)
+        XCTAssertNil("012".makeRange(from: testRange))
+        
+        testRange = NSRange(location: 3, length: 0)
+        XCTAssertNotNil("012".makeRange(from: testRange))
+        
+        testRange = NSRange(location: 2, length: 0)
+        XCTAssertNil("0".makeRange(from: testRange))
+        XCTAssertNotNil("01".makeRange(from: testRange))
+        
+        testRange = NSRange(location: -1, length: 1)
+        XCTAssertNil("123".makeRange(from: testRange))
+    }
+
+
 }

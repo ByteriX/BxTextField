@@ -72,7 +72,13 @@ public extension String {
     
     public func makeRange(from range: NSRange) -> Range<String.Index>? {
 #if swift(>=3.2)
-    
+
+        // Prepared test with extrime checking
+        guard self.count + 1 > range.location + range.length,
+            range.location > -1, range.length > -1
+        else {
+            return nil
+        }
         return Range<String.Index>(range, in: self)
 #else
         guard
