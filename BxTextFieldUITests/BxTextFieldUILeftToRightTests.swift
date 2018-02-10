@@ -23,6 +23,10 @@ class BxTextFieldUILeftToRightTests: BxUITestCase {
         textField = tablesQuery.children(matching: .cell).element(boundBy: 2).children(matching: .textField).element
         rewritingSwitch = tablesQuery.children(matching: .cell).element(boundBy: 2).children(matching: .switch).element
         
+        if let isOn = rewritingSwitch.value as? Bool, isOn {
+            rewritingSwitch.tap()
+        }
+        
         textField.tap()
         textField.typeText("0000000000")
         
