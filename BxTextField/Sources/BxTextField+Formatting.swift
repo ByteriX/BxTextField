@@ -119,7 +119,7 @@ extension BxTextField
         let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
         
         let extraSymbolesCount = text.chars.count - patternes.count + 1
-        if extraSymbolesCount > 0,
+        if extraSymbolesCount > 0, position >= extraSymbolesCount,
             let range = text.makeRange(from: NSMakeRange(position - extraSymbolesCount, extraSymbolesCount))
         {
             text.removeSubrange(range)

@@ -6,6 +6,13 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.6.1 (10.02.2018)
+##### Bug fix
+* bug fixed when changed enteredText from code
+* made full general test covarage
+* added extrem unit tests
+* optimized getFormattedText function
+
 ## 1.6.0 (04.02.2018)
 ##### Improvements
 * added isFormattingRewriting property with false default value for limitation formating putting
