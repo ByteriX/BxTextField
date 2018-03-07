@@ -6,6 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.6.2 (07.03.2018)
+##### Bug fix
+* new public method getEnteredText
+* fixed enteredText property when we get unformatted text
+* New test for getting nil text
+
 ## 1.6.1 (10.02.2018)
 ##### Bug fix
 * bug fixed when changed enteredText from code

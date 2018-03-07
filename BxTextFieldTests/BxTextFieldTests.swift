@@ -49,6 +49,31 @@ class BxTextFieldTests: XCTestCase {
         textField.enteredText = "78901234567"
         XCTAssertEqual(textField.text!, "+7(890)123-45-67")
     }
+    
+    func testNilText() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.text = nil
+        XCTAssertEqual(textField.text!, "")
+        XCTAssertEqual(textField.enteredText, "")
+        textField.enteredText = "123"
+        XCTAssertEqual(textField.text!, "+1(23")
+        textField.text = nil
+        XCTAssertEqual(textField.text!, "")
+        XCTAssertEqual(textField.enteredText, "")
+    }
+    
+    func testBackwardTextPutting() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.formattingEnteredCharacters="0123456789"
+        textField.enteredText = "12345"
+        XCTAssertEqual(textField.text!, "+1(234)5")
+        XCTAssertEqual(textField.enteredText, "12345")
+        textField.text = "+7(654)3"
+        XCTAssertEqual(textField.text!, "+7(654)3")
+        XCTAssertEqual(textField.enteredText, "76543")
+    }
 
     
 }

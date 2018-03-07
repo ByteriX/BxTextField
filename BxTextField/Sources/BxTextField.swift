@@ -71,7 +71,7 @@ open class BxTextField : UITextField {
                 return ""
             }
             var position = 0
-            return getClearFromPatternText(with: text, position: &position)
+            return getEnteredText(with: text, position: &position)
         }
         set {
             text = leftPatternText + newValue + rightPatternText

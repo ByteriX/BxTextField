@@ -84,6 +84,22 @@ extension BxTextField
         return result
     }
 #endif
+    
+    fileprivate func clearExtraSymboles(for text: inout String, position: inout Int) {
+        guard formattingTemplate.isEmpty == false, text.isEmpty == false else {
+            return
+        }
+        
+        let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
+        
+        let extraSymbolesCount = text.chars.count - patternes.count + 1
+        if extraSymbolesCount > 0, position >= extraSymbolesCount,
+            let range = text.makeRange(from: NSMakeRange(position - extraSymbolesCount, extraSymbolesCount))
+        {
+            text.removeSubrange(range)
+            position = position - extraSymbolesCount
+        }
+    }
 
     /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
     public func getSimpleUnformattedText(with text: String, position: inout Int) -> String {
@@ -109,22 +125,6 @@ extension BxTextField
             clearExtraSymboles(for: &result, position: &position)
         }
         return result
-    }
-    
-    internal func clearExtraSymboles(for text: inout String, position: inout Int) {
-        guard formattingTemplate.isEmpty == false, text.isEmpty == false else {
-            return
-        }
-        
-        let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
-        
-        let extraSymbolesCount = text.chars.count - patternes.count + 1
-        if extraSymbolesCount > 0, position >= extraSymbolesCount,
-            let range = text.makeRange(from: NSMakeRange(position - extraSymbolesCount, extraSymbolesCount))
-        {
-            text.removeSubrange(range)
-            position = position - extraSymbolesCount
-        }
     }
     
     /// Transform text to match with formattingTemplate. The Position needed for shifting cursor

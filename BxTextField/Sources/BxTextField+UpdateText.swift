@@ -16,11 +16,17 @@ import UIKit
 /// Functions for drowing final text of BxTextField
 extension BxTextField {
     
+    /// Return unformatted text without patterns
+    public func getEnteredText(with text: String, position offset: inout Int) -> String {
+        let clearText = getClearFromPatternText(with: text, position: &offset)
+        let unformattedText = getSimpleUnformattedText(with: clearText, position: &offset)
+        return unformattedText
+    }
+    
     /// update text for showing
     fileprivate func updateTextOnly(offset: inout Int)
     {
-        let clearText = getClearFromPatternText(with: text ?? "", position: &offset)
-        let unformattedText = getSimpleUnformattedText(with: clearText, position: &offset)
+        let unformattedText = getEnteredText(with: text ?? "", position: &offset)
         var formattedText = getFormattedText(with: unformattedText, position: &offset)
         
         formattedText = leftPatternText + formattedText + rightPatternText
