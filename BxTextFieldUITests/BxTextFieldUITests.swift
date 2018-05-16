@@ -105,7 +105,7 @@ class BxTextFieldUITests: XCTestCase {
         coordinate.withOffset(CGVector(dx:-10, dy:0.5)).tap()
         
         coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
-         coordinate.withOffset(CGVector(dx:-300, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-20, dy:0)))
+        coordinate.withOffset(CGVector(dx:-300, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-20, dy:0)))
         
         subdomainTextField.typeText("1")
         XCTAssertEqual(subdomainTextField.value as! String, "www.selected1.byterix.com")
@@ -122,15 +122,18 @@ class BxTextFieldUITests: XCTestCase {
         subdomainTextField.typeText("\u{8}")
         XCTAssertEqual(subdomainTextField.value as! String, "www.Selected.byterix.com")
         
+        // this is seted up 170 for iPhone 6. And all values too.
+        let startPosition = -170.0
+        
         subdomainTextField.doubleTap()
-        coordinate.withOffset(CGVector(dx:-190, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
+        coordinate.withOffset(CGVector(dx:startPosition, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
         coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
         
         subdomainTextField.typeText("D")
         XCTAssertEqual(subdomainTextField.value as! String, "www.SelecteD.byterix.com")
         
         subdomainTextField.doubleTap()
-        coordinate.withOffset(CGVector(dx:-190, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
+        coordinate.withOffset(CGVector(dx:startPosition, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-300, dy:0.5)))
         coordinate.withOffset(CGVector(dx:-100, dy:0.5)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-10, dy:0.5)))
         
         subdomainTextField.typeText("end")

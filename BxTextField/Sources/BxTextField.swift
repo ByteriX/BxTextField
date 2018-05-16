@@ -135,7 +135,17 @@ open class BxTextField : UITextField {
     /// Placeholder without patterns text. Defaults to "".
     @IBInspectable open var placeholderText: String = "" {
         didSet {
-            placeholder = leftPatternText + placeholderText + rightPatternText
+            if isPlaceholderPatternShown {
+                placeholder = leftPatternText + placeholderText + rightPatternText
+            } else {
+                placeholder = placeholderText
+            }
+        }
+    }
+    /// It manages showing of placeholder: with/without patterns.
+    @IBInspectable open var isPlaceholderPatternShown: Bool = true {
+        didSet {
+            updatePatternText()
         }
     }
     /// size with vertical/horizontal edges text showing. Default is zero.

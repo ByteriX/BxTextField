@@ -6,6 +6,11 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.7.0 (16.05.2018)
+##### Improvements
+* added isPlaceholderPatternShown property for magage pattern showing on placeholder
+* test covarage of placeholder changing
+
 ## 1.6.2 (07.03.2018)
 ##### Bug fix
 * new public method getEnteredText

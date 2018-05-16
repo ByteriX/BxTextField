@@ -15,6 +15,8 @@
 		CF571B031FF222DB000E934C /* CharacterSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B021FF222DB000E934C /* CharacterSetTests.swift */; };
 		CF571B051FF22DD5000E934C /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B041FF22DD5000E934C /* StringTests.swift */; };
 		CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B061FF2442A000E934C /* UIFontTests.swift */; };
+		E329031F20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */; };
+		E329032120AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */; };
 		F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */; };
 		F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */; };
 		F9337C2A1E680027002134C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F9337C291E680027002134C2 /* LICENSE */; };
@@ -59,6 +61,8 @@
 		CF571B021FF222DB000E934C /* CharacterSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetTests.swift; sourceTree = "<group>"; };
 		CF571B041FF22DD5000E934C /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		CF571B061FF2442A000E934C /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
+		E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldPlaceholderTests.swift; sourceTree = "<group>"; };
+		E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldUIPlaceholderTests.swift; sourceTree = "<group>"; };
 		F9337BF41E67FC37002134C2 /* BxTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BxTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C081E67FC37002134C2 /* BxTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BxTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldTests.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */,
 				CF0A71042016034E003C2514 /* BxTextFieldFormattingTests.swift */,
 				CF1BEF0820264161002FB58B /* BxTextFieldFormattingRewritingTests.swift */,
+				E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */,
 				CF571B021FF222DB000E934C /* CharacterSetTests.swift */,
 				CF571B041FF22DD5000E934C /* StringTests.swift */,
 				CF571B061FF2442A000E934C /* UIFontTests.swift */,
@@ -167,6 +172,7 @@
 				F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */,
 				CF109B582019C1F20099B101 /* BxTextFieldUILeftToRightTests.swift */,
 				CF109B5A2019C20A0099B101 /* BxTextFieldUIRightToLeftTests.swift */,
+				E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */,
 			);
 			path = BxTextFieldUITests;
 			sourceTree = "<group>";
@@ -277,7 +283,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Byterix;
 				TargetAttributes = {
 					F9337BF31E67FC37002134C2 = {
@@ -374,6 +380,7 @@
 				CF571B051FF22DD5000E934C /* StringTests.swift in Sources */,
 				F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */,
 				CF0A71052016034E003C2514 /* BxTextFieldFormattingTests.swift in Sources */,
+				E329031F20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF109B592019C1F20099B101 /* BxTextFieldUILeftToRightTests.swift in Sources */,
+				E329032120AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift in Sources */,
 				CF109B5D2019CD880099B101 /* BxUITestCase.swift in Sources */,
 				CF109B5B2019C20A0099B101 /* BxTextFieldUIRightToLeftTests.swift in Sources */,
 				F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */,
@@ -436,6 +444,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -443,6 +452,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -492,6 +502,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -499,6 +510,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
