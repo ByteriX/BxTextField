@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.7.1 (13.08.2018)
+##### Improvements
+* formattingEnteredCharSet can be used if formattingTemplate is empty
+
 ## 1.7.0 (16.05.2018)
 ##### Improvements
 * added isPlaceholderPatternShown property for magage pattern showing on placeholder

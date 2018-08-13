@@ -103,7 +103,7 @@ extension BxTextField
 
     /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
     public func getSimpleUnformattedText(with text: String, position: inout Int) -> String {
-        guard formattingTemplate.isEmpty == false, formattingEnteredCharSet.isEmpty == false
+        guard formattingEnteredCharSet.isEmpty == false
         else {
             return text
         }

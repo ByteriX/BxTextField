@@ -43,7 +43,7 @@ open class BxTextField : UITextField {
     /// Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
     @IBInspectable open var formattingReplacementChar: String = "#"
     
-    /// Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
+    /// Allowable symbols for entering. It used work only if formattingTemplate is not empty, but now if formattingTemplate is empty it same used always. Default is "", that is all symbols.
     @IBInspectable open var formattingEnteredCharacters: String = ""
     {
         didSet {
