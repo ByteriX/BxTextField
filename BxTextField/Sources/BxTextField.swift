@@ -37,8 +37,13 @@ open class BxTextField : UITextField {
     
     // MARK: Formatting
     
-    /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
+    /// Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is "". Warning: All symboles how contains in that will be ignored from putting
     @IBInspectable open var formattingTemplate: String = ""
+    {
+        didSet {
+            self.formattingEnteredCharacters = { self.formattingEnteredCharacters }()
+        }
+    }
     
     /// Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
     @IBInspectable open var formattingReplacementChar: String = "#"
@@ -48,9 +53,13 @@ open class BxTextField : UITextField {
     {
         didSet {
             if formattingEnteredCharacters.isEmpty {
-                formattingEnteredCharSet = CharacterSet().inverted
+                if formattingTemplate.isEmpty {
+                    formattingEnteredCharSet = CharacterSet()
+                } else {
+                    formattingEnteredCharSet = CharacterSet(charactersIn: formattingTemplate).inverted
+                }
             } else {
-                formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters)
+                formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters).subtracting(CharacterSet(charactersIn: formattingTemplate))
             }
         }
     }

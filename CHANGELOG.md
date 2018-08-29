@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.7.2 (29.08.2018)
+##### Bug fix
+* Warning: All symboles how contains in formattingTemplate will be ignored from putting because it had broken alghoritm of putting
+
 ## 1.7.1 (13.08.2018)
 ##### Improvements
 * formattingEnteredCharSet can be used if formattingTemplate is empty
