@@ -79,7 +79,7 @@ class BxTextFieldTests: XCTestCase {
         let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         textField.formattingTemplate = "+#(###)###-##-##"
         textField.formattingEnteredCharacters="0123456789"
-        textField.enteredText = "abc1-+-W2R3S4###--5"
+        textField.enteredText = "(abc1-+-W2R3S4###())5"
         XCTAssertEqual(textField.text!, "+1(234)5")
         XCTAssertEqual(textField.enteredText, "12345")
         textField.text = "+7#(654)3W"
