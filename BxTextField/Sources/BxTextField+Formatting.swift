@@ -17,8 +17,15 @@ import Foundation
 extension BxTextField
 {
     
-    /// Return clear text without patterns (doesn't include unformatting). The Position needed for shifting cursor
+    
 #if swift( >=3.2 )
+    /**
+     Return clear text without left and right patterns
+     - Remark: The Position needed for shifting cursor
+     - Parameter text: input string
+     - Parameter position: output position of cursor
+     - Returns: string without left and right patterns from text
+     */
     public func getClearFromPatternText(with text: String, position: inout Int) -> String {
         var result : String = text
         
@@ -85,6 +92,7 @@ extension BxTextField
     }
 #endif
     
+    /// helper for `getSimpleUnformattedText`
     fileprivate func clearExtraSymboles(for text: inout String, position: inout Int) {
         guard formattingTemplate.isEmpty == false, text.isEmpty == false else {
             return
@@ -101,7 +109,13 @@ extension BxTextField
         }
     }
 
-    /// Return clear text without formatting. This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor
+    /**
+        Return clear text without formatting.
+        - Remark: This algorithm clear all symbols if formattingEnteredCharSet doesn't contain its. The Position needed for shifting cursor.
+        - Parameter text: input string
+        - Parameter position: output position of cursor
+        - Returns: string without formatting from text
+     */
     public func getSimpleUnformattedText(with text: String, position: inout Int) -> String {
         guard formattingEnteredCharSet.isEmpty == false
         else {
@@ -127,7 +141,20 @@ extension BxTextField
         return result
     }
     
-    /// Transform text to match with formattingTemplate. The Position needed for shifting cursor
+    /**
+     Transform text to match with formattingTemplate.
+     - Remark: The Position needed for shifting cursor
+     - Parameter text: input string
+     - Parameter position: output position of cursor
+     - Returns: string with formatting from text from @ref formattingTemplate
+     
+     ```Swift
+     // formattingTemplate = ###-###-##-##
+     var position = 5
+     let formattedText = getFormattedText(with: "1234567890", position: position)
+     // formattedText = 123-456-78-90 position = 6
+     ```
+     */
     public func getFormattedText(with text: String, position: inout Int) -> String {
         guard formattingTemplate.isEmpty == false else {
             return text
@@ -150,7 +177,15 @@ extension BxTextField
         return text
     }
     
-    /// Transform text to match with formattingTemplate for .leftToRight direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
+    /**
+     Transform text to match with formattingTemplate for .leftToRight direction.
+     - Remark:  The Position needed for shifting cursor. This method is unsafety, because have not check input values
+     - Parameter characters: input string with special for (since Swift 4 it will be just String type)
+     - Parameter patternes: array of extern symboles from formattingTemplate without replacement symboles
+     - Parameter position: output position of cursor
+     - Returns: string with formatting from text from **formattingTemplate**
+     - SeeAlso: `getFormattedText(with:position:)`, `getFormattedTextRightToLeft(characters:patternes:position:)`
+     */
     @inline(__always)
     internal func getFormattedTextLeftToRight(characters: StringChars, patternes: [String], position: inout Int) -> String {
         var formattedResult = ""
@@ -188,7 +223,15 @@ extension BxTextField
         return formattedResult
     }
     
-    /// Transform text to match with formattingTemplate for .rightToLeft direction. The Position needed for shifting cursor. This method is unsafety, because have not check input values
+    /**
+     Transform text to match with formattingTemplate for .rightToLeft direction.
+     - Remark:  The Position needed for shifting cursor. This method is unsafety, because have not check input values
+     - Parameter characters: input string with special for (since Swift 4 it will be just String type)
+     - Parameter patternes: array of extern symboles from formattingTemplate without replacement symboles
+     - Parameter position: output position of cursor
+     - Returns: string with formatting from text from **formattingTemplate**
+     - SeeAlso: `getFormattedText(with:position:)`, `getFormattedTextLeftToRight(characters:patternes:position:)`
+     */
     @inline(__always)
     internal func getFormattedTextRightToLeft(characters: StringChars, patternes: [String], position: inout Int) -> String
     {

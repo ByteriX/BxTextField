@@ -18,6 +18,7 @@ public extension UIFont
 {
     
     /// return bold font from current
+    /// - Todo: in a future we can change it to property
     public func bold() -> UIFont {
         let descriptor = self.fontDescriptor.withSymbolicTraits(UIFontDescriptorSymbolicTraits.traitBold)
         return UIFont(descriptor: descriptor!, size: 0)

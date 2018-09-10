@@ -17,14 +17,20 @@ import UIKit
 extension BxTextField
 {
     
-    /// right edges position of the text without patterns
+    /**
+     Return right edges position of the text without patterns
+     - Returns: right edges position of the text without patterns
+     */
     internal var rightPositionEnteredText: UITextPosition? {
         get {
             return position(from: endOfDocument, offset: -rightPatternText.count)
         }
     }
     
-    /// left edges position of the text without patterns
+    /**
+     Return left edges position of the text without patterns
+     - Returns: left edges position of the text without patterns
+     */
     internal var leftPositionEnteredText: UITextPosition? {
         get {
             return position(from: beginningOfDocument, offset: leftPatternText.count)

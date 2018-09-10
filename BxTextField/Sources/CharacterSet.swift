@@ -16,7 +16,11 @@ import Foundation
 /// CharacterSet extension for BxTextField
 public extension CharacterSet {
     
-    /// If it contains character sybol then return true
+    /**
+     If it contains character symbol then will return true
+     - Parameter character: input symbol for searching
+     - Returns: true it contains character symbol else false
+     */
     public func contains(_ character: Character) -> Bool {
         let string = String(character)
         let ix1 = string.startIndex

@@ -35,7 +35,10 @@ extension BxTextField {
         
     }
     
-    /// update text for showing
+    /**
+     Update text for showing
+     - Remark: Cursor can move when text lenght is changed
+     */
     public func updateTextWithPosition() {
         guard let selectedTextRange = selectedTextRange, isFirstResponder == true else {
             if let text = text, text.isEmpty == false {
@@ -56,8 +59,15 @@ extension BxTextField {
         }
     }
     
-    /// Return attributed text for showing prepared text
+    ///
 #if swift( >=4.0 )
+    /**
+     Return attributed text for showing prepared text. It can be placehlder/field text and etc.
+     - Remark: Attributes need for custom showing content of Field
+     - Parameter text: complex text which need add attributes
+     - Parameter enteredTextAttributes: attributes for entered symboles only without patterns part.
+     - Returns: attributed text for showing prepared text
+     */
     open func getAttributedText(with text: String, enteredTextAttributes: [NSAttributedStringKey: NSObject]? = nil) -> NSMutableAttributedString
     {
         let attributedString = NSMutableAttributedString(string: text)

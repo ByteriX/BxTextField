@@ -14,14 +14,27 @@
 
 import UIKit
 
-/// Custom UITextField with different features
+/**
+ Custom UITextField with different features
+ - Remark: You can use it from storyboard with all InterfaceBuilder featurs with a setting up component
+
+ ```Swift
+ let textField = BxTextField(frame: CGRect(x: 0.0, y: 0.0, width: 320.0, height: 40.0))
+ textField.leftPatternText = "+7 "
+ textField.formattingTemplate = "(###) ### - ## - ##"
+ textField.formattingEnteredCharacters = "0123456789"
+ // It's all for phone formatting, textField's alrady for using
+ ```
+ */
 open class BxTextField : UITextField {
     
     // MARK: Typies
     
-    /// Direction for replacement text from template
+    /// Direction for replacement text from a template
     public enum FormattingDirection {
+        /// text will fill from left to right
         case leftToRight
+        /// text will fill from right to left
         case rightToLeft
     }
     
@@ -73,7 +86,7 @@ open class BxTextField : UITextField {
     
     // MARK: Text attributes
     
-    /// Editable part of the text, wich can changed by user. Defaults to "".
+    /// Editable part of the text, wich can changed by user. **Defaults to "".**
     @IBInspectable open var enteredText: String {
         get {
             guard let text = text else {
@@ -86,7 +99,7 @@ open class BxTextField : UITextField {
             text = leftPatternText + newValue + rightPatternText
         }
     }
-    /// Not editable pattern part of the text. Defaults to "".
+    /// Not editable pattern part of the text. **Defaults to "".**
     @IBInspectable open var rightPatternText: String = "" {
         willSet {
             guard let text = text, text.isEmpty == false else {
@@ -99,7 +112,7 @@ open class BxTextField : UITextField {
             updatePatternText()
         }
     }
-    /// Not editable pattern part of the text. Defaults to "".
+    /// Not editable pattern part of the text. **Defaults to "".**
     @IBInspectable open var leftPatternText: String = "" {
         willSet {
             guard let text = text, text.isEmpty == false else {
@@ -212,7 +225,6 @@ open class BxTextField : UITextField {
                         NSAttributedStringKey.foregroundColor: placeholderColor
                     ]
                 }
-                attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
 #else
                 var attributes: [String: NSObject]? = nil
                 if let placeholderColor = placeholderColor {
@@ -221,14 +233,17 @@ open class BxTextField : UITextField {
                         NSForegroundColorAttributeName: placeholderColor
                     ]
                 }
-                attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
 #endif
+                attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
             }
         }
     }
-    ///! used from placeholder and placeholderText
+    /// used from placeholder and placeholderText
     @IBInspectable open var placeholderColor: UIColor?
     
+    // MARK: overriding standart properties
+    
+    /// - Remarks: default is nil. use system font 12 pt as inherited property
     override open var font: UIFont? {
         willSet {
             if let font = newValue {
@@ -238,6 +253,7 @@ open class BxTextField : UITextField {
         }
     }
     
+    /// - Remarks: default is nil. use opaque black as inherited property
     override open var textColor: UIColor? {
         willSet {
             if let textColor = newValue {
@@ -247,12 +263,18 @@ open class BxTextField : UITextField {
         }
     }
     
+    /// - Remarks: default is nil as inherited property
     override open var text: String? {
         didSet {
             updateTextWithPosition()
         }
     }
     
+    /**
+     Standart borderStyle property
+     - Remarks: default is `.none`. If set to `.roundedRect`, custom background images are ignored. It inherited property behavior
+     - Warning: Changing of this affects to marginSize an visual showing text in rect.
+     */
     override open var borderStyle: UITextBorderStyle {
         didSet {
             if borderStyle == .none {
