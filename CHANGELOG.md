@@ -6,6 +6,11 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.7.3 (11.09.2018)
+##### Improvements
+* Documentation with markdown notation
+* covarage Unit/UI tests of formattingEnteredCharacters
+
 ## 1.7.2 (29.08.2018)
 ##### Bug fix
 * Warning: All symboles how contains in formattingTemplate will be ignored from putting because it had broken alghoritm of putting
