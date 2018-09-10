@@ -74,6 +74,35 @@ class BxTextFieldTests: XCTestCase {
         XCTAssertEqual(textField.text!, "+7(654)3")
         XCTAssertEqual(textField.enteredText, "76543")
     }
+    
+    func testNotEnteredTextPutting() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.formattingEnteredCharacters="0123456789"
+        textField.enteredText = "abc1-+-W2R3S4###--5"
+        XCTAssertEqual(textField.text!, "+1(234)5")
+        XCTAssertEqual(textField.enteredText, "12345")
+        textField.text = "+7#(654)3W"
+        XCTAssertEqual(textField.text!, "+7(654)3")
+        XCTAssertEqual(textField.enteredText, "76543")
+    }
+    
+    func testNotEnteredTextPuttingFromTemplate() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.enteredText = "()-#123-()#45-#()"
+        XCTAssertEqual(textField.text!, "+1(234)5")
+        XCTAssertEqual(textField.enteredText, "12345")
+    }
+    
+    func testAddToEnteredTextTemplateSymboles() {
+        let textField = BxTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        textField.formattingTemplate = "+#(###)###-##-##"
+        textField.formattingEnteredCharacters="0123456789+-#()"
+        textField.enteredText = "()-#123-()#45-#()"
+        XCTAssertEqual(textField.text!, "+1(234)5")
+        XCTAssertEqual(textField.enteredText, "12345")
+    }
 
     
 }
