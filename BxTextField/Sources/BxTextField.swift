@@ -42,9 +42,9 @@ open class BxTextField : UITextField {
     // MARK: Static properties
     
     /// default font for pattern text
-    open static let standartPatternTextFont = UIFont.boldSystemFont(ofSize: 15)
+    public static let standartPatternTextFont = UIFont.boldSystemFont(ofSize: 15)
     /// default font for entered text
-    open static let standartEnteredTextFont = UIFont.systemFont(ofSize: 15)
+    public static let standartEnteredTextFont = UIFont.systemFont(ofSize: 15)
     
     // MARK: Public properties
     
@@ -182,10 +182,10 @@ open class BxTextField : UITextField {
     
     /// Attributes of rightPatternText
 #if swift( >=4.0 )
-    open var patternTextAttributes: [NSAttributedStringKey: NSObject] {
+    open var patternTextAttributes: [NSAttributedString.Key: NSObject] {
         return [
-            NSAttributedStringKey.font: patternTextFont ?? type(of: self).standartPatternTextFont,
-            NSAttributedStringKey.foregroundColor: patternTextColor ?? UIColor.black
+            NSAttributedString.Key.font: patternTextFont ?? type(of: self).standartPatternTextFont,
+            NSAttributedString.Key.foregroundColor: patternTextColor ?? UIColor.black
         ]
     }
 #else
@@ -198,10 +198,10 @@ open class BxTextField : UITextField {
 #endif
     /// Attributes of enteredText
 #if swift( >=4.0 )
-    open var enteredTextAttributes: [NSAttributedStringKey: NSObject] {
+    open var enteredTextAttributes: [NSAttributedString.Key: NSObject] {
         return [
-            NSAttributedStringKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-            NSAttributedStringKey.foregroundColor: enteredTextColor ?? UIColor.black
+            NSAttributedString.Key.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+            NSAttributedString.Key.foregroundColor: enteredTextColor ?? UIColor.black
         ]
     }
 #else
@@ -218,11 +218,11 @@ open class BxTextField : UITextField {
         didSet {
             if let placeholder = placeholder {
 #if swift( >=4.0 )
-                var attributes: [NSAttributedStringKey: NSObject]? = nil
+                var attributes: [NSAttributedString.Key: NSObject]? = nil
                 if let placeholderColor = placeholderColor {
                     attributes = [
-                        NSAttributedStringKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-                        NSAttributedStringKey.foregroundColor: placeholderColor
+                        NSAttributedString.Key.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
+                        NSAttributedString.Key.foregroundColor: placeholderColor
                     ]
                 }
 #else
@@ -275,7 +275,7 @@ open class BxTextField : UITextField {
      - Remarks: default is `.none`. If set to `.roundedRect`, custom background images are ignored. It inherited property behavior
      - Warning: Changing of this affects to marginSize an visual showing text in rect.
      */
-    override open var borderStyle: UITextBorderStyle {
+    override open var borderStyle: UITextField.BorderStyle {
         didSet {
             if borderStyle == .none {
                 marginSize = CGSize(width: 0, height: 0)
