@@ -550,6 +550,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -563,6 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -576,6 +578,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BxTextField.app/BxTextField";
 			};
 			name = Debug;
@@ -590,6 +593,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BxTextField.app/BxTextField";
 			};
 			name = Release;
@@ -606,6 +610,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = BxTextField;
 			};
 			name = Debug;
@@ -622,6 +627,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.BxTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = BxTextField;
 			};
 			name = Release;
