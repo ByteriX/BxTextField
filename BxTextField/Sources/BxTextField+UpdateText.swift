@@ -68,7 +68,7 @@ extension BxTextField {
      - Parameter enteredTextAttributes: attributes for entered symboles only without patterns part.
      - Returns: attributed text for showing prepared text
      */
-    open func getAttributedText(with text: String, enteredTextAttributes: [NSAttributedStringKey: NSObject]? = nil) -> NSMutableAttributedString
+    open func getAttributedText(with text: String, enteredTextAttributes: [NSAttributedString.Key: NSObject]? = nil) -> NSMutableAttributedString
     {
         let attributedString = NSMutableAttributedString(string: text)
         var startEnteredPosition = 0
