@@ -32,8 +32,21 @@ open class BxTextField : UITextField {
     public typealias AttributedKey = NSAttributedString.Key
     public typealias BorderStyle = UITextField.BorderStyle
 #else
-    public typealias AttributedKey = NSAttributedStringKey
+    #if swift( >=4.0 )
+        public typealias AttributedKey = NSAttributedStringKey
+    #else
+        public typealias AttributedKey = String
+    #endif
+    
     public typealias BorderStyle = UITextBorderStyle
+#endif
+    
+#if swift( >=4.0 )
+    public static let attributedKeyFont = AttributedKey.font
+    public static let attributedKeyForegroundColor = AttributedKey.foregroundColor
+#else
+    public static let attributedKeyFont = NSFontAttributeName
+    public static let attributedKeyForegroundColor = NSForegroundColorAttributeName
 #endif
     
     // MARK: Typies
@@ -189,59 +202,32 @@ open class BxTextField : UITextField {
     // MARK: Useful attributes for text showing
     
     /// Attributes of rightPatternText
-#if swift( >=4.0 )
     open var patternTextAttributes: [AttributedKey: NSObject] {
         return [
-            AttributedKey.font: patternTextFont ?? type(of: self).standartPatternTextFont,
-            AttributedKey.foregroundColor: patternTextColor ?? UIColor.black
+            BxTextField.attributedKeyFont: patternTextFont ?? BxTextField.standartPatternTextFont,
+            BxTextField.attributedKeyForegroundColor: patternTextColor ?? UIColor.black
         ]
     }
-#else
-    open var patternTextAttributes: [String: NSObject] {
-        return [
-            NSFontAttributeName: patternTextFont ?? type(of: self).standartPatternTextFont,
-            NSForegroundColorAttributeName: patternTextColor ?? UIColor.black
-        ]
-    }
-#endif
+
     /// Attributes of enteredText
-#if swift( >=4.0 )
     open var enteredTextAttributes: [AttributedKey: NSObject] {
         return [
-            AttributedKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-            AttributedKey.foregroundColor: enteredTextColor ?? UIColor.black
+            BxTextField.attributedKeyFont: enteredTextFont ?? BxTextField.standartEnteredTextFont,
+            BxTextField.attributedKeyForegroundColor: enteredTextColor ?? UIColor.black
         ]
     }
-#else
-    open var enteredTextAttributes: [String: NSObject] {
-        return [
-            NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-            NSForegroundColorAttributeName: enteredTextColor ?? UIColor.black
-        ]
-    }
-#endif
     
     /// Now it isn't used, because have been complex solution
     override open var placeholder: String? {
         didSet {
             if let placeholder = placeholder {
-#if swift( >=4.0 )
                 var attributes: [AttributedKey: NSObject]? = nil
                 if let placeholderColor = placeholderColor {
                     attributes = [
-                        AttributedKey.font: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-                        AttributedKey.foregroundColor: placeholderColor
+                        BxTextField.attributedKeyFont: enteredTextFont ?? BxTextField.standartEnteredTextFont,
+                        BxTextField.attributedKeyForegroundColor: placeholderColor
                     ]
                 }
-#else
-                var attributes: [String: NSObject]? = nil
-                if let placeholderColor = placeholderColor {
-                    attributes = [
-                        NSFontAttributeName: enteredTextFont ?? type(of: self).standartEnteredTextFont,
-                        NSForegroundColorAttributeName: placeholderColor
-                    ]
-                }
-#endif
                 attributedPlaceholder = getAttributedText(with: placeholder, enteredTextAttributes: attributes)
             }
         }
@@ -312,7 +298,7 @@ open class BxTextField : UITextField {
             if let font = font {
                 patternTextFont = font.bold()
             } else {
-                patternTextFont = type(of: self).standartPatternTextFont
+                patternTextFont = BxTextField.standartPatternTextFont
             }
         }
         if patternTextColor == nil {
@@ -322,7 +308,7 @@ open class BxTextField : UITextField {
             if let font = font {
                 enteredTextFont = font
             } else {
-                enteredTextFont = type(of: self).standartEnteredTextFont
+                enteredTextFont = BxTextField.standartEnteredTextFont
             }
         }
         if enteredTextColor == nil {

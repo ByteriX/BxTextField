@@ -59,8 +59,6 @@ extension BxTextField {
         }
     }
     
-    ///
-#if swift( >=4.0 )
     /**
      Return attributed text for showing prepared text. It can be placehlder/field text and etc.
      - Remark: Attributes need for custom showing content of Field
@@ -96,36 +94,5 @@ extension BxTextField {
         
         return attributedString
     }
-#else
-    open func getAttributedText(with text: String, enteredTextAttributes: [String: NSObject]? = nil) -> NSMutableAttributedString
-    {
-        let attributedString = NSMutableAttributedString(string: text)
-        var startEnteredPosition = 0
-        var stopEnteredPosition = text.count
-        
-        if leftPatternText.isEmpty == false,
-            let leftPatternTextRange = text.range(of: leftPatternText, options: NSString.CompareOptions.forcedOrdering, range: nil, locale: nil)
-        {
-            let nsRange = text.makeNSRange(from: leftPatternTextRange)
-            attributedString.addAttributes(patternTextAttributes, range: nsRange)
-            startEnteredPosition = startEnteredPosition + nsRange.location + nsRange.length
-        }
-        
-        if rightPatternText.isEmpty == false,
-            let rightPatternTextRange = text.range(of: rightPatternText, options: NSString.CompareOptions.backwards, range: nil, locale: nil)
-        {
-            let nsRange = text.makeNSRange(from: rightPatternTextRange)
-            attributedString.addAttributes(patternTextAttributes, range: nsRange)
-            stopEnteredPosition = stopEnteredPosition - nsRange.length
-        }
-        
-        if let enteredTextAttributes = enteredTextAttributes {
-            attributedString.addAttributes(enteredTextAttributes, range: NSMakeRange(startEnteredPosition, stopEnteredPosition - startEnteredPosition))
-        }
-        
-        return attributedString
-    }
-#endif
-    
     
 }
