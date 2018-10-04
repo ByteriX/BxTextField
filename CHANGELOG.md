@@ -6,6 +6,11 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.8.0 (04.10.2018)
+##### Improvements
+* Supporting Swift 4.2 and iOS 12
+* Refactoring older version supporting, but left it
+
 ## 1.7.3 (11.09.2018)
 ##### Improvements
 * Documentation with markdown notation
