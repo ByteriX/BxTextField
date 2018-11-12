@@ -233,7 +233,11 @@ open class BxTextField : UITextField {
         }
     }
     /// used from placeholder and placeholderText
-    @IBInspectable open var placeholderColor: UIColor?
+    @IBInspectable open var placeholderColor: UIColor?{
+        didSet {
+            ({self.placeholder = placeholder })()
+        }
+    }
     
     // MARK: overriding standart properties
     
