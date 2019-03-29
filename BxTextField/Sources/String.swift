@@ -24,7 +24,7 @@ import Foundation
 public extension String {
     
     /// For supporting Swift 3/4
-    public var chars: StringChars {
+    var chars: StringChars {
 #if swift(>=3.2)
         return self
 #else
@@ -97,7 +97,7 @@ public extension String {
      // nsRange == result
      ```
      */
-    public func makeNSRange(from range : Range<String.Index>) -> NSRange {
+    func makeNSRange(from range : Range<String.Index>) -> NSRange {
 #if swift(>=4.0)
         return NSRange(range, in: self)
 #else
@@ -133,7 +133,7 @@ public extension String {
      // You can use range
      ```
      */
-    public func makeRange(from range: NSRange) -> Range<String.Index>? {
+    func makeRange(from range: NSRange) -> Range<String.Index>? {
 #if swift(>=3.2)
 
         // Prepared test with extrime checking

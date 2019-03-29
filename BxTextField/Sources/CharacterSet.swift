@@ -21,7 +21,7 @@ public extension CharacterSet {
      - Parameter character: input symbol for searching
      - Returns: true it contains character symbol else false
      */
-    public func contains(_ character: Character) -> Bool {
+    func contains(_ character: Character) -> Bool {
         let string = String(character)
         let ix1 = string.startIndex
         let ix2 = string.endIndex
