@@ -66,20 +66,20 @@ extension BxTextField
         if rightPatternText.isEmpty == false,
             text.hasSuffix(rightPatternText)
         {
-            result = result.substring(to: result.index(result.endIndex, offsetBy: -rightPatternText.characters.count))
+            result = result.substring(to: result.index(result.endIndex, offsetBy: -rightPatternText.count))
         }
         
         if leftPatternText.isEmpty == false
         {
             if result.hasPrefix(leftPatternText){
-                result = result.substring(from: result.index(result.startIndex, offsetBy: leftPatternText.characters.count))
-                position = position - leftPatternText.characters.count
-            } else if leftPatternText.characters.count > 1 {
+                result = result.substring(from: result.index(result.startIndex, offsetBy: leftPatternText.count))
+                position = position - leftPatternText.count
+            } else if leftPatternText.count > 1 {
                 // bug fixed, but very worst
                 let backspaseLeftPatternText = leftPatternText.substring(to: leftPatternText.index(before: leftPatternText.endIndex))
                 if result.hasPrefix(backspaseLeftPatternText){
-                    result = result.substring(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.characters.count))
-                    position = position - backspaseLeftPatternText.characters.count
+                    result = result.substring(from: result.index(result.startIndex, offsetBy: backspaseLeftPatternText.count))
+                    position = position - backspaseLeftPatternText.count
                 }
             }
         }
@@ -100,7 +100,7 @@ extension BxTextField
         
         let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
         
-        let extraSymbolesCount = text.chars.count - patternes.count + 1
+        let extraSymbolesCount = text.count - patternes.count + 1
         if extraSymbolesCount > 0, position >= extraSymbolesCount,
             let range = text.makeRange(from: NSMakeRange(position - extraSymbolesCount, extraSymbolesCount))
         {
@@ -281,14 +281,14 @@ extension BxTextField
         
         var result = text
         
-        if result.characters.count > 0 && formattingTemplate.characters.count > 0 {
+        if result.count > 0 && formattingTemplate.count > 0 {
             
             let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
             
             var unformattedResult = ""
             var index = result.startIndex
             for pattern in patternes {
-                if pattern.characters.count > 0 {
+                if pattern.count > 0 {
                     let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: result.endIndex))
                     if let range = result.range(of: pattern, options: .forcedOrdering, range: range, locale: nil)
                     {
