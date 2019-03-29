@@ -279,23 +279,21 @@ extension BxTextField
             return text
         }
         
-        var result = text
-        
-        if result.count > 0 && formattingTemplate.count > 0 {
+        if text.count > 0 && formattingTemplate.count > 0 {
             
             let patternes = formattingTemplate.components(separatedBy: formattingReplacementChar)
             
             var unformattedResult = ""
-            var index = result.startIndex
+            var index = text.startIndex
             for pattern in patternes {
                 if pattern.count > 0 {
-                    let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: result.endIndex))
-                    if let range = result.range(of: pattern, options: .forcedOrdering, range: range, locale: nil)
+                    let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: text.endIndex))
+                    if let range = text.range(of: pattern, options: .forcedOrdering, range: range, locale: nil)
                     {
                         if index != range.lowerBound {
-                            if let endIndex = result.index(range.lowerBound, offsetBy: 0, limitedBy: result.endIndex) {
+                            if let endIndex = text.index(range.lowerBound, offsetBy: 0, limitedBy: text.endIndex) {
                                 let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: endIndex))
-                                unformattedResult = unformattedResult + result.substring(with: range)
+                                unformattedResult = unformattedResult + text.substring(with: range)
                             } else {
                                 break
                             }
@@ -303,8 +301,8 @@ extension BxTextField
                         index = range.upperBound
                     } else
                     {
-                        let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: result.endIndex))
-                        unformattedResult = unformattedResult + result.substring(with: range)
+                        let range = Range<String.Index>(uncheckedBounds: (lower: index, upper: text.endIndex))
+                        unformattedResult = unformattedResult + text.substring(with: range)
                         break
                     }
                 }
