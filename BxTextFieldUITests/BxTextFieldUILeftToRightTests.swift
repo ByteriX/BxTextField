@@ -28,7 +28,7 @@ class BxTextFieldUILeftToRightTests: BxUITestCase {
         }
         
         textField.tap()
-        textField.typeText("0000000000")
+        textField.typeText("00000000000")
         
         cutMenuAction(textField: textField)
     }
