@@ -6,6 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.9.0 (29.03.2019)
+##### Bug fix
+* fixed all warnings
+* supporting Swift 5 / iOS 12.2 / XCode 10.2
+* fixed unit tests
+
 ## 1.8.1 (12.11.2018)
 ##### Bug fix
 * Updating placeholder when have changed placeholderColor
