@@ -116,7 +116,7 @@ class BxTextFieldUILeftToRightTests: BxUITestCase {
         let coordinate = textField.coordinate(withNormalizedOffset: CGVector(dx:1, dy:0))
         coordinate.withOffset(CGVector(dx:-43, dy:0)).tap()
         textField.doubleTap()
-        coordinate.withOffset(CGVector(dx:-48, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-78, dy:0)))
+        coordinate.withOffset(CGVector(dx:-48, dy:0)).press(forDuration: 1, thenDragTo: coordinate.withOffset(CGVector(dx:-85, dy:0)))
         
         textField.typeText("123")
         XCTAssertEqual(textField.value as! String, "+0 (987) 123 - 10")
