@@ -6,6 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.0 (15.04.2019)
+##### Improvements
+* added decoration elements: line and title as is as Material designe
+* more properties for settings control: title, titleAsHintFont, titleFont, titleSeporatorHeight, lineSeporatorHeight, activeColor, inactiveColor, lineColor, lineWidth
+* isActive, isTitleAsHint information properties
+
 ## 1.9.0 (29.03.2019)
 ##### Bug fix
 * fixed all warnings

@@ -1,14 +1,19 @@
-//
-//  BxTextField+Title+Line.swift
-//  BxTextField
-//
-//  Created by Sergey Balalaev on 15/04/2019.
-//  Copyright © 2019 Byterix. All rights reserved.
-//
+/**
+ *    @file BxTextField+Title+Line.swift
+ *    @namespace BxTextField
+ *
+ *    @details Functions for mamange line and title of BxTextField
+ *    @date 15.04.2017
+ *    @author Sergey Balalaev
+ *
+ *    @version last in https://github.com/ByteriX/BxTextField.git
+ *    @copyright The MIT License (MIT) https://opensource.org/licenses/MIT
+ *     Copyright (c) 2019 ByteriX. See http://byterix.com
+ */
 
 import UIKit
 
-
+/// Extension for mamange line and title of BxTextField
 extension BxTextField {
     
     internal func addLineLayer() {
@@ -98,8 +103,8 @@ extension BxTextField {
         updateTitle()
     }
     
-    internal func animateBlock(duration: Double = 0.2, applyHandler: () -> Void) {
-        let function = CAMediaTimingFunction(controlPoints: 0.3, 0.0, 0.5, 0.95)
+    internal func animateBlock(duration: Double = 0.25, applyHandler: () -> Void) {
+        let function = CAMediaTimingFunction(controlPoints: 0.3, 0.2, 0.5, 0.95)
         CATransaction.begin()
         CATransaction.disableActions()
         CATransaction.setAnimationDuration(duration)
