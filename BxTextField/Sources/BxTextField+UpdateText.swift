@@ -40,6 +40,9 @@ extension BxTextField {
      - Remark: Cursor can move when text lenght is changed
      */
     public func updateTextWithPosition() {
+        if (isNeedUpdateTitle) {
+            updateTitle()
+        }
         guard let selectedTextRange = selectedTextRange, isFirstResponder == true else {
             if let text = text, text.isEmpty == false {
                 var offset = 0

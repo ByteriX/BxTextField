@@ -283,6 +283,67 @@ open class BxTextField : UITextField {
         }
     }
     
+    @IBInspectable open var title: String = ""
+    {
+        didSet {
+            self.titleLayer.string = title
+        }
+    }
+    @IBInspectable open var titleAsHintFont: UIFont = UIFont.systemFont(ofSize: 16)
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var titleSeporatorHeight: CGFloat = 4.0
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var lineSeporatorHeight: CGFloat = 4.0
+        {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var activeColor: UIColor = .clear
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var inactiveColor: UIColor = .clear
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var lineColor: UIColor? = nil
+    {
+        didSet {
+            updateTitle()
+        }
+    }
+    @IBInspectable open var lineWidth: CGFloat = 0.5
+        {
+        didSet {
+            updateTitle()
+        }
+    }
+    
+    internal let titleLayer = CATextLayer()
+    internal let lineLayer = CAShapeLayer()
+    internal let linePath = UIBezierPath()
+    public internal(set) var isActive: Bool = false
+    public internal(set) var isTitleAsHint: Bool = true
+    
     // MARK: Initialization
     
     public required init?(coder aDecoder: NSCoder) {
@@ -324,12 +385,15 @@ open class BxTextField : UITextField {
         addTarget(self, action: #selector(textDidEnd(sender:)), for: .editingDidEnd)
         // init text
         super.text = ""
+        addTitleLayer()
+        addLineLayer()
     }
     
     // MARK: textField control handler
     
     @objc
     internal func textDidBegin(sender: UITextField) {
+        animateBlock(applyHandler: updateTitleAsActive)
         updateTextWithPosition()
     }
     @objc
@@ -339,6 +403,7 @@ open class BxTextField : UITextField {
     }
     @objc
     internal func textDidEnd(sender: UITextField) {
+        animateBlock(applyHandler: updateTitleAsDefault)
         if enteredText.isEmpty {
             text = ""
         }
@@ -360,6 +425,12 @@ open class BxTextField : UITextField {
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         checkSelection()
         return bounds.insetBy(dx: marginSize.width, dy: marginSize.height)
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        layoutTitleLayer()
+        layoutLineLayer()
     }
     
 }

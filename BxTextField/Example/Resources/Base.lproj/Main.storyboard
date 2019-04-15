@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wmx-R2-TAR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wmx-R2-TAR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +44,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQN-yQ-U1K" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done"/>
@@ -74,7 +74,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38J-jx-P89" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done"/>
@@ -109,7 +109,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-Te-2Qc" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="77" y="12" width="286" height="36"/>
+                                                    <rect key="frame" x="77" y="12" width="286" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
@@ -125,13 +125,13 @@
                                                     </connections>
                                                 </textField>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M7h-EH-294">
-                                                    <rect key="frame" x="16" y="17" width="51" height="31"/>
+                                                    <rect key="frame" x="16" y="16.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="leftRightSwitchChanged:" destination="EWq-Dp-s75" eventType="valueChanged" id="37Z-rf-pGD"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rewriting:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT0-sg-ymG">
-                                                    <rect key="frame" x="16" y="4.5" width="53.5" height="14.5"/>
+                                                    <rect key="frame" x="16" y="4" width="53.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -158,7 +158,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-C9-tXp" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="12" width="283" height="36"/>
+                                                    <rect key="frame" x="80" y="12" width="283" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
@@ -174,13 +174,13 @@
                                                     </connections>
                                                 </textField>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PWP-gN-IHp">
-                                                    <rect key="frame" x="18" y="17" width="51" height="31"/>
+                                                    <rect key="frame" x="18" y="16.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="rightLeftSwitchChanged:" destination="EWq-Dp-s75" eventType="valueChanged" id="KOw-re-UHT"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rewriting:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXW-Vn-1XF">
-                                                    <rect key="frame" x="18" y="5" width="53.5" height="14.5"/>
+                                                    <rect key="frame" x="18" y="4" width="53.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -207,7 +207,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-dj-TVN" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="35"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="35.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="done"/>
@@ -244,17 +244,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-UP-Z7Z" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-UP-Z7Z" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="6" width="351" height="47.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="card number"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parkedText" value=".byterix.com"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingTemplate" value="#### #### #### ####"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingFilter" value="0123456789"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="formattingEnteredCharacters" value="0123456789"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                            <color key="value" red="0.20927691279999999" green="0.80498431250000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Credit Card"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outlet property="delegate" destination="EWq-Dp-s75" id="gVU-ky-XWj"/>
@@ -262,10 +268,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uBZ-UP-Z7Z" secondAttribute="bottom" constant="12" id="MHs-ni-WbW"/>
+                                                <constraint firstAttribute="bottom" secondItem="uBZ-UP-Z7Z" secondAttribute="bottom" constant="6" id="MHs-ni-WbW"/>
                                                 <constraint firstAttribute="trailing" secondItem="uBZ-UP-Z7Z" secondAttribute="trailing" constant="12" id="cIs-Y8-8MS"/>
                                                 <constraint firstItem="uBZ-UP-Z7Z" firstAttribute="leading" secondItem="L8X-VP-g3F" secondAttribute="leading" constant="12" id="iov-sS-Rmm"/>
-                                                <constraint firstItem="uBZ-UP-Z7Z" firstAttribute="top" secondItem="L8X-VP-g3F" secondAttribute="top" constant="12" id="nsZ-X3-qFR"/>
+                                                <constraint firstItem="uBZ-UP-Z7Z" firstAttribute="top" secondItem="L8X-VP-g3F" secondAttribute="top" constant="6" id="nsZ-X3-qFR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

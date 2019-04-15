@@ -17,6 +17,7 @@
 		CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B061FF2442A000E934C /* UIFontTests.swift */; };
 		E329031F20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */; };
 		E329032120AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */; };
+		E3BAF8052264746100CA38C1 /* BxTextField+Title+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BAF8042264746100CA38C1 /* BxTextField+Title+Line.swift */; };
 		F9337C0D1E67FC37002134C2 /* BxTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */; };
 		F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */; };
 		F9337C2A1E680027002134C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F9337C291E680027002134C2 /* LICENSE */; };
@@ -63,6 +64,7 @@
 		CF571B061FF2442A000E934C /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
 		E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldPlaceholderTests.swift; sourceTree = "<group>"; };
 		E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldUIPlaceholderTests.swift; sourceTree = "<group>"; };
+		E3BAF8042264746100CA38C1 /* BxTextField+Title+Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BxTextField+Title+Line.swift"; sourceTree = "<group>"; };
 		F9337BF41E67FC37002134C2 /* BxTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BxTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C081E67FC37002134C2 /* BxTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BxTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9337C0C1E67FC37002134C2 /* BxTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldTests.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				F9F992711E69638F002EAEA9 /* BxTextField+TextPosition.swift */,
 				F951864A1E6C2C620084AD98 /* BxTextField+Formatting.swift */,
 				F951864C1E6C2FD00084AD98 /* BxTextField+UpdateText.swift */,
+				E3BAF8042264746100CA38C1 /* BxTextField+Title+Line.swift */,
 				F9F992621E693FA7002EAEA9 /* UIFont.swift */,
 				F9F992641E694052002EAEA9 /* String.swift */,
 				F95186541E6C67690084AD98 /* CharacterSet.swift */,
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3BAF8052264746100CA38C1 /* BxTextField+Title+Line.swift in Sources */,
 				F9F992631E693FA7002EAEA9 /* UIFont.swift in Sources */,
 				F9F992721E69638F002EAEA9 /* BxTextField+TextPosition.swift in Sources */,
 				F9337C3C1E680216002134C2 /* ViewController.swift in Sources */,
