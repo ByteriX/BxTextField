@@ -28,6 +28,7 @@ extension BxTextField {
         let y1 = trunc((bounds.height + textHeight) / 2.0) + pixelWidth * 0.5 + lineSeporatorHeight
         let x2 = bounds.width
         
+        linePath.removeAllPoints()
         linePath.move(to: CGPoint(x: 0, y: y1))
         linePath.addLine(to: CGPoint(x: x2, y: y1))
 
