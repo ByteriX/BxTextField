@@ -292,6 +292,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="BxTextField" id="OlT-Lh-xS7"/>
                     <connections>
+                        <outlet property="creditCardField" destination="uBZ-UP-Z7Z" id="5Kt-Xb-p9w"/>
                         <outlet property="leftRightField" destination="HCa-Te-2Qc" id="42H-3O-OuM"/>
                         <outlet property="leftRightRewriteSwitch" destination="M7h-EH-294" id="LJj-W9-xpT"/>
                         <outlet property="rightLeftField" destination="h7k-C9-tXp" id="XHd-N8-3yf"/>

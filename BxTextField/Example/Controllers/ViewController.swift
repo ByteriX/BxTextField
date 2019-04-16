@@ -16,6 +16,8 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var leftRightRewriteSwitch: UISwitch!
     
     @IBOutlet weak var webField: BxTextField!
+    
+    @IBOutlet weak var creditCardField: BxTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,13 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        if textField === creditCardField {
+            //creditCardField.shakeX(withOffset: 40, breakFactor: 0.7, duration: 2, maxShakes: 65)
+        }
     }
     
     @IBAction func leftRightSwitchChanged(_ sender: Any) {
