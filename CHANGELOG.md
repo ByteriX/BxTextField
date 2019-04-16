@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.1 (16.04.2019)
+##### Improvements
+* added isTitleUpper for the transformation title when it has went from hint state
+
 ## 1.10.0 (15.04.2019)
 ##### Improvements
 * added decoration elements: line and title as is as Material designe

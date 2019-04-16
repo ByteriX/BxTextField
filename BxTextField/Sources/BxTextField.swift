@@ -295,6 +295,12 @@ open class BxTextField : UITextField {
             updateTitle()
         }
     }
+    @IBInspectable open var isTitleUpper: Bool = false
+    {
+        didSet {
+            updateTitle()
+        }
+    }
     @IBInspectable open var titleFont: UIFont = UIFont.systemFont(ofSize: 10)
     {
         didSet {

@@ -267,6 +267,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineSeporatorHeight">
                                                             <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isTitleUpper" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outlet property="delegate" destination="EWq-Dp-s75" id="gVU-ky-XWj"/>

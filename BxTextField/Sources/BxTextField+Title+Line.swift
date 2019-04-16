@@ -52,7 +52,6 @@ extension BxTextField {
     
     internal func addTitleLayer() {
         titleLayer.masksToBounds = false
-        titleLayer.string = title
         titleLayer.contentsScale = UIScreen.main.scale
         titleLayer.backgroundColor = UIColor.clear.cgColor
         layoutTitleLayer()
@@ -74,6 +73,7 @@ extension BxTextField {
         titleLayer.fontSize = font.pointSize
         titleLayer.font = font
         titleLayer.foregroundColor = isActive ? activeColor.cgColor : inactiveColor.cgColor
+        titleLayer.string = (isTitleUpper && isTitleAsHint == false) ? title.uppercased() : title
     }
     
     internal var isNeedUpdateTitle: Bool {
