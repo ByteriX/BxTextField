@@ -29,7 +29,7 @@ extension BxTextField {
     
     internal func layoutLineLayer() {
         let pixelWidth = 1.0 / UIScreen.main.scale
-        let textHeight = font?.pointSize ?? 16.0
+        let textHeight = font?.lineHeight ?? 16.0
         let y1 = trunc((bounds.height + textHeight) / 2.0) + pixelWidth * 0.5 + lineSeporatorHeight
         let x2 = bounds.width
         
@@ -60,8 +60,8 @@ extension BxTextField {
     }
     
     internal func layoutTitleLayer() {
-        let textHeight = font?.pointSize ?? 16.0
-        let height = isTitleAsHint ? titleAsHintFont.pointSize : titleFont.pointSize
+        let textHeight = font?.lineHeight ?? 16.0
+        let height = isTitleAsHint ? titleAsHintFont.lineHeight : titleFont.lineHeight
         let x = marginSize.width
         let y = isTitleAsHint ? trunc((bounds.height - height) / 2.0) : trunc((bounds.height - textHeight) / 2.0) - height - titleSeporatorHeight
         

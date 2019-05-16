@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.2 (16.05.2019)
+##### Bug fix
+* fixed a cutting of title text
+
 ## 1.10.1 (16.04.2019)
 ##### Improvements
 * added isTitleUpper for the transformation title when it has went from hint state
