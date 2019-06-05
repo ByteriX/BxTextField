@@ -6,6 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.3 (05.06.2019)
+##### Improvements
+* fixed issue with title updating when text was full
+* fixed issue with title animation when label was cuted
+* added activationDuration as UIAppearance for changing animation
+
 ## 1.10.2 (16.05.2019)
 ##### Bug fix
 * fixed a cutting of title text
