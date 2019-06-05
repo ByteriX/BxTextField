@@ -40,7 +40,10 @@ extension BxTextField {
      - Remark: Cursor can move when text lenght is changed
      */
     public func updateTextWithPosition() {
-        if (isNeedUpdateTitle) {
+        if (isNeedUpdateTitle) { // I don't sure that should call her: That is very energy consuming!
+            if !isActive { // because title has behavior different with placeholder. Didn't need update state if user change text
+                isTitleAsHint = isNeedTitleAsHint
+            }
             updateTitle()
         }
         guard let selectedTextRange = selectedTextRange, isFirstResponder == true else {

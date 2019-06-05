@@ -26,6 +26,11 @@ class ViewController: UITableViewController, UITextFieldDelegate {
         webField.enteredTextColor = UIColor.red
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        clickToAdd(UIButton())
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
@@ -45,6 +50,14 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func rightLeftSwitchChanged(_ sender: Any) {
         rightLeftField.isFormattingRewriting = rightLeftRewriteSwitch.isOn
+    }
+    
+    @IBAction func clickToAdd(_ sender: Any) {
+        if creditCardField.enteredText.isEmpty {
+            creditCardField.enteredText = "11111111"
+        } else {
+            creditCardField.enteredText = ""
+        }
     }
     
 }

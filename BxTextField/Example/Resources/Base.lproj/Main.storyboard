@@ -245,7 +245,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-UP-Z7Z" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="6" width="351" height="47.5"/>
+                                                    <rect key="frame" x="12" y="6" width="321" height="47.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
@@ -273,12 +273,20 @@
                                                         <outlet property="delegate" destination="EWq-Dp-s75" id="gVU-ky-XWj"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtM-nX-5la">
+                                                    <rect key="frame" x="341" y="19" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="clickToAdd:" destination="EWq-Dp-s75" eventType="touchUpInside" id="YC7-ru-dSI"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="uBZ-UP-Z7Z" secondAttribute="bottom" constant="6" id="MHs-ni-WbW"/>
-                                                <constraint firstAttribute="trailing" secondItem="uBZ-UP-Z7Z" secondAttribute="trailing" constant="12" id="cIs-Y8-8MS"/>
+                                                <constraint firstItem="vtM-nX-5la" firstAttribute="leading" secondItem="uBZ-UP-Z7Z" secondAttribute="trailing" constant="8" id="Vaw-o4-ikG"/>
+                                                <constraint firstAttribute="trailing" secondItem="uBZ-UP-Z7Z" secondAttribute="trailing" constant="42" id="cIs-Y8-8MS"/>
                                                 <constraint firstItem="uBZ-UP-Z7Z" firstAttribute="leading" secondItem="L8X-VP-g3F" secondAttribute="leading" constant="12" id="iov-sS-Rmm"/>
                                                 <constraint firstItem="uBZ-UP-Z7Z" firstAttribute="top" secondItem="L8X-VP-g3F" secondAttribute="top" constant="6" id="nsZ-X3-qFR"/>
+                                                <constraint firstItem="vtM-nX-5la" firstAttribute="centerY" secondItem="uBZ-UP-Z7Z" secondAttribute="centerY" id="vPZ-91-JXl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
