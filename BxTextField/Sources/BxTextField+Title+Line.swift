@@ -60,10 +60,12 @@ extension BxTextField {
     }
     
     internal func layoutTitleLayer() {
-        let textHeight = font?.lineHeight ?? 16.0
-        let height = isTitleAsHint ? titleAsHintFont.lineHeight : titleFont.lineHeight
+        @inline(__always) let textHeight = font?.lineHeight ?? 16.0
+        let height = max(titleAsHintFont.lineHeight, titleFont.lineHeight)
         let x = marginSize.width
-        let y = isTitleAsHint ? trunc((bounds.height - height) / 2.0) : trunc((bounds.height - textHeight) / 2.0) - height - titleSeporatorHeight
+        let y = isTitleAsHint
+            ? trunc((bounds.height - height) / 2.0)
+            : trunc((bounds.height - textHeight) / 2.0) - titleFont.lineHeight - titleSeporatorHeight
         
         titleLayer.frame = CGRect(x: x, y: y, width: bounds.width, height: height)
     }
@@ -112,21 +114,5 @@ extension BxTextField {
         applyHandler()
         CATransaction.commit()
     }
-    
-//    @discardableResult override open func becomeFirstResponder() -> Bool {
-//        let becomeFirstResponder = super.becomeFirstResponder()
-//        if becomeFirstResponder {
-//            animateBlock(applyHandler: updateTitleAsActive)
-//        }
-//        return becomeFirstResponder
-//    }
-//
-//    @discardableResult override open func resignFirstResponder() -> Bool {
-//        let resignFirstResponder = super.resignFirstResponder()
-//        if (resignFirstResponder){
-//            animateBlock(applyHandler: updateTitleAsDefault)
-//        }
-//        return resignFirstResponder
-//    }
     
 }
