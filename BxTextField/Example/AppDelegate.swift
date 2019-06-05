@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if swift( >=4.2 )
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        BxTextField.appearance().activationDuration = 0.5
         return true
     }
 #else

@@ -319,6 +319,12 @@ open class BxTextField : UITextField {
             updateTitle()
         }
     }
+    // UIAppearence
+    @objc dynamic open var activationDuration: Double {
+        get {return _activationDuration}
+        set {_activationDuration = newValue}
+    }
+    var _activationDuration: Double = 0.25
     @IBInspectable open var activeColor: UIColor = .clear
     {
         didSet {
@@ -399,7 +405,7 @@ open class BxTextField : UITextField {
     
     @objc
     internal func textDidBegin(sender: UITextField) {
-        animateBlock(applyHandler: updateTitleAsActive)
+        animateBlock(duration: activationDuration, applyHandler: updateTitleAsActive)
         updateTextWithPosition()
     }
     @objc
@@ -409,7 +415,7 @@ open class BxTextField : UITextField {
     }
     @objc
     internal func textDidEnd(sender: UITextField) {
-        animateBlock(applyHandler: updateTitleAsDefault)
+        animateBlock(duration: activationDuration, applyHandler: updateTitleAsDefault)
         if enteredText.isEmpty {
             text = ""
         }
