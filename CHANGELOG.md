@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.4 (07.06.2019)
+##### Bug fix
+* fixed the placeholder shown
+
 ## 1.10.3 (05.06.2019)
 ##### Improvements
 * fixed issue with title updating when text was full

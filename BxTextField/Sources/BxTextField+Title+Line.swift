@@ -96,6 +96,9 @@ extension BxTextField {
     }
     
     internal var isNeedTitleAsHint : Bool {
+        if let attributedPlaceholder = self.attributedPlaceholder, attributedPlaceholder.length > 0 {
+            return false
+        }
         return text?.isEmpty ?? true
     }
     
