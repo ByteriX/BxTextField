@@ -52,4 +52,4 @@ tag
 checkExit
 pod trunk push "${WORK_SPEC_PATH}" --allow-warnings --verbose
 checkExit
-
+clear

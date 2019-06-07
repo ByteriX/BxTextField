@@ -6,6 +6,11 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.8 (07.06.2019)
+##### Improvements
+* rollback to old pods
+* fixed build
+
 ## 1.10.4 (07.06.2019)
 ##### Bug fix
 * fixed the placeholder shown
