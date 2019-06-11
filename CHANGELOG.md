@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.10 (11.06.2019)
+##### Improvements
+* updated build.sh
+
 ## 1.10.9 (11.06.2019)
 ##### Improvements
 * swift_versions changed
