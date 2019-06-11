@@ -1,7 +1,7 @@
 
 #
 #  build.sh
-#  version 1.1
+#  version 1.2
 #
 #  Created by Sergey Balalaev on 02.03.17.
 #  Copyright (c) 2017 ByteriX. All rights reserved.
