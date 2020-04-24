@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.11 (24.04.2020)
+##### Bug fix
+* edited PodSpec with supporting Swift versions section
+
 ## 1.10.10 (11.06.2019)
 ##### Improvements
 * updated build.sh
