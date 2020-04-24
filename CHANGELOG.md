@@ -6,6 +6,11 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.12 (24.04.2020)
+##### Improvements
+* change description: supporting section
+* add Swift 3.2 to supporting
+
 ## 1.10.11 (24.04.2020)
 ##### Bug fix
 * edited PodSpec with supporting Swift versions section
