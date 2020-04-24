@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BxTextField"
-  s.version      = "1.10.10"
+  s.version      = "1.10.11"
   s.summary      = "Swift UI component improving features UITextField"
   s.description  = "This component will help iOS developers with different functions of putting text"
   s.homepage     = "https://github.com/ByteriX/BxTextField.git"
@@ -56,7 +56,7 @@ Pod::Spec.new do |s|
   #
 
     s.platform     = :ios, "8.0"
-    s.swift_versions = "4.0"
+    s.swift_versions = ['4.0', '4.1', '4.2', '5.0', '5.1', '5.2']
 
 #s.ios.deployment_target = "5.0"
 #s.osx.deployment_target = "10.7"
