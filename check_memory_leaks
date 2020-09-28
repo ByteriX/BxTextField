@@ -12,7 +12,7 @@ APP_UI_TEST_PRINCIPAL_CLASS_FILE="$APP_DIR/$APP_UI_TEST_SCHEME/$APP_UI_TEST_PRIN
 APP_UI_TEST_NAMES=( \
  	"$APP_UI_TEST_SCHEME/BxTextFieldUITests" \
 )
-SIMULATOR_NAME="iPhone 11 Pro" # Here fill your simulator name
+SIMULATOR_NAME="iPhone Xs" # Here fill your simulator name
 
 if [ -z "$SIMULATOR_NAME" ]
 then
