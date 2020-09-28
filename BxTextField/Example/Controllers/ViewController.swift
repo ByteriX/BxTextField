@@ -14,6 +14,7 @@ class ViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var rightLeftRewriteSwitch: UISwitch!
     @IBOutlet weak var leftRightField: BxTextField!
     @IBOutlet weak var leftRightRewriteSwitch: UISwitch!
+    @IBOutlet weak var formattedTemplateField: BxTextField!
     
     @IBOutlet weak var webField: BxTextField!
     
@@ -58,6 +59,13 @@ class ViewController: UITableViewController, UITextFieldDelegate {
         } else {
             creditCardField.enteredText = ""
         }
+    }
+    
+    var formatIndex = 0
+    @IBAction func clickChangeFormat(_ sender: Any) {
+        let formates = ["(###) ### - ## - ##", "### ### ## ##"]
+        formatIndex += 1
+        formattedTemplateField.formattingTemplate = formates[formatIndex % formates.count]
     }
     
 }

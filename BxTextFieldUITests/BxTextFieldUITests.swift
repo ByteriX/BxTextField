@@ -144,6 +144,32 @@ class BxTextFieldUITests: XCTestCase {
         
     }
     
-    
+    func testMemoryLeaksIssueFromChangeFormattedTemplate()
+    {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        
+        let cell = tablesQuery.children(matching: .cell).element(boundBy: 4)
+        let textField = cell.children(matching: .textField).element
+        let button = cell.children(matching: .button).element
+        
+        textField.tap()
+        textField.typeText("123456789")
+        XCTAssertEqual(textField.value as! String, "+7 (123) 456 - 78 - 9")
+        button.tap()
+        XCTAssertEqual(textField.value as! String, "+7 123 456 78 9")
+        button.tap()
+        XCTAssertEqual(textField.value as! String, "+7 (123) 456 - 78 - 9")
+        button.tap()
+        XCTAssertEqual(textField.value as! String, "+7 123 456 78 9")
+        textField.tap()
+        textField.typeText("0")
+        XCTAssertEqual(textField.value as! String, "+7 123 456 78 90")
+        button.tap()
+        XCTAssertEqual(textField.value as! String, "+7 (123) 456 - 78 - 90")
+        button.tap()
+        XCTAssertEqual(textField.value as! String, "+7 123 456 78 90")
+        
+    }
     
 }

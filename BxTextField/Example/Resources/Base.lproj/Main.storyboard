@@ -195,7 +195,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-dj-TVN" customClass="BxTextField" customModule="BxTextField" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="36"/>
+                                                    <rect key="frame" x="80" y="12" width="283" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="done"/>
                                                     <userDefinedRuntimeAttributes>
@@ -209,12 +209,25 @@
                                                         <outlet property="delegate" destination="EWq-Dp-s75" id="uNI-jO-Srk"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPP-VA-2lk">
+                                                    <rect key="frame" x="23" y="11" width="37" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="6sw-EM-0yl"/>
+                                                        <constraint firstAttribute="width" constant="37" id="Dbz-NR-nhe"/>
+                                                    </constraints>
+                                                    <state key="normal" image="fiberchannel" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="clickChangeFormat:" destination="EWq-Dp-s75" eventType="touchUpInside" id="Bjm-4f-A7I"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="aS3-dj-TVN" secondAttribute="bottom" constant="12" id="Fah-xQ-AVh"/>
                                                 <constraint firstItem="aS3-dj-TVN" firstAttribute="top" secondItem="FJC-lA-6uC" secondAttribute="top" constant="12" id="IUY-m2-doI"/>
+                                                <constraint firstItem="KPP-VA-2lk" firstAttribute="leading" secondItem="FJC-lA-6uC" secondAttribute="leading" constant="23" id="WNG-1u-BDR"/>
                                                 <constraint firstAttribute="trailing" secondItem="aS3-dj-TVN" secondAttribute="trailing" constant="12" id="his-s7-Fx7"/>
-                                                <constraint firstItem="aS3-dj-TVN" firstAttribute="leading" secondItem="FJC-lA-6uC" secondAttribute="leading" constant="12" id="kLS-OY-IL1"/>
+                                                <constraint firstItem="aS3-dj-TVN" firstAttribute="leading" secondItem="FJC-lA-6uC" secondAttribute="leading" constant="80" id="kLS-OY-IL1"/>
+                                                <constraint firstItem="KPP-VA-2lk" firstAttribute="centerY" secondItem="FJC-lA-6uC" secondAttribute="centerY" id="uYh-cf-9AT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -283,6 +296,7 @@
                     <navigationItem key="navigationItem" title="BxTextField" id="OlT-Lh-xS7"/>
                     <connections>
                         <outlet property="creditCardField" destination="uBZ-UP-Z7Z" id="5Kt-Xb-p9w"/>
+                        <outlet property="formattedTemplateField" destination="aS3-dj-TVN" id="HEz-fN-4F3"/>
                         <outlet property="leftRightField" destination="HCa-Te-2Qc" id="42H-3O-OuM"/>
                         <outlet property="leftRightRewriteSwitch" destination="M7h-EH-294" id="LJj-W9-xpT"/>
                         <outlet property="rightLeftField" destination="h7k-C9-tXp" id="XHd-N8-3yf"/>
@@ -295,4 +309,7 @@
             <point key="canvasLocation" x="109.59999999999999" y="-212.74362818590706"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fiberchannel" catalog="system" width="128" height="92"/>
+    </resources>
 </document>
