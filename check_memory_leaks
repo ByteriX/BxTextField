@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+APP_NAME="BxTextField"
+APP_UI_TEST_SCHEME="BxTextFieldUITests"
+APP_RUNNER_NAME="$APP_UI_TEST_SCHEME-Runner"
+APP_DIR="$SCRIPT_DIR"
+APP_WORKSPACE="$APP_DIR/BxTextField.xcworkspace"
+APP_UI_TEST_PRINCIPAL_CLASS="PrincipalClass"
+APP_UI_TEST_PRINCIPAL_CLASS_FILE="$APP_DIR/$APP_UI_TEST_SCHEME/$APP_UI_TEST_PRINCIPAL_CLASS.swift"
+APP_UI_TEST_NAMES=( \
+ 	"$APP_UI_TEST_SCHEME/BxTextFieldUITests" \
+)
+SIMULATOR_NAME="iPhone 11 Pro" # Here fill your simulator name
+
+if [ -z "$SIMULATOR_NAME" ]
+then
+      echo 'Error: Please, fill name of simulator in `SIMULATOR_NAME` variable inside `check_memory_leaks` script.'
+      exit 1
+fi
+
+bash "$SCRIPT_DIR/memory-leak-tester/start"    \
+        "$APP_NAME" \
+        "$APP_RUNNER_NAME" \
+        "$APP_WORKSPACE" \
+        "$APP_UI_TEST_SCHEME" \
+        ".memory-leak-tester-reports" \
+        ".memory-leak-tester-build" \
+        "$SIMULATOR_NAME" \
+        "$APP_UI_TEST_PRINCIPAL_CLASS_FILE" \
+        "$APP_UI_TEST_PRINCIPAL_CLASS" \
+        "$APP_UI_TEST_NAMES"

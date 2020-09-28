@@ -17,6 +17,7 @@
 		CF571B071FF2442A000E934C /* UIFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF571B061FF2442A000E934C /* UIFontTests.swift */; };
 		E329031F20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */; };
 		E329032120AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */; };
+		E332236C25225F0800B23EE1 /* PrincipalClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E332236B25225F0800B23EE1 /* PrincipalClass.swift */; };
 		E35A8EA52522435700FBC9F1 /* MemoryLeaksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A8EA42522435700FBC9F1 /* MemoryLeaksTests.swift */; };
 		E35A8EAD25224BC100FBC9F1 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A8EAC25224BC100FBC9F1 /* XCTestCase.swift */; };
 		E3B9958B2265DEFD00718B16 /* UIView+ShakeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B9958A2265DEFD00718B16 /* UIView+ShakeAnimation.m */; };
@@ -67,6 +68,7 @@
 		CF571B061FF2442A000E934C /* UIFontTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTests.swift; sourceTree = "<group>"; };
 		E329031E20AC2D5000ECA3B0 /* BxTextFieldPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldPlaceholderTests.swift; sourceTree = "<group>"; };
 		E329032020AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldUIPlaceholderTests.swift; sourceTree = "<group>"; };
+		E332236B25225F0800B23EE1 /* PrincipalClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalClass.swift; sourceTree = "<group>"; };
 		E35A8EA42522435700FBC9F1 /* MemoryLeaksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeaksTests.swift; sourceTree = "<group>"; };
 		E35A8EAC25224BC100FBC9F1 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		E3B995882265DEFC00718B16 /* BxTextField-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BxTextField-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				F9337C191E67FC37002134C2 /* Info.plist */,
+				E332236B25225F0800B23EE1 /* PrincipalClass.swift */,
 				CF109B5C2019CD880099B101 /* BxUITestCase.swift */,
 				F9337C171E67FC37002134C2 /* BxTextFieldUITests.swift */,
 				CF109B582019C1F20099B101 /* BxTextFieldUILeftToRightTests.swift */,
@@ -412,6 +415,7 @@
 				CF109B592019C1F20099B101 /* BxTextFieldUILeftToRightTests.swift in Sources */,
 				E329032120AC2F2D00ECA3B0 /* BxTextFieldUIPlaceholderTests.swift in Sources */,
 				CF109B5D2019CD880099B101 /* BxUITestCase.swift in Sources */,
+				E332236C25225F0800B23EE1 /* PrincipalClass.swift in Sources */,
 				CF109B5B2019C20A0099B101 /* BxTextFieldUIRightToLeftTests.swift in Sources */,
 				F9337C181E67FC37002134C2 /* BxTextFieldUITests.swift in Sources */,
 			);

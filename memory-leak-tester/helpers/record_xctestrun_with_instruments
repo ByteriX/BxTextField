@@ -1,0 +1,334 @@
+#!/bin/bash
+
+###########################################################################################################################
+
+readonly PROGNAME=$(basename $0)
+
+# read parameters
+
+if [ $# -ne 8 ]; then
+	printf "\nusage: $PROGNAME [appName] [appRunnerName] [reportsDir] [buildDir] [deviceID] [testName] [VERBOSE] [KEEP_RAW_REPORT_DATA]"
+	printf "\n\n"
+	exit 1;
+fi
+
+appName="$1"
+appRunnerName="$2"
+reportsDir="$3"
+buildDir="$4"
+deviceID="$5"
+testName="$6"
+VERBOSE="$7"
+KEEP_RAW_REPORT_DATA="$8"
+
+# current script directory
+
+scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# settings
+
+instrumentsTemplateName="LeaksWithIgnoredAppleSymbols" # Should ignore types like "Malloc", but for some reason does not, need to debug.
+#instrumentsTraceTemplate="$scriptDir/InstrumentsTraceTemplates/$instrumentsTemplateName"
+instrumentsTraceTemplate="Leaks" # Default Apple template for leaks.
+traceParseUtility="$scriptDir/TraceUtilityFork/bin/TraceUtility"
+
+testPIDTimeout=30
+scriptTimeout=600 # 30 minutes
+
+# Functions
+
+function print_line {
+	printf "\n----------------------------------------------------------------------------------------------------------------------------------------"
+}
+
+function print_heading() {
+	printf "\n"
+	print_line
+	printf "\n"
+	printf "\n    $1"
+	debug_print "\n    `date`"
+	if ! [[ -z "$2" ]]; then
+		printf "\n    $2"
+	fi
+	printf "\n"
+	print_line
+	printf "\n"
+}
+
+function pid_cpu_percent() {
+	echo $(top -stats cpu -pid $1 -l 2 | awk 'NR%13==0' | sed -n '1d;p')
+}
+
+function pid_of_process_name_containing() {
+	processName=$(echo "$1" | sed -E 's/^(.)(.*)/\[\1\]\2/') # so that we grep for string line '[L]eakify.app/Leakify', brackets help filter out self command in list of processes
+	foundPID=$(ps -A | grep "$processName" | head -n 1 | awk '{ print $1 }')
+	echo "$foundPID"
+}
+
+function is_pid_running() {
+	numberOfLines=$(ps -p $1 | wc -l)
+	if [ $numberOfLines -eq 2 ]; then
+		return 0;
+	fi
+	return 1;
+}
+
+function is_pid_active() {
+	cpu=$(pid_cpu_percent $1)
+	debug_print "pid $1 cpu: $cpu"
+	if [ -z "$cpu" ]; then
+		return 1;
+	fi
+	is_idle=$(echo "$cpu <= 0.1" | bc)
+	if [ 1 -eq "$is_idle" ]; then
+		return 1;
+	fi
+	return 0;
+}
+
+function is_not_app_started() {
+	appPID=$(pid_of_process_name_containing "$appName.app/$appName")
+	if [ -z "$appPID" ]; then # if is empty
+		true;
+	else
+		debug_print "appPID: $appPID"
+		false;
+	fi
+	return $?;
+}
+
+function is_not_app_runner_started() {
+	appRunnerPID=$(pid_of_process_name_containing "$appRunnerName.app/$appRunnerName")
+	if [ -z "$appRunnerPID" ]; then # if is empty
+		true;
+	else
+		debug_print "appRunnerPID: $appRunnerPID"
+		false;
+	fi
+	return $?;
+}
+
+function exit_if_last_command_failed() {
+	lastStatus=$?
+	if [ $lastStatus -ne 0 ]; then
+		echo "Exiting because last command failed."
+		exit $lastStatus;
+	fi
+}
+
+function is_running_test_healthy() {
+	mainThreadCheckerIssues=$(cat "$testLogPath" | grep "Main Thread Checker:")
+	if ! [[ -z "$mainThreadCheckerIssues" ]]; then
+		echo ""
+		echo "In running test were found Main Thread Checker issues (causes pausing the test):"
+		echo "$mainThreadCheckerIssues"
+		echo "More details in log: $testLogPath"
+		echo ""
+		return 1
+	fi
+	xcodebuildErrors=$(cat "$testLogPath" | grep "xcodebuild: error: Failed")
+	if ! [[ -z "$xcodebuildErrors" ]]; then
+		echo ""
+		echo "In running test were found errors:"
+		echo "$xcodebuildErrors"
+		echo "More details in log: $testLogPath"
+		echo ""
+		return 1
+	fi
+	return 0;
+}
+
+function is_running_instruments_healthy() {
+	foundErrors=$(cat "$instrumentsLogPath" | grep "Invalid connection")
+	if ! [[ -z "$foundErrors" ]]; then
+		echo ""
+		echo "In running instruments log were found errors:"
+		echo "$foundErrors"
+		echo "More details in log: $instrumentsLogPath"
+		echo ""
+		return 1
+	fi
+	return 0;
+}
+
+function timeout_monitor() {
+    sleep "$2"
+	print_heading "Timeout elapsed"
+	date
+   	kill "$1"
+}
+
+function debug_print() {
+	if [ $VERBOSE -ne "0" ]; then
+		printf "\n$1"
+	fi
+}
+
+function cleanup() {
+	cleanup_internal 2>/dev/null
+}
+
+function cleanup_internal() {
+
+  	print_heading "Cleanup"
+	debug_print "appPID: kill $appPID"
+  	kill $appPID &>/dev/null
+	debug_print "appRunnerPID: kill $appRunnerPID"
+  	kill $appRunnerPID &>/dev/null
+	debug_print "xcodebuildPID: kill $xcodebuildPID"
+  	kill $xcodebuildPID &>/dev/null
+	debug_print "instrumentsPID: kill $instrumentsPID"
+  	kill $instrumentsPID &>/dev/null
+	debug_print "launchdSimPID: kill -CONT $launchdSimPID"
+	kill -CONT $launchdSimPID &>/dev/null
+	debug_print "timeoutPID: kill $timeoutPID"
+	kill $timeoutPID &>/dev/null
+	if [ $KEEP_RAW_REPORT_DATA -eq "0" ]; then
+	    rm -rf "$traceRawPath" &>/dev/null
+	fi
+}
+trap cleanup EXIT
+
+###########################################################################################################################
+
+# PID variables
+
+appPID=""
+appRunnerPID=""
+launchdSimPID=""
+instrumentsPID=""
+timeoutPID=""
+
+# Set script timeout
+timeout_monitor "$$" "$scriptTimeout" &
+timeoutPID=$!
+debug_print "timeoutPID: $timeoutPID"
+
+###########################################################################################################################
+
+print_heading "1) Run test"
+
+debug_print "scriptDir: $scriptDir"
+
+testRunPath=$(find $buildDir/Build/Products -name '*.xctestrun')
+debug_print "testRunPath: $testRunPath"
+
+# define paths for current run
+currentRunName="$appName-$(date +%Y%m%d%H%M%S)"
+traceRawPath="$reportsDir/${currentRunName}-${instrumentsTemplateName}.raw.trace"
+traceParsedPath="$reportsDir/${currentRunName}-${instrumentsTemplateName}.parsed.plist"
+
+testLogPath="$buildDir/xcodebuild_test.log"
+instrumentsLogPath="$buildDir/instruments.log"
+echo "" > $testLogPath
+echo "" > $instrumentsLogPath
+
+destination="id=$deviceID"
+xcodebuild 	test-without-building \
+			-xctestrun "$testRunPath" \
+		 	-destination "$destination" \
+			"-only-testing:$testName" \
+			> "$testLogPath" \
+			&
+			# 2>&1 \
+
+xcodebuildPID=$!
+debug_print "xcodebuildPID: $xcodebuildPID"
+
+###########################################################################################################################
+
+print_heading "2) Find out PID of app runner"
+
+while is_not_app_runner_started "$appName"; do true; done
+
+print_heading "3) Find out PID of currently tested app"
+
+while is_not_app_started "$appName"; do true; done
+
+
+###########################################################################################################################
+
+print_heading "4) Pause app runner until instruments are ready"
+debug_print "kill -STOP $appRunnerPID"
+kill -STOP $appRunnerPID
+
+# Uncomment following code if you are using EarlGrey tests instead of Apple UI Tests. You need to pause simulator instead of app runner.
+# print_heading "Pause simulator until instruments are ready"
+
+## We are pausing launchdSimPID, because if attempt to pause appPID or xcodebuildPID then those processes will kill themselfs when paused
+## http://osxdaily.com/2013/05/30/pause-resume-app-process-mac-os-x/
+
+# launchdSimPID=$(ps -A | grep '[l]aunchd_sim' | head -n 1 | awk '{ print $1 }')
+# echo "launchdSimPID: $launchdSimPID"
+# echo "kill -STOP $launchdSimPID"
+# kill -STOP $launchdSimPID
+
+###########################################################################################################################
+
+print_heading "5) Start instruments"
+
+instruments -t "$instrumentsTraceTemplate" \
+ 			-w "$deviceID"	\
+		 	-D "$traceRawPath" \
+			-v \
+			-p "$appPID" \
+			> "$instrumentsLogPath" \
+			2>&1 \
+			&
+instrumentsPID=$!
+debug_print "instrumentsPID: $instrumentsPID"
+
+############################################################################################################################
+
+print_heading "6) Wait until instruments idle, then resume test"
+
+while is_pid_active $instrumentsPID; do
+	true;
+done
+
+# Uncomment following code if you are using EarlGrey tests instead of Apple UI Tests. You need to pause simulator instead of app runner.
+# echo "kill -CONT $launchdSimPID"
+# kill -CONT $launchdSimPID
+
+debug_print "kill -CONT $appRunnerPID"
+kill -CONT $appRunnerPID
+
+##########################################################################################################################
+
+print_heading "7) Wait until test PID finishes"
+xcodebuildPID_idle_count=0
+while is_pid_running $xcodebuildPID; do
+	is_running_test_healthy
+	exit_if_last_command_failed
+
+	if is_pid_active $xcodebuildPID; then
+		xcodebuildPID_idle_count=0
+	else
+		xcodebuildPID_idle_count=$((xcodebuildPID_idle_count+1))
+	fi
+	if [[ $xcodebuildPID_idle_count -gt $testPIDTimeout ]]; then
+		echo "kill $xcodebuildPID because idle for $testPIDTimeout seconds"
+		kill $xcodebuildPID
+	fi
+	sleep 1
+done
+debug_print "xcodebuildPID: $xcodebuildPID finished"
+
+###########################################################################################################################
+
+print_heading "8) Wait until instruments PID finishes"
+while is_pid_running $instrumentsPID ; do
+	is_running_instruments_healthy
+	exit_if_last_command_failed
+	sleep 1;
+done
+debug_print "instrumentsPID: $instrumentsPID finished"
+
+###########################################################################################################################
+
+print_heading "9) Parse trace file"
+chmod +x "$traceParseUtility"
+"$traceParseUtility" "$traceRawPath" "$traceParsedPath" 1> /dev/null
+exit_if_last_command_failed
+
+exit $?

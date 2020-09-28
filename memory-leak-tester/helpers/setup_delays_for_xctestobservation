@@ -1,0 +1,46 @@
+#!/bin/bash
+
+readonly PROGNAME=$(basename $0)
+
+# read parameters
+
+if [ $# -ne 4 ]; then
+	printf "\nusage: $PROGNAME [path to file with XCTestObservation implementation] [ClassName] [testBundleWillStartDelaySeconds] [testBundleDidFinishDelaySeconds]"
+	printf "\n\n"
+	printf "example: $PROGNAME \"TestObserver.swift\" \"PrincipalClass\" \"5\" \"10\""
+	printf "\n\n"
+	exit 1;
+fi
+
+fileImplementingXCTestObservation="$1"
+className="$2"
+testBundleWillStartDelaySeconds="$3"
+testBundleDidFinishDelaySeconds="$4"
+
+###############################################################################
+
+echo "# Reseting file to original state"
+echo "git checkout -- \"$fileImplementingXCTestObservation\""
+
+git checkout -- "$fileImplementingXCTestObservation"
+
+###############################################################################
+
+echo "# Appending extension setting up delays needed for Instruments"
+
+cat <<EXTENSION >> "$fileImplementingXCTestObservation"
+// MARK: - Generated for Automatic Instruments Testing
+// Needed delays, so that Instruments have enough time finish tracking trace data.
+// Should be automatically removed on end of testing.
+extension $className {
+    func testBundleDidFinish(_ testBundle: Bundle) {
+		print("\(Date()): XCTestObservation.testBundleDidFinish start delay")
+		Thread.sleep(forTimeInterval: $testBundleDidFinishDelaySeconds.0)
+		print("\(Date()): XCTestObservation.testBundleDidFinish end delay")
+    }
+}
+EXTENSION
+
+###############################################################################
+
+echo "# Done."

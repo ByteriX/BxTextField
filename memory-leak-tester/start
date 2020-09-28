@@ -1,0 +1,225 @@
+#!/bin/bash
+
+# Tool for automatic discovery of memory leaks in iOS apps runned by UI tests.
+
+###########################################################################################################################
+
+readonly PROGNAME=$(basename $0)
+
+# read parameters
+
+if [ $# -ne 10 ]; then
+	printf "\nusage: $PROGNAME [appName] [appRunnerName] [appWorkspace] [appScheme] [reportsDir] [buildDir] [deviceName] [file implementing XCTestObservation] [class implementing XCTestObservation] [list of test names]"
+	printf "\n\n"
+	exit 1;
+fi
+
+appName="$1"
+appRunnerName="$2"
+appWorkspace="$3"
+appScheme="$4"
+reportsDir="$5"
+buildDir="$6"
+deviceName="$7"
+fileImplementingXCTestObservation="$8"
+classNameImplementingXCTestObservation="$9"
+testNames="${10}"
+
+VERBOSE=1
+KEEP_RAW_REPORT_DATA=0 # will keep raw trace files, thus might need several GB of free space, only for debugging
+
+# current script directory
+
+scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# ait settings
+testBundleWillStartDelaySeconds=1
+testBundleDidFinishDelaySeconds=20
+scriptTimeout=3600 # 60 minutes
+setupDelaysForXCTestObservation="$scriptDir/helpers/setup_delays_for_xctestobservation"
+recordWithInstrumentsScript="$scriptDir/helpers/record_xctestrun_with_instruments"
+parsedTraceToStatistics="$scriptDir/helpers/ParsedTraceToStatistics.swift"
+measureStatisticsNovelty="$scriptDir/helpers/MeasureStatisticsNovelty.swift"
+
+# Functions
+
+function print_line {
+	printf "\n########################################################################################################################################"
+}
+
+function print_heading() {
+	printf "\n"
+	print_line
+	printf "\n"
+	printf "\n    $1"
+	debug_print "\n    `date`"
+	if ! [[ -z "$2" ]]; then
+		printf "\n"
+		printf "\n    $2"
+	fi
+	printf "\n"
+	print_line
+	printf "\n"
+	printf "\n"
+}
+
+function exit_if_last_command_failed() {
+	lastStatus=$?
+	if [ $lastStatus -ne 0 ]; then
+		echo "Exiting because last command failed."
+		exit $lastStatus;
+	fi
+}
+
+function timeout_monitor() {
+    sleep "$2"
+	print_heading "Timeout elapsed"
+	date
+   	kill "$1"
+}
+
+function debug_print() {
+	if [ $VERBOSE -ne "0" ]; then
+		printf "\n$1"
+	fi
+}
+
+function cleanup() {
+	cleanup_internal 2>/dev/null
+}
+
+function cleanup_internal() {
+
+  	print_heading "Cleanup"
+	debug_print "appPID: kill $appPID"
+  	kill $appPID &>/dev/null
+	debug_print "xcodebuildPID: kill $xcodebuildPID"
+  	kill $xcodebuildPID &>/dev/null
+	debug_print "instrumentsPID: kill $instrumentsPID"
+  	kill $instrumentsPID &>/dev/null
+	debug_print "launchdSimPID: kill -CONT $launchdSimPID"
+	kill -CONT $launchdSimPID &>/dev/null
+	debug_print "timeoutPID: kill $timeoutPID"
+	kill $timeoutPID &>/dev/null
+	debug_print "git checkout -- $fileImplementingXCTestObservation"
+	git checkout -- "$fileImplementingXCTestObservation"
+	if [ $KEEP_RAW_REPORT_DATA -eq "0" ]; then
+		rm -rf "$currentRunReportDir"
+	fi
+}
+trap cleanup EXIT
+
+###########################################################################################################################
+
+print_heading "1) Prepare environment" "Why? To make directory where will store statistics for each run, so that can later tell whether new leaks found."
+
+###########################################################################################################################
+
+# Directories
+
+debug_print "scriptDir: $scriptDir"
+debug_print "reportsDir: $reportsDir"
+mkdir -p "$reportsDir"
+debug_print "buildDir: $buildDir"
+mkdir -p "$buildDir"
+
+buildLogPath="$buildDir/xcodebuild_build.log"
+echo "" > $buildLogPath
+
+# PID variables
+
+xcodebuildPID=""
+appPID=""
+launchdSimPID=""
+instrumentsPID=""
+timeoutPID=""
+
+# Set script timeout
+timeout_monitor "$$" "$scriptTimeout" &
+timeoutPID=$!
+debug_print "timeoutPID: $timeoutPID"
+
+###########################################################################################################################
+
+print_heading "2) Restart device" "Why? To prevent by mistake attaching to incorrect instance of app."
+
+deviceID=`instruments -s | grep "$deviceName.*\(Simulator\)" | head -n 1 | perl -pe "s/.*?\[(.*?)\].*/\1/"`
+echo "Found deviceID: $deviceID"
+destination="id=$deviceID"
+debug_print "destination: $destination"
+echo "xcrun simctl shutdown \"$deviceID\""
+xcrun simctl shutdown "$deviceID"
+echo "xcrun simctl erase \"$deviceID\""
+xcrun simctl erase "$deviceID"
+echo "xcrun simctl boot \"$deviceID\""
+xcrun simctl boot "$deviceID"
+
+# ##########################################################################################################################
+
+print_heading "3) Setup delays via XCTestObservation" "Why? Because Instruments need some time to finish capturing all app events."
+
+bash "$setupDelaysForXCTestObservation" \
+	 "$fileImplementingXCTestObservation" \
+	 "$classNameImplementingXCTestObservation" \
+	 "$testBundleWillStartDelaySeconds" \
+	 "$testBundleDidFinishDelaySeconds"
+
+###########################################################################################################################
+
+print_heading "4) Build scheme"
+
+xcodebuild -workspace "$appWorkspace" \
+	   	   -scheme "$appScheme" \
+		   -destination "$destination" \
+		   -derivedDataPath "$buildDir" \
+		   build-for-testing \
+		   > "$buildLogPath" \
+		   2>&1
+exit_if_last_command_failed
+
+##########################################################################################################################
+
+print_heading "5) Start testing" "Each test case is measured separately. Because Instruments sometimes hangs when recording for too long time. Also prevents to have too large trace file."
+
+testRunPath=$(find $buildDir/Build/Products -name '*.xctestrun')
+debug_print "testRunPath: $testRunPath"
+
+currentRunName="$appName-$(date +%Y%m%d%H%M%S)"
+currentRunReportDir="$reportsDir/run-${currentRunName}"
+mkdir "$currentRunReportDir"
+debug_print "currentRunReportDir: $currentRunReportDir"
+
+for testName in $testNames
+do
+	print_heading "Test Case: $testName"
+
+	bash "$recordWithInstrumentsScript" "$appName" \
+										"$appRunnerName" \
+	                                    "$currentRunReportDir" \
+	                                    "$buildDir" \
+	                                    "$deviceID" \
+	                                    "$testName" \
+										"$VERBOSE" \
+										"$KEEP_RAW_REPORT_DATA"
+done
+
+###########################################################################################################################
+
+print_heading "6) Statistics from parsed trace files"
+
+statisticsFile="$reportsDir/${currentRunName}.stats.plist"
+swift "$parsedTraceToStatistics" "$currentRunReportDir" "$statisticsFile"
+if [ $KEEP_RAW_REPORT_DATA -eq "0" ]; then
+	rm -rf "$currentRunReportDir"
+fi
+debug_print "statisticsFile: $statisticsFile"
+
+##########################################################################################################################
+
+print_heading "7) Found any leaks in last run?"
+
+# find last n statistics
+lastStatisticsFiles=`find "$reportsDir/"*.stats.plist -type f | sort | tail -30`
+swift "$measureStatisticsNovelty" $lastStatisticsFiles
+
+exit $?
