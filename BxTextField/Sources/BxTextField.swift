@@ -95,6 +95,7 @@ open class BxTextField : UITextField {
             } else {
                 formattingEnteredCharSet = CharacterSet(charactersIn: formattingEnteredCharacters).subtracting(CharacterSet(charactersIn: formattingTemplate))
             }
+            updatePatternText()
         }
     }
     /// You can use formattingEnteredCharacters or this from code.
