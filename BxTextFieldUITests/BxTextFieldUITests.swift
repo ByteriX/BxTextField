@@ -44,7 +44,7 @@ class BxTextFieldUITests: XCTestCase {
         textField3.tap()
         textField3.typeText("12345678899")
         
-        let cardNumberTextField = tablesQuery.cells.textFields["card number"]
+        let cardNumberTextField = tablesQuery.children(matching: .cell).element(boundBy: 5).children(matching: .textField).element
         cardNumberTextField.tap()
         cardNumberTextField.typeText("1111222233334444")
     }
