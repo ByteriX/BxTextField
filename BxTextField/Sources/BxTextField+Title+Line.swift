@@ -39,10 +39,10 @@ extension BxTextField {
 
         lineLayer.frame = bounds
         lineLayer.path = linePath.cgPath
-        lineLayer.lineWidth = lineWidth
     }
     
     internal func styleLineLayer() {
+        lineLayer.lineWidth = isActive ? activeLineWidth : lineWidth
         if let lineColor = self.lineColor {
             lineLayer.strokeColor = lineColor.cgColor
         } else {

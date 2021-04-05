@@ -359,6 +359,12 @@ open class BxTextField : UITextField {
             updateTitle()
         }
     }
+    @IBInspectable open var activeLineWidth: CGFloat = 0.5
+        {
+        didSet {
+            updateTitle()
+        }
+    }
     
     internal let titleLayer = CATextLayer()
     internal let lineLayer = CAShapeLayer()
