@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.10.13 (05.04.2021)
+##### Improvements
+* added activeLineWidth
+
 ## 1.10.12 (24.04.2020)
 ##### Improvements
 * change description: supporting section
