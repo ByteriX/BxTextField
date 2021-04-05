@@ -6,9 +6,12 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
-## 1.10.13 (05.04.2021)
+## 1.11 (05.04.2021)
 ##### Improvements
 * added activeLineWidth
+* edited updating from changing
+* memory leaks tests
+* supporting iOS 14
 
 ## 1.10.12 (24.04.2020)
 ##### Improvements
