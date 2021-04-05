@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BxTextField"
-  s.version      = "1.10.12"
+  s.version      = "1.11"
   s.summary      = "Swift UI component improving features UITextField"
   s.description  = "This component will help iOS developers with different functions of putting text"
   s.homepage     = "https://github.com/ByteriX/BxTextField.git"
