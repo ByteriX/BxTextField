@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.12 (08.06.2023)
+##### Bug fix
+* minimal target to iOS 11
+
 ## 1.11 (05.04.2021)
 ##### Improvements
 * added activeLineWidth
