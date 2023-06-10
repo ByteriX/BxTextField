@@ -33,7 +33,7 @@ let package = Package(
         .target(
             name: "BxTextField",
             dependencies: [],
-            path: "Source"),
+            path: "BxTextField/Source"),
 //        .testTarget(
 //            name: "BxTextFieldTests",
 //            dependencies: ["BxTextField"]),
