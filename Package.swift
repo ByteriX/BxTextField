@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.5
 /**
  *	@file Package.swift
  *	@namespace BxTextField
