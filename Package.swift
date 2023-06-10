@@ -34,12 +34,14 @@ let package = Package(
             name: "BxTextField",
             dependencies: [],
             path: "BxTextField/Sources"),
-//        .testTarget(
-//            name: "BxTextFieldTests",
-//            dependencies: ["BxTextField"]),
-//        .testTarget(
-//            name: "BxTextFieldUITests",
-//            dependencies: ["BxTextField"]),
+        .testTarget(
+            name: "BxTextFieldTests",
+            dependencies: ["BxTextField"],
+            path: "BxTextFieldTests"),
+        .testTarget(
+            name: "BxTextFieldUITests",
+            dependencies: ["BxTextField"],
+            path: "BxTextFieldUITests"),
     ],
     swiftLanguageVersions: [.v5]
 )
