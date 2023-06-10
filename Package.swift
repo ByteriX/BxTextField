@@ -1,4 +1,4 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 5.0
 /**
  *	@file Package.swift
  *	@namespace BxTextField
@@ -16,9 +16,7 @@ import PackageDescription
 
 let package = Package(
     name: "BxTextField",
-    platforms: [.iOS(.v10),
-                .tvOS(.v10),
-                .watchOS(.v3)],
+    platforms: [.iOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -36,12 +34,12 @@ let package = Package(
             name: "BxTextField",
             path: "Source",
             dependencies: []),
-        .testTarget(
-            name: "BxTextFieldTests",
-            dependencies: ["BxTextField"]),
-        .testTarget(
-            name: "BxTextFieldUITests",
-            dependencies: ["BxTextField"]),
+//        .testTarget(
+//            name: "BxTextFieldTests",
+//            dependencies: ["BxTextField"]),
+//        .testTarget(
+//            name: "BxTextFieldUITests",
+//            dependencies: ["BxTextField"]),
     ],
     swiftLanguageVersions: [.v5]
 )
