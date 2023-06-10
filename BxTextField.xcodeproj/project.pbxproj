@@ -58,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C393E59E2A3507DE006D9900 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		CF0A71042016034E003C2514 /* BxTextFieldFormattingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BxTextFieldFormattingTests.swift; sourceTree = "<group>"; };
 		CF109B582019C1F20099B101 /* BxTextFieldUILeftToRightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldUILeftToRightTests.swift; sourceTree = "<group>"; };
 		CF109B5A2019C20A0099B101 /* BxTextFieldUIRightToLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxTextFieldUIRightToLeftTests.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 				F9337C2B1E68002E002134C2 /* README.md */,
 				F9337C2D1E680037002134C2 /* CHANGELOG.md */,
 				F95DCA541EDC968E007B82AF /* BxTextField.templatespec */,
+				C393E59E2A3507DE006D9900 /* Package.swift */,
 				F9337BF61E67FC37002134C2 /* BxTextField */,
 				F9337C0B1E67FC37002134C2 /* BxTextFieldTests */,
 				F9337C161E67FC37002134C2 /* BxTextFieldUITests */,
