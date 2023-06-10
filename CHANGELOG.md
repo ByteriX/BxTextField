@@ -6,6 +6,10 @@ ByteriX, 2017-2018. All right reserved.
 
 # Versions
 
+## 1.12.4 (10.06.2023)
+##### Improvements
+* support SPM
+
 ## 1.12 (08.06.2023)
 ##### Bug fix
 * minimal target to iOS 11
