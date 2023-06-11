@@ -1,7 +1,7 @@
 
 #
 #  build.sh
-#  version 1.2
+#  version 1.3
 #
 #  Created by Sergey Balalaev on 02.03.17.
 #  Copyright (c) 2017 ByteriX. All rights reserved.
@@ -18,10 +18,20 @@ VAR_NAME="VERSION_NUMBER"
 
 checkExit(){
     if [ $? != 0 ]; then
+    tput setaf 1
     echo "Building failed\n"
-    clear
+    tput sgr 0
     exit 1
     fi
+}
+
+checkSPM(){
+    echo "Checking Swift Package Manager file\n"
+    swift package describe
+    checkExit
+    tput setaf 2
+    echo "✓ SPM Manifest is valid.\n\n"
+    tput sgr 0
 }
 
 gitPush(){
@@ -39,6 +49,8 @@ startClear(){
 finishedClear(){
     rm -f -d "${WORK_SPEC_PATH}-e"
 }
+
+checkSPM
 
 # Load Config
 
