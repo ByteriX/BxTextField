@@ -32,10 +32,10 @@ extension XCTestCase {
         textField.tap()
         textField.press(forDuration: 0.5)
         
-        let selectAllButton = app.menus.menuItems["Select All"]
+        let selectAllButton = app.menuItems["Select All"]
         selectAllButton.tap()
         
-        let cutButton = app.menus.menuItems["Cut"]
+        let cutButton = app.menuItems["Cut"]
         cutButton.tap()
     }
 }
