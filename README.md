@@ -4,7 +4,7 @@ This component available put formatted text, for example: phone number, url or e
 
 ## Gif demo
 
-![Demo Gif](https://github.com/ByteriX/BxTextField/raw/master/Screenshots/BxTextFieldDemo.gif "Demo Gif")
+![Demo Gif](/Screenshots/BxTextFieldDemo.gif "Demo Gif")
 
 ## Features
 
@@ -88,7 +88,6 @@ $ git submodule add https://github.com/ByteriX/BxTextField.git
 ### Formatting
 
 - formattingTemplate: String, Format text for putting pattern. If formattingReplacementChar is "*" then example may has value "**** - **** - ********". Default is ""
-
 - formattingReplacementChar: String, Replacement symbol, it use for formattingTemplate as is as pattern for replacing. Default is "#"
 - formattingEnteredCharacters: String, Allowable symbols for entering. Uses only if formattingTemplate is not empty. Default is "", that is all symbols.
 - formattingDirection: FormattingDirection, Direction for replacement text from template. Can equal leftToRight or rightToLeft value. Default is leftToRight
