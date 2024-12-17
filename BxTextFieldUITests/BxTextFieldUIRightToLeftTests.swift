@@ -53,11 +53,10 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         textField.typeText("1")
         XCTAssertEqual(textField.value as! String, " (098) 765 - 43 - 21")
         
-        // select only last symboles, because space symbole is seporator
-        textField.doubleTap()
-        textField.typeText("3334444")
-        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 33 - 33")
-        
+        textField.typeText("\u{8}\u{8}")
+        textField.typeText("1234567")
+        XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 31 - 23")
+
     }
     
     func testCursorSelect()
