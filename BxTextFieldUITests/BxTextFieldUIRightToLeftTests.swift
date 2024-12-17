@@ -52,13 +52,28 @@ class BxTextFieldUIRightToLeftTests: BxUITestCase {
         
         textField.typeText("1")
         XCTAssertEqual(textField.value as! String, " (098) 765 - 43 - 21")
-        
+    }
+
+    func testReplace2Last()
+    {
+        textField.typeText("0987654321")
+        XCTAssertEqual(textField.value as! String, " (098) 765 - 43 - 21")
+
         textField.typeText("\u{8}\u{8}")
         textField.typeText("1234567")
         XCTAssertEqual(textField.value as! String, "+0 (987) 654 - 31 - 23")
-
     }
-    
+
+    func testReplaceAll()
+    {
+        textField.typeText("0987654321")
+        XCTAssertEqual(textField.value as! String, " (098) 765 - 43 - 21")
+
+        textField.doubleTap()
+        textField.typeText("12345678901")
+        XCTAssertEqual(textField.value as! String, "+1 (234) 567 - 89 - 01")
+    }
+
     func testCursorSelect()
     {
         textField.typeText("09876543210")

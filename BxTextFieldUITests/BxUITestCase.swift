@@ -33,9 +33,11 @@ extension XCTestCase {
         textField.press(forDuration: 0.5)
         
         let selectAllButton = app.menuItems["Select All"]
+        XCTAssertTrue(selectAllButton.waitForExistence(timeout: 1.0))
         selectAllButton.tap()
         
         let cutButton = app.menuItems["Cut"]
+        XCTAssertTrue(cutButton.waitForExistence(timeout: 1.0))
         cutButton.tap()
     }
 }
